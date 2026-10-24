@@ -430,13 +430,14 @@ local function baseScent(item)
     return s
 end
 
--- What a bag smells of now: stronger while the spilled food/drink is still inside it, weaker once that has been emptied
--- out without the stain being washed (DSTB_scentState "fresh" / "emptied").
+-- What a bag smells of now: stronger once the spilled food/drink inside it has gone off (when its seepage starts: the same
+-- moment as the Bad Smell moodle, DSTB_sour; with souring switched off, from the spill itself), weaker once that has been
+-- emptied out without the stain being washed (DSTB_scentState "fresh" / "emptied").
 local function scentOf(item)
     local s = baseScent(item)
     if s <= 0 then return 0 end
-    local state = item:getModData().DSTB_scentState
-    if state == "fresh" then return s * DSTB.value("ScentSpilledFactor") end
+    local md = item:getModData()
+    if md.DSTB_scentState == "fresh" and (md.DSTB_sour or not DSTB.sourEnabled()) then return s * DSTB.value("ScentSpilledFactor") end
     return s * DSTB.value("ScentEmptiedFactor")   -- an emptied bag, or clothing something spilled on
 end
 Spill.scentOf = scentOf

@@ -164,7 +164,7 @@ DSTB.Config = {
     FoodScentPerPortion = 6,   -- per whole portion of food lost
     LiquidScentPerLitre = 3,    -- per litre of an edible liquid lost (milk, juice, soda, alcohol; not water or fuel)
     ScentCapPerItem = 8,        -- most scent one bag or garment holds
-    ScentSpilledFactor = 2,     -- a bag with spilled food/drink still inside smells this many times stronger ...
+    ScentSpilledFactor = 2,     -- a bag whose spilled food/drink has gone off (seepage started) smells this many times stronger ...
     ScentEmptiedFactor = 1,     -- ... and once that has been emptied out (but the stain not washed) this many times (1 = as clothing)
     ScentMaxTotal = 24,         -- most scent added to the player in all
 
