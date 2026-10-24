@@ -12,3 +12,5 @@ require "DSTB_Compat_Sapph"                -- Sapph's Cooking (3409143790)
 require "DSTB_Compat_Sapph_Containers"
 require "DSTB_Compat_MRE"                  -- MRE Mod (3765409550)
 require "DSTB_Compat_MRE_Containers"
+require "DSTB_Compat_AuthZ"                -- Authentic Z (2335368829): Current, Backpacks+ and Lite
+require "DSTB_Compat_AuthZ_Containers"

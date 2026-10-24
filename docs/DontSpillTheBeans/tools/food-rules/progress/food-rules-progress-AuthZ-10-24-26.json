@@ -1,0 +1,22 @@
+{
+ "AuthenticZClothing.BigLollipop": "exempt",
+ "AuthenticZBackpacksPlus.BigLollipop": "exempt",
+ "AuthenticZLite.BigLollipop": "exempt",
+ "AuthenticZBackpacksPlus.PopBottle": "exempt",
+ "AuthenticZClothing.PopBottle": "exempt",
+ "__liquid": {
+  "AuthenticZBackpacksPlus.PopBottle": true,
+  "AuthenticZClothing.PopBottle": true,
+  "AuthenticZClothing.BigLollipop": false,
+  "AuthenticZClothing.CigarAZ2": false,
+  "AuthenticZClothing.AuthenticCigaretteHolder": false,
+  "AuthenticZClothing.AuthenticCigaretteHolder_Cig": false,
+  "AuthenticZClothing.CigarAZHalf": false,
+  "AuthenticZBackpacksPlus.BigLollipop": false,
+  "AuthenticZLite.BigLollipop": false,
+  "AuthenticZLite.CigarAZ2": false,
+  "AuthenticZLite.AuthenticCigaretteHolder": false,
+  "AuthenticZLite.AuthenticCigaretteHolder_Cig": false,
+  "AuthenticZLite.CigarAZHalf": false
+ }
+}
