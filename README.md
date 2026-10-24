@@ -2,12 +2,11 @@
 
 A Project Zomboid (Build 42.21) mod. Open food and drink spills when carried loose in pockets, bags or a vehicle; it
 makes a mess, seeps through clothes, goes off and smells, burns if hot and foams if shaken. Lua only, written for
-multiplayer (the server decides, clients report). See [docs/DontSpillTheBeans/DESIGN.md](docs/DontSpillTheBeans/DESIGN.md)
-for how it works.
+multiplayer (the server decides, clients report).
 
 ## Layout
 - `mods/DontSpillTheBeans/` the mod (`42/mod.info`, `42/media/...`, `common/`).
-- `docs/DontSpillTheBeans/` design notes and `tools/food-rules/` (generates the per-mod item rules in `shared/DSTB_Compat_*.lua`).
+- `docs/DontSpillTheBeans/tools/food-rules/` (generates the per-mod item rules in `shared/DSTB_Compat_*.lua`).
 - `assets/DontSpillTheBeans/` source art (the source audio is not in the repo, see `CREDITS.md`).
 
 ## Trying it

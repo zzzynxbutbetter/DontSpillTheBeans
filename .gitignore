@@ -8,6 +8,7 @@ WORKSPACE.md
 mods/HelloZomboid/
 scripts/
 docs/DontSpillTheBeans/WORKSHOP.txt
+docs/DontSpillTheBeans/DESIGN.md
 docs/DontSpillTheBeans/VanillaFoodsExpanded-foods.md
 .vs/
 
