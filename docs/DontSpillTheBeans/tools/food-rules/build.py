@@ -17,12 +17,24 @@ W = 'W:/SteamLibrary/steamapps/workshop/content/108600/'
 
 GAME = 'W:/GameModding/ProjectZomboid/reference/game-media/'
 
+# Every source may use vanilla icons (overridden or reused items), so these packs are always searched after its own.
+VANILLA_PACKS = [GAME + 'texturepacks/UI.pack', GAME + 'texturepacks/UI2.pack']
+_PACK_CACHE = {}
+
+
+def item_sprites(pack):
+    """{lower-case sprite name: png bytes} of the Item_* sprites in a texture pack (read once)."""
+    if pack not in _PACK_CACHE:
+        from packread import read_pack
+        _PACK_CACHE[pack] = {k.lower(): v for k, v in read_pack(pack, want=lambda n: n.startswith('Item_')).items()}
+    return _PACK_CACHE[pack]
+
 MODS = {
     # Vanilla: rows are editable (not locked to the rules already in DSTB_Config.lua); import the current-rules progress file to see them.
     'Vanilla': dict(
         title='Project Zomboid (vanilla)', workshop='vanilla', editable=True,
         scripts=[GAME + 'scripts/generated/items/*.txt'],
-        textures=[GAME + 'textures'], packs=[GAME + 'texturepacks/UI2.pack'],
+        textures=[GAME + 'textures'], packs=[GAME + 'texturepacks/UI.pack', GAME + 'texturepacks/UI2.pack'],
         names=[GAME + 'lua/shared/Translate/EN/ItemName.json']),
     'VFE': dict(
         title='Vanilla Foods Expanded', workshop='3577903007', storage='dstb-vfe-food-marks',
@@ -39,6 +51,12 @@ MODS = {
         scripts=[W + '3409143790/mods/SapphCookingB42/42.20.0/media/scripts/**/*.txt'],
         textures=[W + '3409143790/mods/SapphCookingB42/42.20.0/media/textures'],
         names=[W + '3409143790/mods/SapphCookingB42/42.20.0/media/lua/shared/Translate/EN/ItemName.json']),
+    # Authentic Z: its three variants (Current, Backpacks+, Lite) share item names under their own modules, so all three are read.
+    'AuthZ': dict(
+        title='Authentic Z', workshop='2335368829',
+        scripts=[W + '2335368829/mods/Authentic Z - %s/42/media/scripts/**/*.txt' % v for v in ('Current', 'Backpacks+', 'Lite')],
+        textures=[W + '2335368829/mods/Authentic Z - %s/%s/media/textures' % (v, d) for v in ('Current', 'Backpacks+', 'Lite') for d in ('42', 'common')],
+        names=[W + '2335368829/mods/Authentic Z - %s/42/media/lua/shared/Translate/EN/ItemName.json' % v for v in ('Current', 'Backpacks+', 'Lite')]),
     'MRE': dict(
         title='MRE Mod', workshop='3765409550',
         scripts=[W + '3765409550/mods/MRE Mod/42/media/scripts/**/*.txt'],
@@ -66,16 +84,21 @@ def parse_items(files):
     return items
 
 
+def compat_rules(file, name):
+    """Ids a generated compat module sets with rule("<name>", { ... })."""
+    path = os.path.join(os.path.dirname(CONFIG), file)
+    if not os.path.exists(path):
+        return []
+    s = open(path, encoding='utf8').read()
+    return [i for m in re.finditer(r'rule\("%s", \{(.*?)\n\}\)' % name, s, re.S) for i in re.findall(r'"([^"]+)"', m.group(1))]
+
+
 def config_rules():
-    """Full types already decided in DSTB_Config.lua: {fullType: 'exempt' | 'whole'}."""
-    s = open(CONFIG, encoding='utf8').read()
+    """Food rules already in force from the vanilla compat module: {fullType: 'exempt' | 'whole'}."""
     rules = {}
-    for key, rule in (('FoodExempt', 'exempt'), ('FoodExemptWhenUneaten', 'whole')):
-        m = re.search(r'DSTB\.Config\.%s = \{\}\nfor _, id in ipairs\(\{(.*?)\}\) do' % key, s, re.S)
-        for ident in re.findall(r'"([^"]+)"', m.group(1)):
-            rules['Base.' + ident] = rule
-    for full in re.findall(r'DSTB\.Config\.FoodExempt\["([^"]+\.[^"]+)"\] = true', s):
-        rules.setdefault(full, 'exempt')
+    for name in ('exempt', 'whole'):
+        for full in compat_rules('DSTB_Compat_Vanilla.lua', name):
+            rules[full] = name
     return rules
 
 
@@ -85,8 +108,8 @@ LIQUID_NAME = re.compile(r'soup|stew|broth|chowder|bisque|porridge|gruel|chili|c
 def open_vessels():
     """Items DSTB_Config.lua treats as open vessels (what a food leaves behind when used up)."""
     s = open(CONFIG, encoding='utf8').read()
-    block = re.search(r'OpenFoodContainers = \{(.*?)\n    \},', s, re.S).group(1)
-    return set(re.findall(r'\["([^"]+)"\] = true', block))
+    m = re.search(r'OpenFoodContainers = \{(.*?)\n    \},', s, re.S)   # the list is gone from the config: any ReplaceOnUse item is a vessel now
+    return set(re.findall(r'\["([^"]+)"\] = true', m.group(1))) if m else set()
 
 
 def num(v):
@@ -101,7 +124,7 @@ def read_names(paths):
     for p in paths:
         if os.path.exists(p):
             try:
-                names.update(json.load(open(p, encoding='utf8')))
+                names.update({(k[9:] if k.startswith('ItemName_') else k): v for k, v in json.load(open(p, encoding='utf8')).items()})
             except ValueError:
                 pass
     return names
@@ -119,13 +142,12 @@ def build(key):
         for f in glob.glob(d + '/*.png'):
             textures.setdefault(os.path.basename(f).lower(), f)
     packed = {}
-    for pk in cfg.get('packs', []):
-        from packread import read_pack
-        packed.update({k.lower(): v for k, v in read_pack(pk, want=lambda n: n.startswith('Item_')).items()})
+    for pk in cfg.get('packs', []) + [p for p in VANILLA_PACKS if p not in cfg.get('packs', [])]:
+        packed.update(item_sprites(pk))
     icons, rows = {}, []
     for full, v in items.items():
         p = v['props']
-        if 'food' not in p.get('ItemType', ''):   # also skips partial overrides of vanilla items (no ItemType)
+        if 'food' not in p.get('ItemType', '').lower():   # also skips partial overrides of vanilla items (no ItemType)
             continue
         rep = p.get('ReplaceOnUse')
         tags = p.get('Tags', '').lower()
@@ -161,7 +183,7 @@ def build(key):
             'id': full, 'name': display.replace('_', ' '),
             'cat': re.sub(r'^[^-_]*[-_](items[-_])?(food[-_])?|\.txt$', '', v['file']) or v['file'], 'flags': flags,
             'sugg': bool(hunger and ((rep and rep in vessels) or LIQUID_NAME.search(display))),   # only a suggestion for the Liquid flag
-            'hunger': hunger, 'thirst': thirst, 'auto': auto, 'base': None if cfg.get('editable') else rules.get(full), 'icon': icon,
+            'hunger': hunger, 'thirst': thirst, 'auto': auto, 'base': None if cfg.get('editable') else rules.get(full), 'seed': cfg.get('seed_food', {}).get(full), 'icon': icon,
         })
     rows.sort(key=lambda r: (r['cat'], r['name'].lower()))
     icons = {k: v for k, v in icons.items() if v}

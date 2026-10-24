@@ -8,6 +8,9 @@ entries (name, x, y, w, h, offsets) followed by the page's PNG; sprites are crop
 """
 import io, struct
 
+_PNG = bytes([0x89]) + b"PNG" + bytes([0x0D, 0x0A, 0x1A, 0x0A])
+
+
 from PIL import Image
 
 
@@ -48,8 +51,20 @@ def read_pack(path, want=lambda name: True):
             name = r.s()
             x, y, w, h, ox, oy, fx, fy = (r.i32() for _ in range(8))
             entries.append((name, x, y, w, h))
-        size = r.i32()
-        png = r.bytes(size)
+        if r.d[r.p:r.p + 8] == _PNG:     # the older layout (UI.pack...): the PNG follows at once, a marker after it
+            q = r.p + 8
+            while True:
+                n = struct.unpack_from('>I', r.d, q)[0]
+                kind = r.d[q + 4:q + 8]
+                q += 12 + n
+                if kind == b'IEND':
+                    break
+            png = r.bytes(q - r.p)
+            if r.p + 4 <= len(r.d) and struct.unpack_from('<i', r.d, r.p)[0] == -559038737:   # 0xDEADBEEF page marker
+                r.p += 4
+        else:
+            size = r.i32()
+            png = r.bytes(size)
         wanted = [e for e in entries if want(e[0])]
         if not wanted:
             continue

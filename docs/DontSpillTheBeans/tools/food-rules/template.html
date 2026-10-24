@@ -111,6 +111,7 @@ const KEY = '__KEY__';
 const STRIP = '__STRIP__';
 let marks = {};
 try { marks = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+for (const r of ROWS) if (r.seed && marks[r.id] === undefined) marks[r.id] = r.seed;   // rules the mod applies today (editable starting marks)
 let liquid = {};   // id -> true (liquid) | false (not liquid); missing = not reviewed
 try { liquid = JSON.parse(localStorage.getItem(KEY + '-liquid') || '{}'); } catch (e) {}
 const saveLiquid = () => { try { localStorage.setItem(KEY + '-liquid', JSON.stringify(liquid)); } catch (e) {} };

@@ -24,7 +24,7 @@ SOURCES['Vanilla'] = dict(
     scripts=[GAME + 'scripts/generated/items/*.txt'],
     textures=[GAME + 'textures'],
     names=[GAME + 'lua/shared/Translate/EN/ItemName.json'],
-    packs=[GAME + 'texturepacks/UI2.pack'])
+    packs=[GAME + 'texturepacks/UI.pack', GAME + 'texturepacks/UI2.pack'])
 # Sapph's Cooking's own fluid items also live in its script folders other than items/ - the glob already covers them.
 
 
@@ -33,8 +33,8 @@ def current_rules():
     s = open(fb.CONFIG, encoding='utf8').read()
     block = re.search(r'OpenContainerNames = \{(.*?)\n    \},', s, re.S).group(1)
     open_names = {a or b for a, b in re.findall(r'(?:\["([^"]+)"\]|(\w+)) = true', block)}
-    prot = set(re.findall(r'\["([^"]+)"\] = true', re.search(r'ProtectiveContainers = \{(.*?)\n    \},', s, re.S).group(1)))
-    whenfull = set(re.findall(r'\["([^"]+)"\] = true', re.search(r'SealedWhenFull = \{(.*?)\n\}', s, re.S).group(1)))
+    prot = set(fb.compat_rules('DSTB_Compat_Vanilla_Containers.lua', 'protective'))
+    whenfull = set(fb.compat_rules('DSTB_Compat_Vanilla_Containers.lua', 'whenfull'))
     return open_names, prot, whenfull
 
 
@@ -81,15 +81,17 @@ def build(key):
             items[mod + '.' + m.group(1)] = {'props': props, 'body': body, 'file': os.path.basename(f)}
     names = fb.read_names(cfg['names'])
     open_names, prot, whenfull = current_rules()
+    prot = prot | set(cfg.get('seed_protective', []))   # optional: rules to show as current before they are exported
+    seed_fizzy = set(cfg.get('seed_fizzy', []))
 
     textures = {}
     for d in cfg['textures']:
         for f in glob.glob(d + '/*.png'):
             textures.setdefault(os.path.basename(f).lower(), f)
     packed = {}
-    for pk in cfg.get('packs', []):
+    for pk in cfg.get('packs', []) + [p for p in fb.VANILLA_PACKS if p not in cfg.get('packs', [])]:
         try:
-            packed.update({k.lower(): v for k, v in read_pack(pk, want=lambda n: n.startswith('Item_')).items()})
+            packed.update(fb.item_sprites(pk))
         except Exception as e:  # noqa: BLE001
             print('  (could not read', os.path.basename(pk), '-', e, ')')
 
@@ -97,7 +99,7 @@ def build(key):
     for full, v in items.items():
         p, body = v['props'], v['body']
         is_fluid = 'component FluidContainer' in body
-        is_bag = 'base:container' in p.get('ItemType', '')
+        is_bag = 'base:container' in p.get('ItemType', '').lower()
         if not (is_fluid or is_bag):
             continue
         short = full.split('.', 1)[1]
@@ -108,7 +110,7 @@ def build(key):
         else:
             kind = 'bag'
             cur = 'protective' if full in prot else 'plain'
-        icon = p.get('Icon')
+        icon = p.get('Icon') or (p.get('IconsForTexture', '').split(';')[0].strip() or None)   # tiered bags only list IconsForTexture
         if icon and icon not in icons:
             path = textures.get(('item_' + icon).lower() + '.png')
             if path:
@@ -120,7 +122,7 @@ def build(key):
         display = names.get(full) or p.get('DisplayName') or short
         rows.append({
             'id': full, 'name': display.replace('_', ' '), 'kind': kind, 'cname': cname, 'cap': cap, 'fluids': fluids,
-            'sugg': bool(is_fluid and suggest_fizzy(display, fluids)),
+            'sugg': bool(is_fluid and (full in seed_fizzy or suggest_fizzy(display, fluids))),
             'cur': cur, 'icon': icon, 'cat': p.get('DisplayCategory', ''), 'wear': 'CanBeEquipped' in p or 'BodyLocation' in p,
             'file': re.sub(r'\.txt$', '', v['file']),
         })
