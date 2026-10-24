@@ -6,6 +6,9 @@ playtest/
 CLAUDE.md
 WORKSPACE.md
 mods/HelloZomboid/
+scripts/
+docs/DontSpillTheBeans/WORKSHOP.txt
+docs/DontSpillTheBeans/VanillaFoodsExpanded-foods.md
 .vs/
 
 # Source audio: third-party freesound clips, kept out until their licenses are listed in CREDITS.md

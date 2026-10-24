@@ -1,4 +1,0 @@
-name=DSTB Playtest helper
-id=DSTBPlaytest
-description=Playtest-only: starts Patrick's Debug Scenario with a Don't Spill the Beans test setup. Never ship.
-versionMin=42.0.0
