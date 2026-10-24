@@ -1,0 +1,22 @@
+{
+    "Tooltip_DontSpillTheBeans_BagSpilled": "Something spilled inside. Empty it out or wash it.",
+    "Tooltip_DontSpillTheBeans_HintSafe": "Safe to carry in a bag",
+    "Tooltip_DontSpillTheBeans_HintSafeWhole": "Safe to carry in a bag while uneaten",
+    "Tooltip_DontSpillTheBeans_HintSafeWhenFull": "Safe to carry in a bag while full",
+    "Tooltip_DontSpillTheBeans_HintSpills": "Spills unless in a protective container",
+    "Tooltip_DontSpillTheBeans_HintCrushed": "Crushed if loose. Safe in a nested container.",
+    "Tooltip_DontSpillTheBeans_HintProtective": "Prevents spillage",
+    "Tooltip_DontSpillTheBeans_HintPlain": "Does not prevent spillage",
+    "Tooltip_DontSpillTheBeans_HintSafeFrozen": "Frozen: Safe to carry in a bag until thawed",
+    "Tooltip_DontSpillTheBeans_HintEmptySafe": "Safe to carry in a bag",
+    "Tooltip_DontSpillTheBeans_HintEmptySpills": "Will spill once filled, unless in a protective container",
+    "Tooltip_DontSpillTheBeans_BagWetness": "Wetness: %1%%",
+    "Tooltip_DontSpillTheBeans_HintFizzy": "Foams over if opened after exercise",
+    "Tooltip_DontSpillTheBeans_HintSafeCarry": "Safe to carry",
+    "Tooltip_DontSpillTheBeans_HintSafeWholeCarry": "Safe to carry while uneaten",
+    "Tooltip_DontSpillTheBeans_HintSafeWhenFullCarry": "Safe to carry while full",
+    "Tooltip_DontSpillTheBeans_HintSafeFrozenCarry": "Frozen: Safe to carry until thawed",
+    "Tooltip_DontSpillTheBeans_HintEmptySafeCarry": "Safe to carry",
+    "Tooltip_DontSpillTheBeans_BagSour": "What spilled inside has gone off and smells. Empty it out or wash it.",
+    "Tooltip_DontSpillTheBeans_BagDirt": "Dirt: %1%%"
+}

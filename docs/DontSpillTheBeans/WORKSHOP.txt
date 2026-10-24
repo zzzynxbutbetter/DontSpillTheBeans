@@ -1,0 +1,87 @@
+[h1]Don't Spill the Beans[/h1]
+
+Open food and drink does not stay put in a pocket or a backpack. Walk, run, climb a fence or drive with an open tin of beans, a mug of tea or a bowl of soup in your bag, and some of it ends up in the bag, on your clothes, and on the floor of your car. Carry it in your hands, or shut it inside something that seals, and it stays where you put it.
+
+[b]Build 42.21.[/b] Lua only, no Java patching. Can be added to an existing save.
+
+[b]Multiplayer is untested.[/b] The mod is written for it (the server decides everything, clients only report how they moved), but I have not been able to play it in a hosted or dedicated session. If you try it, please tell me what happens, good or bad.
+
+[hr][/hr]
+
+[img]HEADER: Spilling on the move[/img]
+[list]
+[*] Open containers of food or liquid that are loose in a pocket or a bag lose some of their contents while you move. Sneaking spills least, then walking, running and sprinting. Standing still spills nothing.
+[*] Climbing a fence, vaulting a window, tripping, being bumped, knocked down or falling each spill a single, bigger chunk.
+[*] Liquids spill much more easily than food. Frozen food and drink is safe until it thaws, and by default so are cold liquids.
+[*] Safe: held in your hands, shut inside a sealed container, or inside a lunchbox or a plastic bag. Sealed cans, bottles and lidded jars never spill.
+[*] The item card of every food and container tells you whether it is safe to carry, whether it will spill, and whether a bag protects what is in it.
+[/list]
+
+[img]HEADER: Driving[/img]
+[list]
+[*] Cargo in the trunk and what you and your passengers carry spill from the speed of the vehicle: crawling, town, road and highway speeds each have their own rate. Parked is safe.
+[*] A driver with Speed Demon spills less, one with Sunday Driver spills more, and it applies to everything in the vehicle.
+[/list]
+
+[img]HEADER: Mess and seepage[/img]
+[list]
+[*] What spills soaks into the bag, and the bag gets dirty. Anything else in that bag can get wet or dirty too, unless it is in its own container.
+[*] After a while the bag seeps. Worn, on a belt, or loose in your pockets, it wets (and dirties, if you leave that on) the clothes under it. A bag in your hand leaks outside your clothes.
+[*] Rain and sweat wet bags too, and they dry again.
+[*] Wash a bag, or empty its spilled contents out with a context-menu action, to clean it up. Washers and dryers know about it.
+[*] Bag rows that hold something spilled are tinted in your inventory, and a bag that has gone off gets its own tint.
+[/list]
+
+[img]HEADER: Going off and the smell[/img]
+[list]
+[*] When a bag with anything but water spilled in it starts to seep, what spilled has gone off.
+[*] Carry such a bag in the open, or stand within a few tiles of one lying on the ground (3 by default, up to 12), and you get the Bad Smell moodle. It never gets worse than that and it makes nobody sick. Empty or wash the bag and it is gone.
+[*] Optional integration with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3396867685]Starving Zombies[/url]: spilled food and drink add scent that zombies can follow.
+[/list]
+
+[img]HEADER: Hot spills[/img]
+[list]
+[*] Hot food and drink can scald you when it spills in a worn bag or in your pockets. It heals faster than fire burns. The chance and the severity are sandbox options.
+[/list]
+
+[img]HEADER: Fizzy drinks[/img]
+[list]
+[*] Shake a can or a bottle of fizzy drink by running, sprinting or climbing, then open it too soon and it foams over: some of what is in it is lost, and you get wet. Give it a few seconds to settle.
+[/list]
+
+[img]HEADER: Sounds[/img]
+[list]
+[*] Spilled-in bags make their own sounds while you move (dry food, liquid, wet), as the stuff in your bag shifts. Emptying a bag plays a matching sound too. They are quiet, never a world sound, so zombies do not hear them, and each has a volume slider in Options > Mods.
+[*] Deaf characters hear nothing. Hard of hearing characters hear a muffled version.
+[/list]
+
+[img]HEADER: Traits[/img]
+[list]
+[*] Graceful spills and foams less (50% by default). Clumsy spills and foams more (40%).
+[*] Speed Demon spills less while driving (25%). Sunday Driver spills more (33%).
+[/list]
+
+[img]HEADER: Compatibility[/img]
+[list]
+[*] Works with the base game, [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3577903007]Vanilla Foods Expanded[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2792348686]Pomp's Items - Just the Food[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3409143790]Sapph's Cooking[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3765409550]MRE Mod[/url]: their foods and containers are covered.
+[*] The inventory tint works with Better Containers, and I checked the code of CleanUI and the NeatUI family for conflicts (none found) but have not played with them.
+[*] Other food and container mods work too, with the base rules.
+[/list]
+
+[img]HEADER: Settings[/img]
+Everything above can be tuned in the sandbox options, on one page: spill amounts per movement and per vehicle speed, how long until seepage, how dirty and wet bags get, burns, fizz, scent, traits, the smell radius, and a switch for each part. In the game's Options > Mods you can set the volume of the sounds and turn the inventory tint off.
+
+[hr][/hr]
+
+[h2]Installing and removing[/h2]
+Enable it in a new or existing save. Everything it stores is a little extra data on your bags and clothes; I have not tested removing it from a save that has used it, so keep a backup.
+
+[h2]Credits[/h2]
+[list]
+[*] The cadence and loudness of the walk sounds follow [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3808152720]Dynamic Gear Rattling[/url] by BlockiestBobmods, which was also the loudness reference. Go and install it too.
+[*] The sounds are edited clips from freesound.org. (Full list of clips and authors: see CREDITS.md on GitHub.)
+[*] Code is MIT licensed: [url]https://github.com/zzzynxbutbetter/DontSpillTheBeans[/url]
+[/list]
+
+[h2]Feedback[/h2]
+Bug reports and balance feedback are very welcome, especially from multiplayer and for the four traits.

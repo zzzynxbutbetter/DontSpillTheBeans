@@ -1,0 +1,523 @@
+VERSION = 1,
+
+option DontSpillTheBeans.SectionGeneral
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionGeneral,
+}
+
+option DontSpillTheBeans.Enabled
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_Enabled,
+}
+
+option DontSpillTheBeans.SpillIntervalSeconds
+{
+	type = double, min = 1.0, max = 60.0, default = 3.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SpillIntervalSeconds,
+}
+
+option DontSpillTheBeans.EmptyDurationSeconds
+{
+	type = double, min = 0.5, max = 60.0, default = 6.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_EmptyDurationSeconds,
+}
+
+option DontSpillTheBeans.DirtyContainers
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_DirtyContainers,
+}
+
+option DontSpillTheBeans.WetClothing
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_WetClothing,
+}
+
+option DontSpillTheBeans.ColdLiquidsSafe
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ColdLiquidsSafe,
+}
+
+option DontSpillTheBeans.SectionMovement
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionMovement,
+}
+
+option DontSpillTheBeans.FootRateSneakLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 10.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateSneakLiquid,
+}
+
+option DontSpillTheBeans.FootRateWalkLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 15.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateWalkLiquid,
+}
+
+option DontSpillTheBeans.FootRateRunLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 25.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateRunLiquid,
+}
+
+option DontSpillTheBeans.FootRateSprintLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 40.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateSprintLiquid,
+}
+
+option DontSpillTheBeans.VaultSpillLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 75.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VaultSpillLiquid,
+}
+
+option DontSpillTheBeans.FootRateSneakFood
+{
+	type = double, min = 0.0, max = 100.0, default = 5.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateSneakFood,
+}
+
+option DontSpillTheBeans.FootRateWalkFood
+{
+	type = double, min = 0.0, max = 100.0, default = 10.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateWalkFood,
+}
+
+option DontSpillTheBeans.FootRateRunFood
+{
+	type = double, min = 0.0, max = 100.0, default = 12.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateRunFood,
+}
+
+option DontSpillTheBeans.FootRateSprintFood
+{
+	type = double, min = 0.0, max = 100.0, default = 15.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FootRateSprintFood,
+}
+
+option DontSpillTheBeans.VaultSpillFood
+{
+	type = double, min = 0.0, max = 100.0, default = 25.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VaultSpillFood,
+}
+
+option DontSpillTheBeans.GracefulReducePercent
+{
+	type = double, min = 0.0, max = 100.0, default = 50.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_GracefulReducePercent,
+}
+
+option DontSpillTheBeans.ClumsyIncreasePercent
+{
+	type = double, min = 0.0, max = 500.0, default = 40.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ClumsyIncreasePercent,
+}
+
+option DontSpillTheBeans.SectionFood
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionFood,
+}
+
+option DontSpillTheBeans.FoodSpillage
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FoodSpillage,
+}
+
+option DontSpillTheBeans.FoodSpillsInPockets
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FoodSpillsInPockets,
+}
+
+option DontSpillTheBeans.AtFullRules
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_AtFullRules,
+}
+
+option DontSpillTheBeans.AtFullAsSealed
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_AtFullAsSealed,
+}
+
+option DontSpillTheBeans.AutoEquipAtFull
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_AutoEquipAtFull,
+}
+
+option DontSpillTheBeans.SectionVehicles
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionVehicles,
+}
+
+option DontSpillTheBeans.VehicleSpills
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleSpills,
+}
+
+option DontSpillTheBeans.TowedVehicleSpills
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_TowedVehicleSpills,
+}
+
+option DontSpillTheBeans.UnattendedVehicleRange
+{
+	type = integer, min = 0, max = 500, default = 60,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_UnattendedVehicleRange,
+}
+
+option DontSpillTheBeans.VehicleRateCrawlLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 5.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateCrawlLiquid,
+}
+
+option DontSpillTheBeans.VehicleRateCityLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 10.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateCityLiquid,
+}
+
+option DontSpillTheBeans.VehicleRateRoadLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 25.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateRoadLiquid,
+}
+
+option DontSpillTheBeans.VehicleRateHighwayLiquid
+{
+	type = double, min = 0.0, max = 100.0, default = 40.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateHighwayLiquid,
+}
+
+option DontSpillTheBeans.VehicleRateCrawlFood
+{
+	type = double, min = 0.0, max = 100.0, default = 0.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateCrawlFood,
+}
+
+option DontSpillTheBeans.VehicleRateCityFood
+{
+	type = double, min = 0.0, max = 100.0, default = 2.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateCityFood,
+}
+
+option DontSpillTheBeans.VehicleRateRoadFood
+{
+	type = double, min = 0.0, max = 100.0, default = 5.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateRoadFood,
+}
+
+option DontSpillTheBeans.VehicleRateHighwayFood
+{
+	type = double, min = 0.0, max = 100.0, default = 15.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleRateHighwayFood,
+}
+
+option DontSpillTheBeans.VehicleSpeedIdle
+{
+	type = integer, min = 0, max = 300, default = 3,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleSpeedIdle,
+}
+
+option DontSpillTheBeans.VehicleSpeedCrawl
+{
+	type = integer, min = 0, max = 300, default = 15,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleSpeedCrawl,
+}
+
+option DontSpillTheBeans.VehicleSpeedCity
+{
+	type = integer, min = 0, max = 300, default = 45,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleSpeedCity,
+}
+
+option DontSpillTheBeans.VehicleSpeedRoad
+{
+	type = integer, min = 0, max = 300, default = 80,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_VehicleSpeedRoad,
+}
+
+option DontSpillTheBeans.SpeedDemonReducePercent
+{
+	type = double, min = 0.0, max = 100.0, default = 25.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SpeedDemonReducePercent,
+}
+
+option DontSpillTheBeans.SundayDriverIncreasePercent
+{
+	type = double, min = 0.0, max = 500.0, default = 33.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SundayDriverIncreasePercent,
+}
+
+option DontSpillTheBeans.SectionBags
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionBags,
+}
+
+option DontSpillTheBeans.RainSweatWetsBags
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_RainSweatWetsBags,
+}
+
+option DontSpillTheBeans.SeepAfterMinutes
+{
+	type = integer, min = 0, max = 1440, default = 15,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SeepAfterMinutes,
+}
+
+option DontSpillTheBeans.HotSeepAfterMinutes
+{
+	type = integer, min = 0, max = 1440, default = 15,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_HotSeepAfterMinutes,
+}
+
+option DontSpillTheBeans.SeepWetPerStep
+{
+	type = double, min = 0.0, max = 100.0, default = 75.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SeepWetPerStep,
+}
+
+option DontSpillTheBeans.DirtLiquidPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 2.5,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_DirtLiquidPercent,
+}
+
+option DontSpillTheBeans.DirtFoodPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 10.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_DirtFoodPercent,
+}
+
+option DontSpillTheBeans.WetnessPerLitre
+{
+	type = double, min = 0.0, max = 2000.0, default = 500.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_WetnessPerLitre,
+}
+
+option DontSpillTheBeans.SeepDirt
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SeepDirt,
+}
+
+option DontSpillTheBeans.SeepDirtPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 5.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SeepDirtPercent,
+}
+
+option DontSpillTheBeans.SeepInheritPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 60.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SeepInheritPercent,
+}
+
+option DontSpillTheBeans.FoamInheritPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 60.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FoamInheritPercent,
+}
+
+option DontSpillTheBeans.BagsSour
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_BagsSour,
+}
+
+option DontSpillTheBeans.SmellRadius
+{
+	type = integer, min = 0, max = 12, default = 3,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SmellRadius,
+}
+
+option DontSpillTheBeans.SeepMinWet
+{
+	type = double, min = 0.0, max = 100.0, default = 25.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SeepMinWet,
+}
+
+option DontSpillTheBeans.SeepMinDirtPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 50.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SeepMinDirtPercent,
+}
+
+option DontSpillTheBeans.ContentsWetPerStep
+{
+	type = double, min = 0.0, max = 1000.0, default = 1000.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ContentsWetPerStep,
+}
+
+option DontSpillTheBeans.ContentsDirtPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 10.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ContentsDirtPercent,
+}
+
+option DontSpillTheBeans.BagDryPerHour
+{
+	type = double, min = 0.0, max = 100.0, default = 40.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_BagDryPerHour,
+}
+
+option DontSpillTheBeans.WasherFillsContainers
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_WasherFillsContainers,
+}
+
+option DontSpillTheBeans.DryerEmptiesOpenContainers
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_DryerEmptiesOpenContainers,
+}
+
+option DontSpillTheBeans.DryerNutritionPer5Min
+{
+	type = double, min = 0.0, max = 100.0, default = 2.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_DryerNutritionPer5Min,
+}
+
+option DontSpillTheBeans.BagRainPerHour
+{
+	type = double, min = 0.0, max = 500.0, default = 100.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_BagRainPerHour,
+}
+
+option DontSpillTheBeans.BagSweatPerHour
+{
+	type = double, min = 0.0, max = 500.0, default = 100.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_BagSweatPerHour,
+}
+
+option DontSpillTheBeans.SectionHot
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionHot,
+}
+
+option DontSpillTheBeans.HotSpillBurns
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_HotSpillBurns,
+}
+
+option DontSpillTheBeans.BurnChancePercent
+{
+	type = double, min = 0.0, max = 100.0, default = 25.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_BurnChancePercent,
+}
+
+option DontSpillTheBeans.BurnTimeMin
+{
+	type = double, min = 0.1, max = 50.0, default = 0.1,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_BurnTimeMin,
+}
+
+option DontSpillTheBeans.BurnTimeMax
+{
+	type = double, min = 0.1, max = 100.0, default = 2.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_BurnTimeMax,
+}
+
+option DontSpillTheBeans.SectionFizz
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionFizz,
+}
+
+option DontSpillTheBeans.FizzEnabled
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FizzEnabled,
+}
+
+option DontSpillTheBeans.FizzMaxLossPercent
+{
+	type = double, min = 0.0, max = 100.0, default = 60.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FizzMaxLossPercent,
+}
+
+option DontSpillTheBeans.FizzFullShakeSeconds
+{
+	type = double, min = 1.0, max = 120.0, default = 8.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FizzFullShakeSeconds,
+}
+
+option DontSpillTheBeans.FizzFadeSeconds
+{
+	type = double, min = 1.0, max = 300.0, default = 5.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FizzFadeSeconds,
+}
+
+option DontSpillTheBeans.SectionScent
+{
+	type = boolean, default = false,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SectionScent,
+}
+
+option DontSpillTheBeans.SpilledScent
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_SpilledScent,
+}
+
+option DontSpillTheBeans.ScentMultiplier
+{
+	type = double, min = 0.0, max = 5.0, default = 1.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ScentMultiplier,
+}
+
+option DontSpillTheBeans.ScentSpilledFactor
+{
+	type = double, min = 0.0, max = 10.0, default = 2.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ScentSpilledFactor,
+}
+
+option DontSpillTheBeans.ScentEmptiedFactor
+{
+	type = double, min = 0.0, max = 10.0, default = 1.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ScentEmptiedFactor,
+}
+
+option DontSpillTheBeans.FoodScentPerPortion
+{
+	type = double, min = 0.0, max = 50.0, default = 6.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_FoodScentPerPortion,
+}
+
+option DontSpillTheBeans.LiquidScentPerLitre
+{
+	type = double, min = 0.0, max = 50.0, default = 3.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_LiquidScentPerLitre,
+}
+
+option DontSpillTheBeans.ScentCapPerItem
+{
+	type = double, min = 0.0, max = 100.0, default = 8.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ScentCapPerItem,
+}
+
+option DontSpillTheBeans.ScentMaxTotal
+{
+	type = double, min = 0.0, max = 200.0, default = 24.0,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ScentMaxTotal,
+}

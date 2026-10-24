@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food spill rules - __TITLE__</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a64; --line: #dcdad2;
+    --spill: #b3402a; --exempt: #2c7a4b; --whole: #8a6a12; --focus: #2a5db0; --chip: #ecebe4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a18; --panel: #242422; --ink: #ecebe5; --muted: #9c9a90; --line: #3a3a36;
+      --spill: #e3745e; --exempt: #5cc287; --whole: #e0b94a; --focus: #6fa0ec; --chip: #2f2f2b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--panel); border-bottom: 1px solid var(--line); padding: 10px 16px; }
+  h1 { font-size: 16px; margin: 0 0 8px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  input[type=search], select { font: inherit; padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+  input[type=search] { min-width: 220px; }
+  button { font: inherit; padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--chip); color: var(--ink); cursor: pointer; }
+  button:hover { border-color: var(--muted); }
+  .stats { color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .hint { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  kbd { background: var(--chip); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; font: 12px ui-monospace, monospace; }
+  main { padding: 8px 16px 80px; }
+  .row { display: grid; grid-template-columns: 24px 40px minmax(180px, 1.4fr) minmax(160px, 1fr) 150px 120px auto; gap: 10px; align-items: center;
+         padding: 4px 8px; border-bottom: 1px solid var(--line); background: var(--panel); }
+  .row.cur { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .row.auto, .row.locked { opacity: .55; }
+  .row .ico { width: 32px; height: 32px; image-rendering: pixelated; background: var(--chip); border-radius: 4px; display: block; }
+  .row .ico.none { display: grid; place-items: center; font-size: 9px; color: var(--muted); text-align: center; overflow: hidden; }
+  .name b { font-weight: 600; }
+  .id { color: var(--muted); font: 12px ui-monospace, monospace; word-break: break-all; }
+  .chips span { background: var(--chip); border-radius: 10px; padding: 0 7px; margin-right: 4px; font-size: 11px; color: var(--muted); }
+  .nutri { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .seg button { border: 0; border-radius: 0; background: transparent; padding: 4px 9px; font-size: 12px; }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button.on[data-m=spill]  { background: var(--spill);  color: #fff; }
+  .seg button.on[data-m=exempt] { background: var(--exempt); color: #fff; }
+  .seg button.on[data-m=whole]  { background: var(--whole);  color: #fff; }
+  .seg button:disabled { cursor: default; }
+  .lseg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .lseg button { border: 0; border-radius: 0; background: transparent; padding: 4px 8px; font-size: 12px; }
+  .lseg button + button { border-left: 1px solid var(--line); }
+  .lseg button.on[data-l="1"] { background: #2a6fb0; color: #fff; }
+  .lseg button.on[data-l="0"] { background: var(--muted); color: #fff; }
+  .lseg button.sugg:not(.on) { box-shadow: inset 0 -2px 0 #2a6fb0; }
+  .note { font-size: 12px; color: var(--muted); }
+  #export { display: none; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--panel); }
+  #export.open { display: block; }
+  #export textarea { width: 100%; height: 110px; font: 12px ui-monospace, monospace; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 6px; }
+  #export h2 { font-size: 13px; margin: 10px 0 4px; }
+  @media (max-width: 760px) { .row { grid-template-columns: 24px 40px 1fr; } .row > :nth-child(n+4) { grid-column: 3; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Food spill rules &mdash; __TITLE__</h1>
+  <div class="bar">
+    <input id="q" type="search" placeholder="Search name or id">
+    <select id="cat"></select>
+    <select id="status">
+      <option value="todo">Not reviewed yet</option>
+      <option value="all">All</option>
+      <option value="spill">Spills normally</option>
+      <option value="exempt">Always exempt</option>
+      <option value="whole">Exempt while 100%</option>
+      <option value="auto">Handled by rule</option>
+    </select>
+    <select id="flag"><option value="">Any flag</option></select>
+    <select id="liq">
+      <option value="">Liquid flag: any</option>
+      <option value="todo">Liquid flag: not reviewed</option>
+      <option value="sugg">Liquid flag: suggested, not reviewed</option>
+      <option value="1">Liquid flag: liquid</option>
+      <option value="0">Liquid flag: not liquid</option>
+    </select>
+    <button id="acceptLiq">Accept suggested liquids (visible)</button>
+    <button id="selAll">Select visible</button>
+    <button data-bulk="spill">Mark selected: Spills</button>
+    <button data-bulk="exempt">Always exempt</button>
+    <button data-bulk="whole">Exempt at 100%</button>
+    <button data-bulk="">Clear</button>
+    <button id="exp">Export lists</button>
+    <span class="stats" id="stats"></span>
+  </div>
+  <div class="hint">Click a row (or use <kbd>&uarr;</kbd><kbd>&darr;</kbd>) then <kbd>1</kbd> spills normally &middot; <kbd>2</kbd> always exempt &middot; <kbd>3</kbd> exempt while 100% &middot; <kbd>0</kbd> clear &middot; <b>Liquid flag</b> (a soup, stew or other liquidy food that wets as well as stains when it spills): <kbd>L</kbd> liquid &middot; <kbd>N</kbd> not liquid &middot; <kbd>U</kbd> unreviewed (each moves to the next row). A blue underline marks a suggestion.
+    <kbd>Space</kbd> selects the row, <kbd>Shift</kbd>+click selects a range. Marking a row moves to the next one. Progress is saved in this browser.</div>
+</header>
+<section id="export">
+  <div class="bar"><button id="save">Save progress file</button><label class="note">Load progress <input id="load" type="file" accept=".json"></label><button id="close">Close</button></div>
+  <h2>Always exempt (<span id="nEx">0</span>) &mdash; item ids without the <code>__STRIP__</code> prefix (any in another module keep their prefix)</h2>
+  <textarea id="outEx" readonly></textarea><button data-copy="outEx">Copy</button>
+  <h2>Exempt while 100% (<span id="nWh">0</span>)</h2>
+  <textarea id="outWh" readonly></textarea><button data-copy="outWh">Copy</button>
+  <h2>Liquid foods (<span id="nLq">0</span>)</h2>
+  <textarea id="outLq" readonly></textarea><button data-copy="outLq">Copy</button>
+  <p class="note">Foods marked "spills normally", unreviewed foods, closed cans/jars and foods with no nutrition are not listed. Items already decided in DSTB_Config are shown locked.</p>
+</section>
+<main id="list"></main>
+<script>
+const ROWS = __ROWS__;
+const ICONS = __ICONS__;
+const KEY = '__KEY__';
+const STRIP = '__STRIP__';
+let marks = {};
+try { marks = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+let liquid = {};   // id -> true (liquid) | false (not liquid); missing = not reviewed
+try { liquid = JSON.parse(localStorage.getItem(KEY + '-liquid') || '{}'); } catch (e) {}
+const saveLiquid = () => { try { localStorage.setItem(KEY + '-liquid', JSON.stringify(liquid)); } catch (e) {} };
+const $ = id => document.getElementById(id);
+const LABEL = { spill: 'Spills', exempt: 'Exempt', whole: 'At 100%' };
+const KEYS = { '1': 'spill', '2': 'exempt', '3': 'whole', '0': '' };
+
+const effective = r => r.base || marks[r.id] || '';
+const locked = r => !!(r.auto || r.base);
+
+// ---- build filter controls
+const cats = [...new Set(ROWS.map(r => r.cat))];
+$('cat').innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option>${c}</option>`).join('');
+const flagSet = [...new Set(ROWS.flatMap(r => r.flags.map(f => f.split(':')[0])))];
+$('flag').innerHTML += flagSet.map(f => `<option>${f}</option>`).join('');
+
+let view = [], cur = 0, selected = new Set(), lastClick = -1;
+const els = new Map();
+
+function matches(r) {
+  const q = $('q').value.trim().toLowerCase();
+  if (q && !(r.name.toLowerCase().includes(q) || r.id.toLowerCase().includes(q))) return false;
+  if ($('cat').value && r.cat !== $('cat').value) return false;
+  const fl = $('flag').value;
+  if (fl && !r.flags.some(f => f.split(':')[0] === fl)) return false;
+  const lq = $('liq').value, lv = liquid[r.id];
+  if (lq === 'todo' && lv !== undefined) return false;
+  if (lq === 'sugg' && !(r.sugg && lv === undefined)) return false;
+  if (lq === '1' && lv !== true) return false;
+  if (lq === '0' && lv !== false) return false;
+  const st = $('status').value, m = effective(r);
+  if (st === 'todo') return !m && !r.auto;
+  if (st === 'auto') return !!r.auto;
+  if (st === 'all') return true;
+  return m === st;
+}
+
+function iconHtml(r) {
+  const src = r.icon && ICONS[r.icon];
+  return src ? `<img class="ico" src="${src}" alt="">` : `<span class="ico none" title="vanilla or missing icon">${r.icon || '?'}</span>`;
+}
+
+function liqHtml(r) {
+  const v = liquid[r.id];
+  return `<div class="lseg" title="Liquidy food: wets as well as stains when it spills"><button data-l="1" class="${v === true ? 'on' : ''}${r.sugg ? ' sugg' : ''}">Liquid</button><button data-l="0" class="${v === false ? 'on' : ''}">Not</button></div>`;
+}
+
+function rowHtml(r) {
+  const m = effective(r), lk = locked(r);
+  const seg = ['spill', 'exempt', 'whole'].map(k =>
+    `<button data-m="${k}" class="${m === k ? 'on' : ''}" ${lk ? 'disabled' : ''}>${LABEL[k]}</button>`).join('');
+  const note = r.auto ? `<span class="note">${r.auto}</span>` : r.base ? `<span class="note">in DSTB_Config: ${r.base === 'whole' ? 'exempt at 100%' : 'always exempt'}</span>` : '';
+  const nutri = `${r.hunger ? 'hunger ' + r.hunger : ''}${r.hunger && r.thirst ? ' / ' : ''}${r.thirst ? 'thirst ' + r.thirst : ''}`;
+  return `<input type="checkbox" class="pick" ${selected.has(r.id) ? 'checked' : ''} ${lk ? 'disabled' : ''}>
+    ${iconHtml(r)}
+    <div class="name"><b>${r.name}</b><div class="id">${r.id}</div></div>
+    <div><div class="chips">${r.flags.map(f => `<span>${f}</span>`).join('')}<span>${r.cat}</span></div><div class="nutri">${nutri}</div></div>
+    <div class="seg">${seg}</div>${liqHtml(r)}${note}`;
+}
+
+function render() {
+  view = ROWS.filter(matches);
+  cur = Math.min(cur, Math.max(0, view.length - 1));
+  const list = $('list');
+  list.innerHTML = '';
+  els.clear();
+  const frag = document.createDocumentFragment();
+  view.forEach((r, i) => {
+    const d = document.createElement('div');
+    d.className = 'row' + (r.auto ? ' auto' : '') + (r.base ? ' locked' : '') + (i === cur ? ' cur' : '');
+    d.dataset.i = i;
+    d.innerHTML = rowHtml(r);
+    els.set(r.id, d);
+    frag.appendChild(d);
+  });
+  list.appendChild(frag);
+  if (!view.length) list.innerHTML = '<p class="note" style="padding:16px">Nothing matches the current filters.</p>';
+  stats();
+}
+
+function refreshRow(r) {
+  const d = els.get(r.id);
+  if (!d) return;
+  d.querySelectorAll('.seg button').forEach(b => b.classList.toggle('on', effective(r) === b.dataset.m));
+  d.querySelectorAll('.lseg button').forEach(b => b.classList.toggle('on', liquid[r.id] === (b.dataset.l === '1')));
+  const pick = d.querySelector('.pick');
+  if (pick) pick.checked = selected.has(r.id);
+}
+
+function stats() {
+  const open = ROWS.filter(r => !locked(r));
+  const done = open.filter(r => marks[r.id]).length;
+  const c = k => ROWS.filter(r => effective(r) === k && !r.base).length;
+  const lq = Object.values(liquid).filter(v => v === true).length;
+  $('stats').textContent = `${done}/${open.length} reviewed · liquid ${lq} · exempt ${c('exempt')} · at 100% ${c('whole')} · spills ${c('spill')} · showing ${view.length}`;
+}
+
+function mark(r, m) {
+  if (locked(r)) return;
+  if (m) marks[r.id] = m; else delete marks[r.id];
+  try { localStorage.setItem(KEY, JSON.stringify(marks)); } catch (e) {}
+  refreshRow(r);
+  stats();
+}
+
+function setCur(i, scroll = true) {
+  if (!view.length) return;
+  i = Math.max(0, Math.min(view.length - 1, i));
+  const old = els.get(view[cur]?.id); if (old) old.classList.remove('cur');
+  cur = i;
+  const d = els.get(view[cur].id); d.classList.add('cur');
+  if (scroll) d.scrollIntoView({ block: 'nearest' });
+}
+
+// ---- events
+$('list').addEventListener('click', e => {
+  const row = e.target.closest('.row'); if (!row) return;
+  const i = +row.dataset.i, r = view[i];
+  const lbtn = e.target.closest('.lseg button');
+  if (lbtn) {
+    const want = lbtn.dataset.l === '1';
+    if (liquid[r.id] === want) delete liquid[r.id]; else liquid[r.id] = want;
+    saveLiquid(); refreshRow(r); stats(); setCur(i + 1); return;
+  }
+  const btn = e.target.closest('.seg button');
+  if (btn && !btn.disabled) {
+    mark(r, effective(r) === btn.dataset.m ? '' : btn.dataset.m);
+    if ($('status').value === 'todo') { /* keep row visible until the next filter change */ }
+    setCur(i + 1);
+    return;
+  }
+  if (e.target.classList.contains('pick') || e.shiftKey) {
+    if (e.shiftKey && lastClick >= 0) {
+      const [a, b] = [Math.min(lastClick, i), Math.max(lastClick, i)];
+      for (let k = a; k <= b; k++) if (!locked(view[k])) { selected.add(view[k].id); refreshRow(view[k]); }
+    } else if (e.target.classList.contains('pick')) {
+      e.target.checked ? selected.add(r.id) : selected.delete(r.id);
+    }
+    lastClick = i;
+    return;
+  }
+  setCur(i, false);
+  lastClick = i;
+});
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input[type=search], textarea, select')) return;
+  if (e.key === 'ArrowDown') { setCur(cur + 1); e.preventDefault(); }
+  else if (e.key === 'ArrowUp') { setCur(cur - 1); e.preventDefault(); }
+  else if (view.length && /^[lnu]$/i.test(e.key)) {
+    const r = view[cur], k = e.key.toLowerCase();
+    if (k === 'u') delete liquid[r.id]; else liquid[r.id] = k === 'l';
+    saveLiquid(); refreshRow(r); stats(); setCur(cur + 1);
+  }
+  else if (e.key in KEYS && view.length) { mark(view[cur], KEYS[e.key]); setCur(cur + 1); }
+  else if (e.key === ' ' && view.length) {
+    const r = view[cur]; if (!locked(r)) { selected.has(r.id) ? selected.delete(r.id) : selected.add(r.id); refreshRow(r); } e.preventDefault();
+  }
+});
+$('acceptLiq').onclick = () => { view.forEach(r => { if (r.sugg && liquid[r.id] === undefined) liquid[r.id] = true; }); saveLiquid(); render(); };
+['q', 'cat', 'status', 'flag', 'liq'].forEach(id => $(id).addEventListener('input', () => { cur = 0; render(); }));
+$('selAll').onclick = () => { view.forEach(r => { if (!locked(r)) selected.add(r.id); }); view.forEach(refreshRow); };
+document.querySelectorAll('[data-bulk]').forEach(b => b.onclick = () => {
+  const ids = [...selected];
+  ROWS.filter(r => selected.has(r.id)).forEach(r => mark(r, b.dataset.bulk));
+  selected.clear();
+  if (ids.length) render();
+});
+
+// ---- export
+function lists() {
+  const pick = k => ROWS.filter(r => !locked(r) && marks[r.id] === k).map(r => r.id.replace(new RegExp('^' + STRIP.replace('.', '\.')), ''));
+  return { ex: pick('exempt'), wh: pick('whole'), lq: ROWS.filter(r => liquid[r.id] === true).map(r => r.id.replace(new RegExp('^' + STRIP.replace('.', '\\.')), '')) };
+}
+$('exp').onclick = () => {
+  const { ex, wh, lq } = lists();
+  $('outEx').value = ex.join(', '); $('outWh').value = wh.join(', '); $('outLq').value = lq.join(', '); $('nLq').textContent = lq.length;
+  $('nEx').textContent = ex.length; $('nWh').textContent = wh.length;
+  $('export').classList.add('open'); window.scrollTo(0, 0);
+};
+$('close').onclick = () => $('export').classList.remove('open');
+document.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => {
+  const t = $(b.dataset.copy); t.select(); navigator.clipboard?.writeText(t.value) || document.execCommand('copy');
+});
+$('save').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(Object.assign({}, marks, { __liquid: liquid }), null, 1)], { type: 'application/json' }));
+  a.download = 'food-rules-progress.json'; a.click();
+};
+$('load').onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const data = JSON.parse(await f.text());
+    liquid = data.__liquid || liquid; delete data.__liquid; saveLiquid();
+    marks = data; localStorage.setItem(KEY, JSON.stringify(marks)); render();
+  } catch (err) { alert('Could not read that file'); }
+};
+
+render();
+</script>
+</body>
+</html>

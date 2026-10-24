@@ -1,0 +1,21 @@
+# Workspace-only material (this repo is just Don't Spill the Beans)
+reference/
+/tools/
+playtest/
+.vscode/
+CLAUDE.md
+WORKSPACE.md
+mods/HelloZomboid/
+.vs/
+
+# Source audio: third-party freesound clips, kept out until their licenses are listed in CREDITS.md
+assets/**/*.wav
+assets/**/*.asd
+assets/**/*.flac
+assets/**/reference-art/
+
+*.log
+Thumbs.db
+__pycache__/
+docs/**/food-rules-*.html
+docs/**/containers-*.html

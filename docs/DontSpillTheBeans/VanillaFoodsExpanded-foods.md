@@ -1,0 +1,1822 @@
+# Vanilla Foods Expanded - food item IDs (Workshop 3577903007)
+
+Generated from the installed mod (42.18). Not a decision list: flags are derived from the item scripts so you can pick
+which IDs go in `Config.FoodExempt`. `CLOSED-CAN` / `CLOSED-JAR` are already exempt by rule (closed cans and jars);
+`STORAGE-CONTAINER` items look like closed food-storage tubs (like Zupperware) and are suggested exempt;
+`vessel:X` = leftover vessel when eaten (bowl/pot/tin...), `packaged` = factory packaged.
+
+Total food items: 1760 (VFX module 1633, Base overrides 127).
+
+Flag counts: vessel=593, packaged=593, cant-eat=270, CLOSED-CAN=71, STORAGE-CONTAINER=48, CLOSED-JAR=18
+
+
+## vfx_items_archive.txt (4)
+
+- `VFX.FoodStorageContainer` - STORAGE-CONTAINER
+- `VFX.MetalFoodStorageContainer` - STORAGE-CONTAINER
+- `VFX.VinegarStarterFermenting` - vessel:JarWithLid
+- `VFX.VinegarStarter` - vessel:JarWithLid
+
+## vfx_items_archivebase.txt (4)
+
+- `Base.VFXChiliSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXChiliSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXCurrySaucepanEvolved` - vessel:Saucepan
+- `Base.VFXCurrySaucepanCopperEvolved` - vessel:SaucepanCopper
+
+## vfx_items_containers.txt (46)
+
+- `VFX.FoodStorageContainerSoup` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerStew` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerStirFry` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerRoastVegetables` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerSalad` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerFruitSalad` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerSpaghetti` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerRice` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerBrownRice` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerJasmineRice` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerBasmatiRice` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerArborioRice` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerMacaroni` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerFettuccine` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerPenne` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerGnocchi` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerLasagna` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerChili` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerCurry` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerCasserole` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerMeatloaf` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerScallopedPotatoBake` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.FoodStorageContainerFriedRice` - STORAGE-CONTAINER, vessel:FoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerSoup` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerStew` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerStirFry` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerRoastVegetables` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerSalad` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerFruitSalad` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerSpaghetti` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerRice` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerBrownRice` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerJasmineRice` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerBasmatiRice` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerArborioRice` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerMacaroni` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerFettuccine` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerPenne` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerGnocchi` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerLasagna` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerChili` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerCurry` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerCasserole` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerMeatloaf` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerScallopedPotatoBake` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+- `VFX.MetalFoodStorageContainerFriedRice` - STORAGE-CONTAINER, vessel:MetalFoodStorageContainerEmpty
+
+## vfx_items_fermentation.txt (20)
+
+- `VFX.SourdoughStarter` - vessel:SourdoughStarterUnfed
+- `VFX.SourdoughStarterUnfed` - vessel:JarWithLid
+- `VFX.DeadSourdoughStarter` - vessel:JarWithLid
+- `VFX.HomemadeVinegarFermentingVinegar` - vessel:JarWithLid
+- `VFX.HomemadeVinegarFermentingAlcohol` - vessel:JarWithLid
+- `VFX.HomemadeVinegarFermentingFruit` - vessel:JarWithLid
+- `VFX.HomemadeVinegar` - vessel:JarWithLid
+- `VFX.YeastStarterFermenting` - vessel:JarWithLid
+- `VFX.YeastStarter` - vessel:JarWithLid
+- `VFX.YeastStarterUnfed` - vessel:JarWithLid
+- `VFX.DeadYeastStarter` - vessel:JarWithLid
+- `VFX.MashPot` - vessel:Pot
+- `VFX.MashPotForged` - vessel:PotForged
+- `VFX.WortPot` - vessel:Pot
+- `VFX.WortPotForged` - vessel:PotForged
+- `VFX.HomemadeBeerPreparationFermenting` - vessel:JarWithLid
+- `VFX.HomemadeBeerPreparation` - vessel:JarWithLid
+- `VFX.BottleHomemadeBeerUnsealed`
+- `VFX.BottleHomemadeBeerFermenting`
+- `VFX.HomemadeWinePreparationFermenting` - vessel:JarWithLid
+
+## vfx_items_food_baking.txt (372)
+
+- `VFX.FrenchVanillaCakeMix_2` - packaged, cant-eat
+- `VFX.FrenchVanillaCakeBatter_2` - vessel:Bowl
+- `VFX.FrenchVanillaCakePrep` - vessel:BakingPan
+- `VFX.FrenchVanillaCake`
+- `VFX.FrenchVanillaCakeFrostingVanilla`
+- `VFX.FrenchVanillaCakeFrostingChocolate`
+- `VFX.FrenchVanillaCakeFrostingCaramel`
+- `VFX.FrenchVanillaCakeFrostingLemon`
+- `VFX.FrenchVanillaCakeFrostingStrawberry`
+- `VFX.FrenchVanillaCakeFrostingCreamCheese`
+- `VFX.FrenchVanillaCakeFrostingConfetti`
+- `VFX.FrenchVanillaCakeSlice`
+- `VFX.FrenchVanillaCakeSliceFrostingVanilla`
+- `VFX.FrenchVanillaCakeSliceFrostingChocolate`
+- `VFX.FrenchVanillaCakeSliceFrostingCaramel`
+- `VFX.FrenchVanillaCakeSliceFrostingLemon`
+- `VFX.FrenchVanillaCakeSliceFrostingStrawberry`
+- `VFX.FrenchVanillaCakeSliceFrostingCreamCheese`
+- `VFX.FrenchVanillaCakeSliceFrostingConfetti`
+- `VFX.CarrotCakeMix_2` - packaged, cant-eat
+- `VFX.CarrotCakeBatter_2` - vessel:Bowl
+- `VFX.CarrotCakePrep` - vessel:BakingPan
+- `VFX.CarrotCake`
+- `VFX.CarrotCakeFrostingVanilla`
+- `VFX.CarrotCakeFrostingChocolate`
+- `VFX.CarrotCakeFrostingCaramel`
+- `VFX.CarrotCakeFrostingLemon`
+- `VFX.CarrotCakeFrostingStrawberry`
+- `VFX.CarrotCakeFrostingCreamCheese`
+- `VFX.CarrotCakeFrostingConfetti`
+- `VFX.CarrotCakeSlice`
+- `VFX.CarrotCakeSliceFrostingVanilla`
+- `VFX.CarrotCakeSliceFrostingChocolate`
+- `VFX.CarrotCakeSliceFrostingCaramel`
+- `VFX.CarrotCakeSliceFrostingLemon`
+- `VFX.CarrotCakeSliceFrostingStrawberry`
+- `VFX.CarrotCakeSliceFrostingCreamCheese`
+- `VFX.CarrotCakeSliceFrostingConfetti`
+- `VFX.ChocolateCakeMix_2` - packaged, cant-eat
+- `VFX.ChocolateCakeBatter_2` - vessel:Bowl
+- `VFX.ChocolateCakePrep` - vessel:BakingPan
+- `VFX.ChocolateCake`
+- `VFX.ChocolateCakeFrostingVanilla`
+- `VFX.ChocolateCakeFrostingChocolate`
+- `VFX.ChocolateCakeFrostingCaramel`
+- `VFX.ChocolateCakeFrostingLemon`
+- `VFX.ChocolateCakeFrostingStrawberry`
+- `VFX.ChocolateCakeFrostingCreamCheese`
+- `VFX.ChocolateCakeFrostingConfetti`
+- `VFX.ChocolateCakeSlice`
+- `VFX.ChocolateCakeSliceFrostingVanilla`
+- `VFX.ChocolateCakeSliceFrostingChocolate`
+- `VFX.ChocolateCakeSliceFrostingCaramel`
+- `VFX.ChocolateCakeSliceFrostingLemon`
+- `VFX.ChocolateCakeSliceFrostingStrawberry`
+- `VFX.ChocolateCakeSliceFrostingCreamCheese`
+- `VFX.ChocolateCakeSliceFrostingConfetti`
+- `VFX.RedVelvetCakeMix_2` - packaged, cant-eat
+- `VFX.RedVelvetCakeBatter_2` - vessel:Bowl
+- `VFX.RedVelvetCakePrep` - vessel:BakingPan
+- `VFX.RedVelvetCake`
+- `VFX.RedVelvetCakeFrostingVanilla`
+- `VFX.RedVelvetCakeFrostingChocolate`
+- `VFX.RedVelvetCakeFrostingCaramel`
+- `VFX.RedVelvetCakeFrostingLemon`
+- `VFX.RedVelvetCakeFrostingStrawberry`
+- `VFX.RedVelvetCakeFrostingCreamCheese`
+- `VFX.RedVelvetCakeFrostingConfetti`
+- `VFX.RedVelvetCakeSlice`
+- `VFX.RedVelvetCakeSliceFrostingVanilla`
+- `VFX.RedVelvetCakeSliceFrostingChocolate`
+- `VFX.RedVelvetCakeSliceFrostingCaramel`
+- `VFX.RedVelvetCakeSliceFrostingLemon`
+- `VFX.RedVelvetCakeSliceFrostingStrawberry`
+- `VFX.RedVelvetCakeSliceFrostingCreamCheese`
+- `VFX.RedVelvetCakeSliceFrostingConfetti`
+- `VFX.StrawberryCakeMix_2` - packaged, cant-eat
+- `VFX.StrawberryCakeBatter_2` - vessel:Bowl
+- `VFX.StrawberryCakePrep` - vessel:BakingPan
+- `VFX.StrawberryCake`
+- `VFX.StrawberryCakeFrostingVanilla`
+- `VFX.StrawberryCakeFrostingChocolate`
+- `VFX.StrawberryCakeFrostingCaramel`
+- `VFX.StrawberryCakeFrostingLemon`
+- `VFX.StrawberryCakeFrostingStrawberry`
+- `VFX.StrawberryCakeFrostingCreamCheese`
+- `VFX.StrawberryCakeFrostingConfetti`
+- `VFX.StrawberryCakeSlice`
+- `VFX.StrawberryCakeSliceFrostingVanilla`
+- `VFX.StrawberryCakeSliceFrostingChocolate`
+- `VFX.StrawberryCakeSliceFrostingCaramel`
+- `VFX.StrawberryCakeSliceFrostingLemon`
+- `VFX.StrawberryCakeSliceFrostingStrawberry`
+- `VFX.StrawberryCakeSliceFrostingCreamCheese`
+- `VFX.StrawberryCakeSliceFrostingConfetti`
+- `VFX.CaramelCakeMix_2` - packaged, cant-eat
+- `VFX.CaramelCakeBatter_2` - vessel:Bowl
+- `VFX.CaramelCakePrep` - vessel:BakingPan
+- `VFX.CaramelCake`
+- `VFX.CaramelCakeFrostingVanilla`
+- `VFX.CaramelCakeFrostingChocolate`
+- `VFX.CaramelCakeFrostingCaramel`
+- `VFX.CaramelCakeFrostingLemon`
+- `VFX.CaramelCakeFrostingStrawberry`
+- `VFX.CaramelCakeFrostingCreamCheese`
+- `VFX.CaramelCakeFrostingConfetti`
+- `VFX.CaramelCakeSlice`
+- `VFX.CaramelCakeSliceFrostingVanilla`
+- `VFX.CaramelCakeSliceFrostingChocolate`
+- `VFX.CaramelCakeSliceFrostingCaramel`
+- `VFX.CaramelCakeSliceFrostingLemon`
+- `VFX.CaramelCakeSliceFrostingStrawberry`
+- `VFX.CaramelCakeSliceFrostingCreamCheese`
+- `VFX.CaramelCakeSliceFrostingConfetti`
+- `VFX.OrangePoppyseedCakeMix_2` - packaged, cant-eat
+- `VFX.OrangePoppyseedCakeBatter_2` - vessel:Bowl
+- `VFX.OrangePoppyseedCakePrep` - vessel:BakingPan
+- `VFX.OrangePoppyseedCake`
+- `VFX.OrangePoppyseedCakeFrostingVanilla`
+- `VFX.OrangePoppyseedCakeFrostingChocolate`
+- `VFX.OrangePoppyseedCakeFrostingCaramel`
+- `VFX.OrangePoppyseedCakeFrostingLemon`
+- `VFX.OrangePoppyseedCakeFrostingStrawberry`
+- `VFX.OrangePoppyseedCakeFrostingCreamCheese`
+- `VFX.OrangePoppyseedCakeFrostingConfetti`
+- `VFX.OrangePoppyseedCakeSlice`
+- `VFX.OrangePoppyseedCakeSliceFrostingVanilla`
+- `VFX.OrangePoppyseedCakeSliceFrostingChocolate`
+- `VFX.OrangePoppyseedCakeSliceFrostingCaramel`
+- `VFX.OrangePoppyseedCakeSliceFrostingLemon`
+- `VFX.OrangePoppyseedCakeSliceFrostingStrawberry`
+- `VFX.OrangePoppyseedCakeSliceFrostingCreamCheese`
+- `VFX.OrangePoppyseedCakeSliceFrostingConfetti`
+- `VFX.ConfettiCakeMix_2` - packaged, cant-eat
+- `VFX.ConfettiCakeBatter_2` - vessel:Bowl
+- `VFX.ConfettiCakePrep` - vessel:BakingPan
+- `VFX.ConfettiCake`
+- `VFX.ConfettiCakeFrostingVanilla`
+- `VFX.ConfettiCakeFrostingChocolate`
+- `VFX.ConfettiCakeFrostingCaramel`
+- `VFX.ConfettiCakeFrostingLemon`
+- `VFX.ConfettiCakeFrostingStrawberry`
+- `VFX.ConfettiCakeFrostingCreamCheese`
+- `VFX.ConfettiCakeFrostingConfetti`
+- `VFX.ConfettiCakeSlice`
+- `VFX.ConfettiCakeSliceFrostingVanilla`
+- `VFX.ConfettiCakeSliceFrostingChocolate`
+- `VFX.ConfettiCakeSliceFrostingCaramel`
+- `VFX.ConfettiCakeSliceFrostingLemon`
+- `VFX.ConfettiCakeSliceFrostingStrawberry`
+- `VFX.ConfettiCakeSliceFrostingCreamCheese`
+- `VFX.ConfettiCakeSliceFrostingConfetti`
+- `VFX.SpiceCakeMix_2` - packaged, cant-eat
+- `VFX.SpiceCakeBatter_2` - vessel:Bowl
+- `VFX.SpiceCakePrep` - vessel:BakingPan
+- `VFX.SpiceCake`
+- `VFX.SpiceCakeFrostingVanilla`
+- `VFX.SpiceCakeFrostingChocolate`
+- `VFX.SpiceCakeFrostingCaramel`
+- `VFX.SpiceCakeFrostingLemon`
+- `VFX.SpiceCakeFrostingStrawberry`
+- `VFX.SpiceCakeFrostingCreamCheese`
+- `VFX.SpiceCakeFrostingConfetti`
+- `VFX.SpiceCakeSlice`
+- `VFX.SpiceCakeSliceFrostingVanilla`
+- `VFX.SpiceCakeSliceFrostingChocolate`
+- `VFX.SpiceCakeSliceFrostingCaramel`
+- `VFX.SpiceCakeSliceFrostingLemon`
+- `VFX.SpiceCakeSliceFrostingStrawberry`
+- `VFX.SpiceCakeSliceFrostingCreamCheese`
+- `VFX.SpiceCakeSliceFrostingConfetti`
+- `VFX.YellowCakeMix_2` - packaged, cant-eat
+- `VFX.YellowCakeBatter_2` - vessel:Bowl
+- `VFX.YellowCakePrep` - vessel:BakingPan
+- `VFX.YellowCake`
+- `VFX.YellowCakeFrostingVanilla`
+- `VFX.YellowCakeFrostingChocolate`
+- `VFX.YellowCakeFrostingCaramel`
+- `VFX.YellowCakeFrostingLemon`
+- `VFX.YellowCakeFrostingStrawberry`
+- `VFX.YellowCakeFrostingCreamCheese`
+- `VFX.YellowCakeFrostingConfetti`
+- `VFX.YellowCakeSlice`
+- `VFX.YellowCakeSliceFrostingVanilla`
+- `VFX.YellowCakeSliceFrostingChocolate`
+- `VFX.YellowCakeSliceFrostingCaramel`
+- `VFX.YellowCakeSliceFrostingLemon`
+- `VFX.YellowCakeSliceFrostingStrawberry`
+- `VFX.YellowCakeSliceFrostingCreamCheese`
+- `VFX.YellowCakeSliceFrostingConfetti`
+- `VFX.AppleCinnamonMuffinMix_2` - packaged, cant-eat
+- `VFX.AppleCinnamonMuffinBatter_2` - vessel:Bowl
+- `VFX.AppleCinnamonMuffinPrep` - vessel:MuffinTray, cant-eat
+- `VFX.AppleCinnamonMuffin`
+- `VFX.BlueberryMuffinMix_2` - packaged, cant-eat
+- `VFX.BlueberryMuffinBatter_2`
+- `VFX.BlueberryMuffinPrep` - vessel:MuffinTray, cant-eat
+- `VFX.BlueberryMuffin`
+- `VFX.ChocolateChipMuffinMix_2` - packaged, cant-eat
+- `VFX.ChocolateChipMuffinBatter_2`
+- `VFX.ChocolateChipMuffinPrep` - vessel:MuffinTray, cant-eat
+- `VFX.ChocolateChipMuffin`
+- `VFX.DoubleChocolateMuffinMix_2` - packaged, cant-eat
+- `VFX.DoubleChocolateMuffinBatter_2` - vessel:Bowl
+- `VFX.DoubleChocolateMuffinPrep` - vessel:MuffinTray, cant-eat
+- `VFX.DoubleChocolateMuffin`
+- `VFX.CornMuffinMix_2` - packaged, cant-eat
+- `VFX.CornMuffinBatter_2` - vessel:Bowl
+- `VFX.CornMuffinPrep` - vessel:MuffinTray, cant-eat
+- `VFX.CornMuffin`
+- `VFX.LemonPoppyMuffinMix_2` - packaged, cant-eat
+- `VFX.LemonPoppyMuffinBatter_2` - vessel:Bowl
+- `VFX.LemonPoppyMuffinPrep` - vessel:MuffinTray, cant-eat
+- `VFX.LemonPoppyMuffin`
+- `VFX.BranMuffinMix_2` - packaged, cant-eat
+- `VFX.BranMuffinBatter_2` - vessel:Bowl
+- `VFX.BranMuffinPrep` - vessel:MuffinTray, cant-eat
+- `VFX.BranMuffin`
+- `VFX.BrownieMix_2` - packaged, cant-eat
+- `VFX.BrownieBatter_2` - vessel:Bowl
+- `VFX.BrowniePrep` - vessel:BakingTray
+- `VFX.Brownie`
+- `VFX.ChocolateChipCookieMix_2` - packaged, cant-eat
+- `VFX.ChocolateCookieMix_2` - packaged, cant-eat
+- `VFX.OatmealCookieMix_2` - packaged, cant-eat
+- `VFX.SugarCookieMix_2` - packaged, cant-eat
+- `VFX.ShortbreadCookieMix_2` - packaged, cant-eat
+- `VFX.PeanutButterCookieMix_2` - packaged, cant-eat
+- `VFX.PeanutButterCookieDough`
+- `VFX.CookiesPeanutButter`
+- `VFX.GingerbreadCookieMix_2` - packaged, cant-eat
+- `VFX.GingerbreadCookieDough`
+- `VFX.CookiesGingerbread`
+- `VFX.SnickerdoodleCookieMix_2` - packaged, cant-eat
+- `VFX.SnickerdoodleCookieDough`
+- `VFX.CookiesSnickerdoodle`
+- `VFX.BananaBreadMix_2` - packaged, cant-eat
+- `VFX.BananaBreadPrep`
+- `VFX.BananaBreadSlice`
+- `VFX.PumpkinBreadMix_2` - packaged, cant-eat
+- `VFX.PumpkinBreadPrep`
+- `VFX.PumpkinBreadSlice`
+- `VFX.ChocolateSwirlBreadMix_2` - packaged, cant-eat
+- `VFX.ChocolateSwirlBreadPrep`
+- `VFX.ChocolateSwirlBreadSlice`
+- `VFX.CinnamonSwirlBreadMix_2` - packaged, cant-eat
+- `VFX.CinnamonSwirlBreadPrep`
+- `VFX.CinnamonSwirlBreadSlice`
+- `VFX.CranberryBreadMix_2` - packaged, cant-eat
+- `VFX.CranberryBreadPrep`
+- `VFX.CranberryBreadSlice`
+- `VFX.CheddarBiscuitMix_2` - packaged, cant-eat
+- `VFX.CheddarBiscuitPrep`
+- `VFX.CheddarBiscuit`
+- `VFX.HomestyleBiscuitMix_2` - packaged, cant-eat
+- `VFX.HomestyleBiscuitPrep`
+- `VFX.HomestyleBiscuit`
+- `VFX.VanillaPuddingMix_2` - packaged, cant-eat
+- `VFX.BowlVanillaPudding` - vessel:Bowl
+- `VFX.CustardPuddingMix_2` - packaged, cant-eat
+- `VFX.BowlCustardPudding` - vessel:Bowl
+- `VFX.BananaCreamPuddingMix_2` - packaged, cant-eat
+- `VFX.BowlBananaCreamPudding` - vessel:Bowl
+- `VFX.ButterscotchPuddingMix_2` - packaged, cant-eat
+- `VFX.BowlButterscotchPudding` - vessel:Bowl
+- `VFX.PistachioPuddingMix_2` - packaged, cant-eat
+- `VFX.BowlPistachioPudding` - vessel:Bowl
+- `VFX.ChocolateMousseMix_2` - packaged, cant-eat
+- `VFX.BowlChocolateMousse` - vessel:Bowl
+- `VFX.CaramelFrostingTub` - packaged
+- `VFX.ChocolateFrostingTub` - packaged
+- `VFX.LemonFrostingTub` - packaged
+- `VFX.StrawberryFrostingTub` - packaged
+- `VFX.CreamCheeseFrostingTub` - packaged
+- `VFX.ConfettiFrostingTub` - packaged
+- `VFX.VanillaFrostingTub` - packaged
+- `VFX.CaramelFrosting`
+- `VFX.ChocolateFrosting`
+- `VFX.LemonFrosting`
+- `VFX.StrawberryFrosting`
+- `VFX.CreamCheeseFrosting`
+- `VFX.ConfettiFrosting`
+- `VFX.WholePieApple` - vessel:BakingPan
+- `VFX.WholePieCherry` - vessel:BakingPan
+- `VFX.WholePieBlueberry` - vessel:BakingPan
+- `VFX.WholePieStrawberry` - vessel:BakingPan
+- `VFX.WholePiePeach` - vessel:BakingPan
+- `VFX.WholePieMixedBerry` - vessel:BakingPan
+- `VFX.WholePieLemonCream` - vessel:BakingPan
+- `VFX.WholePieBlackberry` - vessel:BakingPan
+- `VFX.WholePieRaspberry` - vessel:BakingPan
+- `VFX.WholePiePumpkin` - vessel:BakingPan
+- `VFX.WholePieSweetPotato` - vessel:BakingPan
+- `VFX.WholePiePecan` - vessel:BakingPan
+- `VFX.WholePiePumpkinNoPan`
+- `VFX.WholePieSweetPotatoNoPan`
+- `VFX.WholePiePecanNoPan`
+- `VFX.SlicePieApple`
+- `VFX.SlicePieCherry`
+- `VFX.SlicePieBlueberry`
+- `VFX.SlicePieStrawberry`
+- `VFX.SlicePiePeach`
+- `VFX.SlicePieMixedBerry`
+- `VFX.SlicePieLemonCream`
+- `VFX.SlicePieBlackberry`
+- `VFX.SlicePieRaspberry`
+- `VFX.SlicePiePumpkin`
+- `VFX.SlicePieSweetPotato`
+- `VFX.SlicePiePecan`
+- `VFX.Sourdough`
+- `VFX.SourdoughBaguette`
+- `VFX.SourdoughBreadstick`
+- `VFX.SourdoughHamburgerBun`
+- `VFX.SourdoughHotdogBun`
+- `VFX.Brioche`
+- `VFX.BeerBread`
+- `VFX.MilkBread`
+- `VFX.Frybread`
+- `VFX.EnglishMuffin`
+- `VFX.PitaBread`
+- `VFX.FocacciaBread`
+- `VFX.NaanBread`
+- `VFX.CrumpetDough`
+- `VFX.Crumpet`
+- `VFX.Breadstick`
+- `VFX.Pretzel`
+- `VFX.RyeBread`
+- `VFX.RyeSourdough`
+- `VFX.Pumpernickel`
+- `VFX.BarleyBread`
+- `VFX.BarleySourdough`
+- `VFX.Flatbread`
+- `VFX.SoupDumplings`
+- `VFX.Scone`
+- `VFX.PizzaDough`
+- `VFX.SourdoughPizzaDough`
+- `VFX.FlatbreadPizzaDough`
+- `VFX.HomemadeGnocchi`
+- `VFX.DumplingWrappers`
+- `VFX.HomemadePasta`
+- `VFX.WaterSaucepanHomemadePasta` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperHomemadePasta` - vessel:SaucepanCopper
+- `VFX.WaterPotHomemadePasta` - vessel:Pot
+- `VFX.WaterPotForgedHomemadePasta` - vessel:PotForged
+- `VFX.HomemadePastaBowl` - vessel:Bowl
+- `VFX.SourdoughSlice`
+- `VFX.RyeBreadSlice`
+- `VFX.RyeSourdoughSlice`
+- `VFX.PumpernickelSlice`
+- `VFX.BarleyBreadSlice`
+- `VFX.BarleySourdoughSlice`
+- `VFX.BeerBreadSlice`
+- `VFX.MilkBreadSlice`
+- `VFX.BriocheSlice`
+- `VFX.FocacciaBreadSlice`
+- `VFX.HomemadeHotdog`
+- `VFX.HomemadeHamburgerBun`
+- `VFX.HomemadeWaffles`
+- `VFX.BagelDough`
+- `VFX.PoppyBagelDough`
+- `VFX.SesameBagelDough`
+- `VFX.HomemadeCornbread`
+- `VFX.CroissantDough`
+- `VFX.HomemadeCroissant`
+- `VFX.HomemadeTortilla`
+- `VFX.DoughnutDough`
+- `VFX.BatteredOysters`
+- `VFX.BatteredFish`
+- `VFX.BatteredTofu`
+- `VFX.BatteredChicken`
+- `VFX.HomemadeMeatDumpling`
+- `VFX.HomemadePotatoPancakes`
+
+## vfx_items_food_beverages.txt (12)
+
+- `VFX.GreenTeaBag_2`
+- `VFX.BreakfastTeaBag_2`
+- `VFX.EarlGrayTeaBag_2`
+- `VFX.ChamomileTeaBag_2`
+- `VFX.PeppermintTeaBag_2`
+- `VFX.GingerTeaBag_2`
+- `VFX.LemonTeaBag_2`
+- `VFX.CoffeeCreamerOriginal_2`
+- `VFX.CoffeeCreamerFrenchVanilla_2`
+- `VFX.CoffeeCreamerHazelnut_2`
+- `VFX.CoffeeCreamerIrishCream_2`
+- `VFX.CoffeeCreamerAlmond_2`
+
+## vfx_items_food_candy.txt (129)
+
+- `VFX.GumPeppermint`
+- `VFX.GumSpearmint`
+- `VFX.GumPinkBubblegum`
+- `VFX.GumGreenApple`
+- `VFX.GumWatermelon`
+- `VFX.GumTuttiFruity`
+- `VFX.GumCinnamon`
+- `VFX.BubblegumTapePink`
+- `VFX.BubblegumTapeGrape`
+- `VFX.BubblegumTapeStrawberry`
+- `VFX.BubblegumTapeSourBlueRaspberry`
+- `VFX.BubblegumTapeSourApple`
+- `VFX.BubblegumTapeTangyTropical`
+- `VFX.GumBallStrawberry`
+- `VFX.GumBallPineapple`
+- `VFX.GumBallBlueberry`
+- `VFX.GumBallLemonLime`
+- `VFX.GumBallOrange`
+- `VFX.GumBallCherry`
+- `VFX.GumBallBanana`
+- `VFX.GumBallGrape`
+- `VFX.ChocolateBarDark` - packaged
+- `VFX.ChocolateBarWhite` - packaged
+- `VFX.ChocolateBarAlmond` - packaged
+- `VFX.ChocolateBarCookiesAndCream` - packaged
+- `VFX.ChocolateBarPorkie` - packaged
+- `VFX.ChocolateKisses` - packaged
+- `VFX.ChocolateAlmonds` - packaged
+- `VFX.ChocolateSeniorMints` - packaged
+- `VFX.ChocolateCaramelDuds` - packaged
+- `VFX.ChocolateMaltBalls` - packaged
+- `VFX.ChocolateCandyPeanut`
+- `VFX.LollipopCherry`
+- `VFX.LollipopGrape`
+- `VFX.LollipopStrawberry`
+- `VFX.LollipopOrange`
+- `VFX.LollipopLemon`
+- `VFX.LollipopLime`
+- `VFX.LollipopGreenApple`
+- `VFX.LollipopBlueRaspberry`
+- `VFX.LollipopWatermelon`
+- `VFX.LollipopWildBerry`
+- `VFX.LollipopCola`
+- `VFX.LollipopCreamSoda`
+- `VFX.LollipopButterscotch`
+- `VFX.GiantLollipopCherry`
+- `VFX.GiantLollipopGrape`
+- `VFX.GiantLollipopStrawberry`
+- `VFX.GiantLollipopOrange`
+- `VFX.GiantLollipopLemon`
+- `VFX.GiantLollipopLime`
+- `VFX.GiantLollipopGreenApple`
+- `VFX.GiantLollipopBlueRaspberry`
+- `VFX.GiantLollipopWatermelon`
+- `VFX.GiantLollipopWildBerry`
+- `VFX.GiantLollipopCola`
+- `VFX.GiantLollipopCreamSoda`
+- `VFX.GiantLollipopButterscotch`
+- `VFX.RingPopTropical`
+- `VFX.RingPopCitrus`
+- `VFX.RingPopGrape`
+- `VFX.RingPopBerry`
+- `VFX.RingPopBlueRaspberry`
+- `VFX.RingPopFruitPunch`
+- `VFX.RingPopSourCherry`
+- `VFX.RingPopWatermelon`
+- `VFX.PushPopStrawberry`
+- `VFX.PushPopWatermelon`
+- `VFX.PushPopCola`
+- `VFX.PushPopFruitFrenzy`
+- `VFX.PushPopRainbowSherbet`
+- `VFX.PushPopGrape`
+- `VFX.PushPopCherry`
+- `VFX.FunDipCherry`
+- `VFX.FunDipApple`
+- `VFX.FunDipGrape`
+- `VFX.FunDipStrawberry`
+- `VFX.FunDipWatermelon`
+- `VFX.FunDipOrange`
+- `VFX.FruitChewLemon`
+- `VFX.FruitChewCherry`
+- `VFX.FruitChewGrape`
+- `VFX.FruitChewOrange`
+- `VFX.FruitChewWatermelon`
+- `VFX.FruitChewStrawberry`
+- `VFX.GummySourBears`
+- `VFX.GummySourWorms`
+- `VFX.GummyPeachRings`
+- `VFX.GummyCola`
+- `VFX.FunnyTaffyBlueRaspberry` - packaged
+- `VFX.FunnyTaffyOrange` - packaged
+- `VFX.FunnyTaffyBanana` - packaged
+- `VFX.FunnyTaffyCherry` - packaged
+- `VFX.FunnyTaffyStrawberry` - packaged
+- `VFX.FunnyTaffyGrape` - packaged
+- `VFX.FunnyTaffyWatermelon` - packaged
+- `VFX.FunnyTaffyFruitPunch` - packaged
+- `VFX.PopRocksStrawberry` - packaged
+- `VFX.PopRocksTropicalPunch` - packaged
+- `VFX.PopRocksCherry` - packaged
+- `VFX.PopRocksCottonCandy` - packaged
+- `VFX.PopRocksBlueRaspberry` - packaged
+- `VFX.PopRocksGreenApple` - packaged
+- `VFX.PopRocksGrape` - packaged
+- `VFX.PopRocksWatermelon` - packaged
+- `VFX.BagGummyBears` - packaged, cant-eat
+- `VFX.BagSourGummyBears` - packaged, cant-eat
+- `VFX.BagGummyFish` - packaged, cant-eat
+- `VFX.BagGummyWorms` - packaged, cant-eat
+- `VFX.BagSourGummyWorms` - packaged, cant-eat
+- `VFX.BagPeachRings` - packaged, cant-eat
+- `VFX.BagColaGummies` - packaged, cant-eat
+- `VFX.Geeks` - packaged
+- `VFX.CandyNecklace` - packaged
+- `VFX.Rushers` - packaged
+- `VFX.BottleTops` - packaged
+- `VFX.FairySticks` - packaged
+- `VFX.RedCandiedApple`
+- `VFX.ToffeeBites` - packaged
+- `VFX.SaltwaterTaffy` - packaged
+- `VFX.ChocolateCoins` - packaged
+- `VFX.ChocolatePretzels` - packaged
+- `VFX.SourStraws` - packaged
+- `VFX.SourStraps` - packaged
+- `VFX.JawBreaker` - packaged
+- `VFX.CandyCigarettes` - packaged
+- `VFX.Fudge` - packaged
+- `VFX.Cheeps` - packaged
+- `VFX.RainbowLollipop`
+
+## vfx_items_food_canned.txt (202)
+
+- `VFX.CannedSavoryMince` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSavoryMinceOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedBeefRavioli` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedBeefRavioliOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedSpinachRavioli` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSpinachRavioliOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedSpaghettiAndMeatballs` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSpaghettiAndMeatballsOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedSpaghetti` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSpaghettiOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedSloppyJoe` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSloppyJoeOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedMeatloaf` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedMeatloafOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedVegetarianChili` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedVegetarianChiliOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedRedBeansAndRice` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedRedBeansAndRiceOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedClamChowder` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedClamChowderOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedMushroomRavioli` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedMushroomRavioliOpen` - vessel:TinCanEmpty, packaged
+- `VFX.BowlSavoryMince` - vessel:Bowl
+- `VFX.BowlBeefRavioli` - vessel:Bowl
+- `VFX.BowlSpinachRavioli` - vessel:Bowl
+- `VFX.BowlSpaghettiAndMeatballs` - vessel:Bowl
+- `VFX.BowlSpaghetti` - vessel:Bowl
+- `VFX.BowlSloppyJoe` - vessel:Bowl
+- `VFX.BowlMeatloaf` - vessel:Bowl
+- `VFX.BowlVegetarianChili` - vessel:Bowl
+- `VFX.BowlRedBeansAndRice` - vessel:Bowl
+- `VFX.BowlClamChowder` - vessel:Bowl
+- `VFX.BowlMushroomRavioli` - vessel:Bowl
+- `VFX.BowlBroccoliCheddarSoup` - vessel:Bowl
+- `VFX.BowlCannedChickenNoodleSoup` - vessel:Bowl
+- `VFX.BowlFrenchOnionSoup` - vessel:Bowl
+- `VFX.BowlLaksaNoodleSoup` - vessel:Bowl
+- `VFX.BowlLentilSoup` - vessel:Bowl
+- `VFX.BowlMinestroneSoup` - vessel:Bowl
+- `VFX.BowlPeaHamSoup` - vessel:Bowl
+- `VFX.BowlPotatoLeekSoup` - vessel:Bowl
+- `VFX.BowlCannedPumpkinSoup` - vessel:Bowl
+- `VFX.BowlCannedTomatoSoup` - vessel:Bowl
+- `VFX.BowlBeefMushroomStew` - vessel:Bowl
+- `VFX.BowlChiliBeanStew` - vessel:Bowl
+- `VFX.BowlIrishStew` - vessel:Bowl
+- `VFX.BowlPepperSteakStew` - vessel:Bowl
+- `VFX.BowlSteakOnionStew` - vessel:Bowl
+- `VFX.BowlVegetableStew` - vessel:Bowl
+- `VFX.CannedBroccoliCheddarSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedBroccoliCheddarSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedChickenNoodleSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedChickenNoodleSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedFrenchOnionSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedFrenchOnionSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedLaksaNoodleSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedLaksaNoodleSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedLentilSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedLentilSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedMinestroneSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedMinestroneSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPeaHamSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPeaHamSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPotatoLeekSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPotatoLeekSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPumpkinSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPumpkinSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedTomatoSoup` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedTomatoSoupOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedBeefMushroomStew` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedBeefMushroomStewOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedChiliBeanStew` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedChiliBeanStewOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedIrishStew` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedIrishStewOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPepperSteakStew` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPepperSteakStewOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedSteakOnionStew` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSteakOnionStewOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedVegetableStew` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedVegetableStewOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedBlackBeans` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedBlackBeansOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedChickpeas` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedChickpeasOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedKidneyBeans` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedKidneyBeansOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedLentils` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedLentilsOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedWhiteBeans` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedWhiteBeansOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedThreeBeanMix` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedThreeBeanMixOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedSlicedMushroom` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSlicedMushroomOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedEdamameBeans` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedEdamameBeansOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedMixedVegetableMedley` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedMixedVegetableMedleyOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedGreenBeans` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedGreenBeansOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedSpinach` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSpinachOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPumpkinPuree` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPumpkinPureeOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedCreamCorn` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedCreamCornOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPassionfruit` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPassionfruitOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedAppleSlices` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedAppleSlicesOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPearSlices` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPearSlicesOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedMangoSlices` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedMangoSlicesOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedLychees` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedLycheesOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedApricots` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedApricotsOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedChicken` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedChickenOpen` - vessel:SmallTinCanEmpty, packaged
+- `VFX.CannedHam` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedHamOpen` - vessel:SmallTinCanEmpty, packaged
+- `VFX.CannedSalmon` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSalmonOpen` - vessel:SmallTinCanEmpty, packaged
+- `VFX.CannedAnchovies` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedAnchoviesOpen` - vessel:SmallTinCanEmpty, packaged
+- `VFX.CannedCatFood` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedCatFoodOpen` - vessel:SmallTinCanEmpty, packaged
+- `VFX.CannedCrickets` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedSnails` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedWorms` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedCoconutMilk` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedCoconutMilkOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedCoconutCream` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedCoconutCreamOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedApplePieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedApplePieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedCherryPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedCherryPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedBlueberryPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedBlueberryPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedStrawberryPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedStrawberryPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedPeachPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedPeachPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedMixedBerryPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedMixedBerryPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedLemonCreamPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedLemonCreamPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedBlackberryPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedBlackberryPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.CannedRaspberryPieFilling` - CLOSED-CAN, packaged, cant-eat
+- `VFX.CannedRaspberryPieFillingOpen` - vessel:TinCanEmpty, packaged
+- `VFX.JarBlackOlives` - CLOSED-CAN, packaged, cant-eat
+- `VFX.JarBlackOlivesOpen` - vessel:EmptyJar, packaged
+- `VFX.JarGreenOlives` - CLOSED-CAN, packaged, cant-eat
+- `VFX.JarGreenOlivesOpen` - vessel:EmptyJar, packaged
+- `VFX.JarSundriedTomatoes` - CLOSED-CAN, packaged, cant-eat
+- `VFX.JarSundriedTomatoesOpen` - vessel:EmptyJar, packaged
+- `VFX.JarPickledPeppers` - CLOSED-CAN, packaged, cant-eat
+- `VFX.JarPickledPeppersOpen` - vessel:EmptyJar, packaged
+- `VFX.JarPickledEggs` - CLOSED-CAN, packaged, cant-eat
+- `VFX.JarPickledEggsOpen` - vessel:EmptyJar, packaged
+- `VFX.JarPickles` - CLOSED-CAN, packaged, cant-eat
+- `VFX.JarPickleJuiceOpen` - vessel:EmptyJar, packaged
+- `VFX.JarApricots` - CLOSED-JAR, cant-eat
+- `VFX.JarApricotsOpen` - vessel:EmptyJar
+- `VFX.JarPlums` - CLOSED-JAR, cant-eat
+- `VFX.JarPlumsOpen` - vessel:EmptyJar
+- `VFX.JarGreenBeans` - CLOSED-JAR, cant-eat
+- `VFX.JarGreenBeansOpen` - vessel:EmptyJar
+- `VFX.JarBeetroot` - CLOSED-JAR, cant-eat
+- `VFX.JarBeetrootOpen` - vessel:EmptyJar
+- `VFX.JarCorn` - CLOSED-JAR, cant-eat
+- `VFX.JarCornOpen` - vessel:EmptyJar
+- `VFX.JarPeach` - CLOSED-JAR, cant-eat
+- `VFX.JarPeachOpen` - vessel:EmptyJar
+- `VFX.JarPear` - CLOSED-JAR, cant-eat
+- `VFX.JarPearOpen` - vessel:EmptyJar
+- `VFX.JarCherry` - CLOSED-JAR, cant-eat
+- `VFX.JarCherryOpen` - vessel:EmptyJar
+- `VFX.JarGreenPeas` - CLOSED-JAR, cant-eat
+- `VFX.JarGreenPeasOpen` - vessel:EmptyJar
+- `VFX.JarSquash` - CLOSED-JAR, cant-eat
+- `VFX.JarSquashOpen` - vessel:EmptyJar
+- `VFX.JarZucchini` - CLOSED-JAR, cant-eat
+- `VFX.JarZucchiniOpen` - vessel:EmptyJar
+- `VFX.JarSweetPotato` - CLOSED-JAR, cant-eat
+- `VFX.JarSweetPotatoOpen` - vessel:EmptyJar
+- `VFX.JarBrusselSprouts` - CLOSED-JAR, cant-eat
+- `VFX.JarBrusselSproutsOpen` - vessel:EmptyJar
+- `VFX.JarPumpkin` - CLOSED-JAR, cant-eat
+- `VFX.JarPumpkinOpen` - vessel:EmptyJar
+- `VFX.JarOnion` - CLOSED-JAR, cant-eat
+- `VFX.JarOnionOpen` - vessel:EmptyJar
+- `VFX.JarPepperJalapeno` - CLOSED-JAR, cant-eat
+- `VFX.JarPepperJalapenoOpen` - vessel:EmptyJar
+- `VFX.JarCucumber` - CLOSED-JAR, cant-eat
+- `VFX.JarCucumberOpen` - vessel:EmptyJar
+- `VFX.JarGarlic` - CLOSED-JAR, cant-eat
+- `VFX.JarGarlicOpen` - vessel:EmptyJar
+
+## vfx_items_food_cookbooks.txt (37)
+
+- `VFX.TrayShepherdsPie` - vessel:RoastingPan
+- `VFX.PlateShepherdsPie` - vessel:Plate
+- `VFX.TrayTunaCasserole` - vessel:RoastingPan
+- `VFX.PlateTunaCasserole` - vessel:Plate
+- `VFX.TrayBakedZiti` - vessel:RoastingPan
+- `VFX.PlateBakedZiti` - vessel:Plate
+- `VFX.TrayStuffedBellPepper` - vessel:RoastingPan
+- `VFX.PlateStuffedBellPepper` - vessel:Plate
+- `VFX.StuffedBellPepper`
+- `VFX.PanChickenPotPie` - vessel:RoastingPan
+- `VFX.PlateChickenPotPie` - vessel:Plate
+- `VFX.TrayMoussaka` - vessel:RoastingPan
+- `VFX.PlateMoussaka` - vessel:Plate
+- `VFX.TrayChickenDivan` - vessel:RoastingPan
+- `VFX.PlateChickenDivan` - vessel:Plate
+- `VFX.TraySalisburySteak` - vessel:RoastingPan
+- `VFX.PlateSalisburySteak` - vessel:Plate
+- `VFX.PlateFishAndChips` - vessel:Plate
+- `VFX.PlateBangersAndMash` - vessel:Plate
+- `VFX.PlateFullEnglishBreakfast` - vessel:Plate
+- `VFX.PlateHalfEnglishBreakfast` - vessel:Plate
+- `VFX.ScotchEgg`
+- `VFX.TraySausageAppleFry` - vessel:RoastingPan
+- `VFX.PlateSausageAppleFry` - vessel:Plate
+- `VFX.PlateBeansOnToast` - vessel:Plate
+- `VFX.PotButterChicken` - vessel:Pot
+- `VFX.BowlButterChicken` - vessel:Bowl
+- `VFX.PotThaiGreenCurry` - vessel:Pot
+- `VFX.BowlThaiGreenCurry` - vessel:Bowl
+- `VFX.PotMassamanCurry` - vessel:Pot
+- `VFX.BowlMassamanCurry` - vessel:Bowl
+- `VFX.PotChanaMasala` - vessel:Pot
+- `VFX.BowlChanaMasala` - vessel:Bowl
+- `VFX.PotSweetPotatoChickpeaCurry` - vessel:Pot
+- `VFX.BowlSweetPotatoChickpeaCurry` - vessel:Bowl
+- `VFX.PotTofuCurry` - vessel:Pot
+- `VFX.BowlTofuCurry` - vessel:Bowl
+
+## vfx_items_food_dairy.txt (77)
+
+- `VFX.EvaporatedMilkPreparationPot` - vessel:Pot
+- `VFX.EvaporatedMilkPreparationPotForged` - vessel:PotForged
+- `VFX.EvaporatedMilkPot` - vessel:Pot
+- `VFX.EvaporatedMilkPotForged` - vessel:PotForged
+- `VFX.EvaporatedMilkHomemade` - vessel:JarWithLid
+- `VFX.CulturedButtermilk` - vessel:JarWithLid
+- `VFX.CottageCheese`
+- `VFX.CottageCheesePreparationPot` - vessel:Pot
+- `VFX.CottageCheesePreparationPotForged` - vessel:PotForged
+- `VFX.CottageCheeseCurdPot` - vessel:Pot
+- `VFX.CottageCheeseCurdPotForged` - vessel:PotForged
+- `VFX.CottageCheeseHomemade` - vessel:SmallJarWithLid
+- `VFX.CreamCheese`
+- `VFX.CreamCheeseHomemade` - vessel:SmallJarWithLid
+- `VFX.MozzarellaCheese`
+- `VFX.MozzarellaCurdsPot` - vessel:Pot
+- `VFX.MozzarellaCurdsPotForged` - vessel:PotForged
+- `VFX.MozzarellaCheeseHomemade`
+- `VFX.MozzarellaWhey`
+- `VFX.SwissCheese`
+- `VFX.SwissCheeseCurdsPot` - vessel:Pot
+- `VFX.SwissCheeseCurdsPotForged` - vessel:PotForged
+- `VFX.WheelSwissCheeseHomemade`
+- `VFX.SwissCheeseHomemade`
+- `VFX.SwissWhey`
+- `VFX.BrieCheese`
+- `VFX.CamembertCheese`
+- `VFX.FrenchCheeseCurdsPot` - vessel:Pot
+- `VFX.FrenchCheeseCurdsPotForged` - vessel:PotForged
+- `VFX.BrieCheeseHomemade`
+- `VFX.CamembertCheeseHomemade`
+- `VFX.GoatCheese`
+- `VFX.FetaCheeseCurdsPot` - vessel:Pot
+- `VFX.FetaCheeseCurdsPotForged` - vessel:PotForged
+- `VFX.FetaCheeseHomemade`
+- `VFX.FetaWhey`
+- `VFX.FetaCheese`
+- `VFX.BlueCheese`
+- `VFX.BlueCheeseCurdsPot` - vessel:Pot
+- `VFX.BlueCheeseCurdsPotForged` - vessel:PotForged
+- `VFX.WheelBlueCheeseHomemade`
+- `VFX.BlueCheeseHomemade`
+- `VFX.ParmesanCheese`
+- `VFX.ParmesanCheeseCurdsPot` - vessel:Pot
+- `VFX.ParmesanCheeseCurdsPotForged` - vessel:PotForged
+- `VFX.WheelParmesanCheeseHomemade`
+- `VFX.ParmesanCheeseHomemade`
+- `VFX.ParmesanWhey`
+- `VFX.CheddarCheeseCurdsPot` - vessel:Pot
+- `VFX.CheddarCheeseCurdsPotForged` - vessel:PotForged
+- `VFX.WheelCheddarCheeseHomemade`
+- `VFX.CheddarCheeseHomemade`
+- `VFX.CheddarWhey`
+- `VFX.HeavyCream` - packaged
+- `VFX.HeavyCreamHomemade` - vessel:SmallJarWithLid
+- `VFX.SourCreamHomemade` - vessel:SmallJarWithLid
+- `VFX.VanillaYogurtPot` - packaged
+- `VFX.StrawberryYogurtPot` - packaged
+- `VFX.BlueberryYogurtPot` - packaged
+- `VFX.PeachYogurtPot` - packaged
+- `VFX.RaspberryYogurtPot` - packaged
+- `VFX.MixedBerryYogurtPot` - packaged
+- `VFX.BananaYogurtPot` - packaged
+- `VFX.NaturalYogurtPot`
+- `VFX.GreekYogurtPot`
+- `VFX.StrawberryYogurt` - packaged
+- `VFX.BlueberryYogurt` - packaged
+- `VFX.PeachYogurt` - packaged
+- `VFX.RaspberryYogurt` - packaged
+- `VFX.MixedBerryYogurt` - packaged
+- `VFX.BananaYogurt` - packaged
+- `VFX.YogurtPreparationPan` - vessel:Saucepan
+- `VFX.YogurtPreparationPanCopper` - vessel:SaucepanCopper
+- `VFX.YogurtHomemade` - vessel:JarWithLid
+- `VFX.GreekYogurtHomemade` - vessel:JarWithLid
+- `VFX.IcecreamHomemade` - vessel:JarWithLid
+- `VFX.IcecreamHomemadeMelted` - vessel:JarWithLid
+
+## vfx_items_food_evolved.txt (123)
+
+- `Base.VFXBrownRiceSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXBrownRiceSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXBrownRicePotEvolved` - vessel:Pot
+- `Base.VFXBrownRicePotForgedEvolved` - vessel:PotForged
+- `Base.VFXJasmineRiceSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXJasmineRiceSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXJasmineRicePotEvolved` - vessel:Pot
+- `Base.VFXJasmineRicePotForgedEvolved` - vessel:PotForged
+- `Base.VFXBasmatiRiceSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXBasmatiRiceSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXBasmatiRicePotEvolved` - vessel:Pot
+- `Base.VFXBasmatiRicePotForgedEvolved` - vessel:PotForged
+- `Base.VFXArborioRiceSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXArborioRiceSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXArborioRicePotEvolved` - vessel:Pot
+- `Base.VFXArborioRicePotForgedEvolved` - vessel:PotForged
+- `Base.VFXMacaroniSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXMacaroniSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXMacaroniPotEvolved` - vessel:Pot
+- `Base.VFXMacaroniPotForgedEvolved` - vessel:PotForged
+- `Base.VFXFettuccineSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXFettuccineSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXFettuccinePotEvolved` - vessel:Pot
+- `Base.VFXFettuccinePotForgedEvolved` - vessel:PotForged
+- `Base.VFXPenneSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXPenneSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXPennePotEvolved` - vessel:Pot
+- `Base.VFXPennePotForgedEvolved` - vessel:PotForged
+- `Base.VFXGnocchiSaucepanEvolved` - vessel:Saucepan
+- `Base.VFXGnocchiSaucepanCopperEvolved` - vessel:SaucepanCopper
+- `Base.VFXGnocchiPotEvolved` - vessel:Pot
+- `Base.VFXGnocchiPotForgedEvolved` - vessel:PotForged
+- `Base.VFXLasagnaEvolved` - vessel:RoastingPan
+- `Base.VFXPlateLasagna` - vessel:Plate
+- `Base.VFXChiliPotEvolved` - vessel:Pot
+- `Base.VFXChiliPotForgedEvolved` - vessel:PotForged
+- `Base.VFXBowlChili` - vessel:Bowl
+- `Base.VFXCurryPotEvolved` - vessel:Pot
+- `Base.VFXCurryPotForgedEvolved` - vessel:PotForged
+- `Base.VFXBowlCurry` - vessel:Bowl
+- `Base.VFXOatyOsBowlEvolved` - vessel:Bowl
+- `Base.VFXHoneyOatyOsBowlEvolved` - vessel:Bowl
+- `Base.VFXCornFlakesBowlEvolved` - vessel:Bowl
+- `Base.VFXRiceKrispsBowlEvolved` - vessel:Bowl
+- `Base.VFXFrostyCrunchBowlEvolved` - vessel:Bowl
+- `Base.VFXFruityLoopsBowlEvolved` - vessel:Bowl
+- `Base.VFXUnluckyCharmsBowlEvolved` - vessel:Bowl
+- `Base.VFXAdmiralChompBowlEvolved` - vessel:Bowl
+- `Base.VFXCocoaPuffsBowlEvolved` - vessel:Bowl
+- `Base.VFXWheatiesBowlEvolved` - vessel:Bowl
+- `Base.VFXBowlChickenRamenEvolved` - vessel:Bowl
+- `Base.VFXBowlBeefRamenEvolved` - vessel:Bowl
+- `Base.VFXBowlShrimpRamenEvolved` - vessel:Bowl
+- `Base.VFXBowlPorkRamenEvolved` - vessel:Bowl
+- `Base.VFXBowlHotAndSpicyRamenEvolved` - vessel:Bowl
+- `Base.VFXBowlSoySauceRamenEvolved` - vessel:Bowl
+- `Base.VFXCasseroleEvolved` - vessel:RoastingPan
+- `Base.VFXPlateCasserole` - vessel:Plate
+- `Base.VFXMeatloafPreparation` - vessel:RoastingPan
+- `Base.VFXMeatloafEvolved` - vessel:RoastingPan
+- `Base.VFXPlateMeatloaf` - vessel:Plate
+- `Base.VFXBakedPotatoPreparation` - vessel:RoastingPan
+- `Base.VFXBakedPotatoEvolved` - vessel:RoastingPan
+- `Base.VFXBakedPotato`
+- `Base.VFXScallopedPotatoBakePreparation` - vessel:RoastingPan
+- `Base.VFXScallopedPotatoBakeEvolved` - vessel:RoastingPan
+- `Base.VFXPlateScallopedPotatoBake` - vessel:Plate
+- `Base.VFXQuichePreparation` - vessel:BakingPan
+- `Base.VFXQuicheEvolved` - vessel:BakingPan
+- `Base.VFXPlateQuiche` - vessel:Plate
+- `Base.VFXNachosPreparation` - vessel:RoastingPan
+- `Base.VFXNachosEvolved` - vessel:RoastingPan
+- `Base.VFXPlateNachos` - vessel:Plate
+- `Base.VFXQuesadillaEvolved`
+- `Base.VFXEnchiladaPreparation` - vessel:RoastingPan
+- `Base.VFXEnchiladaEvolved` - vessel:RoastingPan
+- `Base.VFXPlateEnchilada` - vessel:Plate
+- `Base.VFXCheesecakePreparation` - vessel:BakingPan
+- `Base.VFXCheesecakeEvolved` - vessel:BakingPan
+- `Base.VFXCheesecakeSlice`
+- `Base.VFXMilkshakePreparation` - vessel:MilkshakeGlass
+- `Base.VFXMilkshakeEvolved` - vessel:MilkshakeGlass
+- `Base.VFXSushiPreparation`
+- `Base.VFXSushiEvolved`
+- `Base.VFXFriedRicePreparation` - vessel:Pan
+- `Base.VFXFriedRicePreparationForged` - vessel:PanForged
+- `Base.VFXFriedRiceEvolved` - vessel:Pan
+- `Base.VFXFriedRiceEvolvedForged` - vessel:PanForged
+- `Base.VFXBowlFriedRice` - vessel:Bowl
+- `Base.VFXBoneBrothPot` - vessel:Pot
+- `Base.VFXBoneBrothPotForged` - vessel:PotForged
+- `Base.VFXStockPot` - vessel:Pot
+- `Base.VFXStockPotForged` - vessel:PotForged
+- `Base.VFXSourdoughHotdog`
+- `Base.VFXSourdoughSausagedog`
+- `Base.VFXSausagedog`
+- `Base.VFXSourdoughBurger`
+- `Base.VFXSourdoughSandwich`
+- `Base.VFXSourdoughToast`
+- `Base.VFXRyeBreadSandwich`
+- `Base.VFXRyeBreadToast`
+- `Base.VFXRyeSourdoughSandwich`
+- `Base.VFXRyeSourdoughToast`
+- `Base.VFXPumpernickelSandwich`
+- `Base.VFXPumpernickelToast`
+- `Base.VFXBarleyBreadSandwich`
+- `Base.VFXBarleyBreadToast`
+- `Base.VFXBarleySourdoughSandwich`
+- `Base.VFXBarleySourdoughToast`
+- `Base.VFXBeerBreadSandwich`
+- `Base.VFXBeerBreadToast`
+- `Base.VFXMilkBreadSandwich`
+- `Base.VFXMilkBreadToast`
+- `Base.VFXBriocheSandwich`
+- `Base.VFXBriocheToast`
+- `Base.VFXFocacciaBreadSandwich`
+- `Base.VFXFocacciaBreadToast`
+- `Base.VFXHomemadeJam`
+- `Base.VFXHomemadeSauceTomato` - vessel:JarWithLid
+- `Base.VFXHomemadeSauceOil` - vessel:JarWithLid
+- `Base.VFXHomemadeSauceCream` - vessel:JarWithLid
+- `Base.VFXHomemadeSauceStock` - vessel:JarWithLid
+- `Base.VFXHomemadeSauceVinegar` - vessel:JarWithLid
+
+## vfx_items_food_fridgefreezer.txt (210)
+
+- `VFX.GroundBeefRavioli` - packaged
+- `VFX.PotGroundBeefRavioli` - vessel:Pot
+- `VFX.PotForgedGroundBeefRavioli` - vessel:PotForged
+- `VFX.SaucepanGroundBeefRavioli` - vessel:Saucepan
+- `VFX.CopperSaucepanGroundBeefRavioli` - vessel:SaucepanCopper
+- `VFX.BowlGroundBeefRavioli` - vessel:Bowl
+- `VFX.SpinachRicottaRavioli` - packaged
+- `VFX.PotSpinachRicottaRavioli` - vessel:Pot
+- `VFX.PotForgedSpinachRicottaRavioli` - vessel:PotForged
+- `VFX.SaucepanSpinachRicottaRavioli` - vessel:Saucepan
+- `VFX.CopperSaucepanSpinachRicottaRavioli` - vessel:SaucepanCopper
+- `VFX.BowlSpinachRicottaRavioli` - vessel:Bowl
+- `VFX.ThreeCheeseRavioli` - packaged
+- `VFX.PotThreeCheeseRavioli` - vessel:Pot
+- `VFX.PotForgedThreeCheeseRavioli` - vessel:PotForged
+- `VFX.SaucepanThreeCheeseRavioli` - vessel:Saucepan
+- `VFX.CopperSaucepanThreeCheeseRavioli` - vessel:SaucepanCopper
+- `VFX.BowlThreeCheeseRavioli` - vessel:Bowl
+- `VFX.PumpkinRavioli` - packaged
+- `VFX.PotPumpkinRavioli` - vessel:Pot
+- `VFX.PotForgedPumpkinRavioli` - vessel:PotForged
+- `VFX.SaucepanPumpkinRavioli` - vessel:Saucepan
+- `VFX.CopperSaucepanPumpkinRavioli` - vessel:SaucepanCopper
+- `VFX.BowlPumpkinRavioli` - vessel:Bowl
+- `VFX.LobsterRavioli` - packaged
+- `VFX.PotLobsterRavioli` - vessel:Pot
+- `VFX.PotForgedLobsterRavioli` - vessel:PotForged
+- `VFX.SaucepanLobsterRavioli` - vessel:Saucepan
+- `VFX.CopperSaucepanLobsterRavioli` - vessel:SaucepanCopper
+- `VFX.BowlLobsterRavioli` - vessel:Bowl
+- `VFX.ChickenMushroomRavioli` - packaged
+- `VFX.PotChickenMushroomRavioli` - vessel:Pot
+- `VFX.PotForgedChickenMushroomRavioli` - vessel:PotForged
+- `VFX.SaucepanChickenMushroomRavioli` - vessel:Saucepan
+- `VFX.CopperSaucepanChickenMushroomRavioli` - vessel:SaucepanCopper
+- `VFX.BowlChickenMushroomRavioli` - vessel:Bowl
+- `VFX.FourCheeseTortellini` - packaged
+- `VFX.PotFourCheeseTortellini` - vessel:Pot
+- `VFX.PotForgedFourCheeseTortellini` - vessel:PotForged
+- `VFX.SaucepanFourCheeseTortellini` - vessel:Saucepan
+- `VFX.CopperSaucepanFourCheeseTortellini` - vessel:SaucepanCopper
+- `VFX.BowlFourCheeseTortellini` - vessel:Bowl
+- `VFX.PepperedPorkTortellini` - packaged
+- `VFX.PotPepperedPorkTortellini` - vessel:Pot
+- `VFX.PotForgedPepperedPorkTortellini` - vessel:PotForged
+- `VFX.SaucepanPepperedPorkTortellini` - vessel:Saucepan
+- `VFX.CopperSaucepanPepperedPorkTortellini` - vessel:SaucepanCopper
+- `VFX.BowlPepperedPorkTortellini` - vessel:Bowl
+- `VFX.SpinachRicottaTortellini` - packaged
+- `VFX.PotSpinachRicottaTortellini` - vessel:Pot
+- `VFX.PotForgedSpinachRicottaTortellini` - vessel:PotForged
+- `VFX.SaucepanSpinachRicottaTortellini` - vessel:Saucepan
+- `VFX.CopperSaucepanSpinachRicottaTortellini` - vessel:SaucepanCopper
+- `VFX.BowlSpinachRicottaTortellini` - vessel:Bowl
+- `VFX.GroundBeefTortellini` - packaged
+- `VFX.PotGroundBeefTortellini` - vessel:Pot
+- `VFX.PotForgedGroundBeefTortellini` - vessel:PotForged
+- `VFX.SaucepanGroundBeefTortellini` - vessel:Saucepan
+- `VFX.CopperSaucepanGroundBeefTortellini` - vessel:SaucepanCopper
+- `VFX.BowlGroundBeefTortellini` - vessel:Bowl
+- `VFX.Hummus` - packaged
+- `VFX.BuffaloDip` - packaged
+- `VFX.FrenchOnionDip` - packaged
+- `VFX.SpinachArtichokeDip` - packaged
+- `VFX.BaconCheddarDip` - packaged
+- `VFX.SpaghettiMeatballsFrozenMeal` - packaged
+- `VFX.CottagePieFrozenMeal` - packaged
+- `VFX.ChickenPotPieFrozenMeal` - packaged
+- `VFX.MacNCheeseFrozenMeal` - packaged
+- `VFX.SalisburySteakFrozenMeal` - packaged
+- `VFX.RoastTurkeyFrozenMeal` - packaged
+- `VFX.MeatloafFrozenMeal` - packaged
+- `VFX.FrozenCheesePizza` - packaged
+- `VFX.CheesePizzaSlice`
+- `VFX.FrozenThreeMeatPizza` - packaged
+- `VFX.ThreeMeatPizzaSlice`
+- `VFX.FrozenPepperoniPizza` - packaged
+- `VFX.PepperoniPizzaSlice`
+- `VFX.FrozenBuffaloChickenPizza` - packaged
+- `VFX.BuffaloChickenPizzaSlice`
+- `VFX.FrozenSupremePizza` - packaged
+- `VFX.SupremePizzaSlice`
+- `VFX.PackagedCarrot` - packaged
+- `VFX.PackagedBeans` - packaged
+- `VFX.PackagedBroccoli` - packaged
+- `VFX.PackagedCauliflower` - packaged
+- `VFX.PackagedPumpkin` - packaged
+- `VFX.BagHashbrowns` - cant-eat
+- `VFX.BagWedges` - cant-eat
+- `VFX.BagOnionRings` - cant-eat
+- `VFX.Hashbrowns`
+- `VFX.Wedges`
+- `VFX.PineappleChunks` - packaged
+- `VFX.Blueberries` - packaged
+- `VFX.MangoChunks` - packaged
+- `VFX.WholeStrawberries` - packaged
+- `VFX.SlicedStrawberries` - packaged
+- `VFX.SlicedBananas` - packaged
+- `VFX.Raspberries` - packaged
+- `VFX.DarkSweetCherries` - packaged
+- `VFX.RedTartCherries` - packaged
+- `VFX.Blackberries` - packaged
+- `VFX.MixedFruit` - packaged
+- `VFX.BerryMedley` - packaged
+- `VFX.StrawberryBananaBlend` - packaged
+- `VFX.FrozenSausageRoll`
+- `VFX.FrozenMeatPie`
+- `VFX.FrozenBeefBurrito`
+- `VFX.FrozenChickenBurrito`
+- `VFX.FrozenBeanBurrito`
+- `VFX.BagChickenTenders` - cant-eat
+- `VFX.FrozenChickenTenders`
+- `VFX.BagMozzarellaSticks` - cant-eat
+- `VFX.FrozenMozzarellaSticks`
+- `VFX.FrozenEggRoll`
+- `VFX.PBJUncrustable_Box` - packaged, cant-eat
+- `VFX.PBJUncrustable`
+- `VFX.PBFUncrustable_Box` - packaged, cant-eat
+- `VFX.PBFUncrustable`
+- `VFX.CSUncrustable_Box` - packaged, cant-eat
+- `VFX.CSUncrustable`
+- `VFX.CHUncrustable_Box` - packaged, cant-eat
+- `VFX.CHUncrustable`
+- `VFX.CheesePizzaRoll_Box` - packaged, cant-eat
+- `VFX.CheesePizzaRoll`
+- `VFX.PepperoniPizzaRoll_Box` - packaged, cant-eat
+- `VFX.PepperoniPizzaRoll`
+- `VFX.SupremePizzaRoll_Box` - packaged, cant-eat
+- `VFX.SupremePizzaRoll`
+- `VFX.MeatLoversPizzaRoll_Box` - packaged, cant-eat
+- `VFX.MeatLoversPizzaRoll`
+- `VFX.SECBreakfastSandwich_Box` - packaged, cant-eat
+- `VFX.SECBreakfastSandwich`
+- `VFX.BECBreakfastSandwich_Box` - packaged, cant-eat
+- `VFX.BECBreakfastSandwich`
+- `VFX.TECBreakfastSandwich_Box` - packaged, cant-eat
+- `VFX.TECBreakfastSandwich`
+- `VFX.ECBreakfastSandwich_Box` - packaged, cant-eat
+- `VFX.ECBreakfastSandwich`
+- `VFX.CherryPopsicle` - packaged
+- `VFX.CherryPopsicleMelted` - packaged
+- `VFX.GrapePopsicle` - packaged
+- `VFX.GrapePopsicleMelted` - packaged
+- `VFX.OrangePopsicle` - packaged
+- `VFX.OrangePopsicleMelted` - packaged
+- `VFX.LimePopsicle` - packaged
+- `VFX.LimePopsicleMelted` - packaged
+- `VFX.StrawberryPopsicle` - packaged
+- `VFX.StrawberryPopsicleMelted` - packaged
+- `VFX.TropicalPopsicle` - packaged
+- `VFX.TropicalPopsicleMelted` - packaged
+- `VFX.BananaPopsicle` - packaged
+- `VFX.BananaPopsicleMelted` - packaged
+- `VFX.ChocolateIceCream` - packaged
+- `VFX.ChocolateIceCreamMelted` - packaged
+- `VFX.ChocolateChipIceCream` - packaged
+- `VFX.ChocolateChipIceCreamMelted` - packaged
+- `VFX.StrawberryIceCream` - packaged
+- `VFX.StrawberryIceCreamMelted` - packaged
+- `VFX.NeapolitanIceCream` - packaged
+- `VFX.NeapolitanIceCreamMelted` - packaged
+- `VFX.ButterPecanIceCream` - packaged
+- `VFX.ButterPecanIceCreamMelted` - packaged
+- `VFX.MintChocolateChipIceCream` - packaged
+- `VFX.MintChocolateChipIceCreamMelted` - packaged
+- `VFX.CookiesAndCreamIceCream` - packaged
+- `VFX.CookiesAndCreamIceCreamMelted` - packaged
+- `VFX.RockyRoadIceCream` - packaged
+- `VFX.RockyRoadIceCreamMelted` - packaged
+- `VFX.PistachioIceCream` - packaged
+- `VFX.PistachioIceCreamMelted` - packaged
+- `VFX.ChocolateIceCreamCone`
+- `VFX.ChocolateIceCreamConeMelted`
+- `VFX.ChocolateChipIceCreamCone`
+- `VFX.ChocolateChipIceCreamConeMelted`
+- `VFX.StrawberryIceCreamCone`
+- `VFX.StrawberryIceCreamConeMelted`
+- `VFX.NeapolitanIceCreamCone`
+- `VFX.NeapolitanIceCreamConeMelted`
+- `VFX.ButterPecanIceCreamCone`
+- `VFX.ButterPecanIceCreamConeMelted`
+- `VFX.MintChocolateChipIceCreamCone`
+- `VFX.MintChocolateChipIceCreamConeMelted`
+- `VFX.CookiesAndCreamIceCreamCone`
+- `VFX.CookiesAndCreamIceCreamConeMelted`
+- `VFX.RockyRoadIceCreamCone`
+- `VFX.RockyRoadIceCreamConeMelted`
+- `VFX.PistachioIceCreamCone`
+- `VFX.PistachioIceCreamConeMelted`
+- `VFX.HomemadeIceCreamCone`
+- `VFX.HomemadeIceCreamConeMelted`
+- `VFX.WholeFrozenPieApple`
+- `VFX.WholeFrozenPieCherry`
+- `VFX.WholeFrozenPieBlueberry`
+- `VFX.WholeFrozenPieStrawberry`
+- `VFX.WholeFrozenPiePeach`
+- `VFX.WholeFrozenPieMixedBerry`
+- `VFX.WholeFrozenPieLemonCream`
+- `VFX.WholeFrozenPieBlackberry`
+- `VFX.WholeFrozenPieRaspberry`
+- `VFX.BagWingsBuffalo` - packaged
+- `VFX.BagWingsBBQ` - packaged
+- `VFX.BagWingsHoneyBBQ` - packaged
+- `VFX.BagWingsGarlicParmesan` - packaged
+- `VFX.BagWingsSpicyCajun` - packaged
+- `VFX.BagWingsRanch` - packaged
+- `VFX.BagWingsHot` - packaged
+- `VFX.BagWingsCrispy` - packaged
+- `VFX.BagWingsCaribbeanJerk` - packaged
+- `VFX.BagWingsNatural` - packaged
+
+## vfx_items_food_fruitveg.txt (21)
+
+- `VFX.Apricot`
+- `VFX.GreenKiwi`
+- `VFX.GoldKiwi`
+- `VFX.Papaya`
+- `VFX.Plum`
+- `VFX.Pomegranate`
+- `VFX.PunnetBlackberries`
+- `VFX.PunnetBlueberries`
+- `VFX.Cranberries`
+- `VFX.Figs`
+- `VFX.Nectarines`
+- `VFX.PunnetRaspberries`
+- `VFX.Tangerines`
+- `VFX.BagGreenBeans`
+- `VFX.Beetroot`
+- `VFX.Asparagus`
+- `VFX.RedCabbage`
+- `VFX.SnowPeas`
+- `VFX.BokChoy`
+- `VFX.SlicedPotato`
+- `VFX.MashedPotato`
+
+## vfx_items_food_meat.txt (82)
+
+- `VFX.ChickenThighs`
+- `VFX.ChickenDrumsticks`
+- `VFX.WingBuffalo`
+- `VFX.WingBBQ`
+- `VFX.WingHoneyBBQ`
+- `VFX.WingGarlicParmesan`
+- `VFX.WingSpicyCajun`
+- `VFX.WingRanch`
+- `VFX.WingHot`
+- `VFX.WingCrispy`
+- `VFX.WingCaribbeanJerk`
+- `VFX.BeefBrisket`
+- `VFX.BeefShortRibs`
+- `VFX.BeefShank`
+- `VFX.PorkBelly`
+- `VFX.PorkRibs`
+- `VFX.LambLeg`
+- `VFX.VealCutlet`
+- `VFX.DuckBreast`
+- `VFX.SmokedSalmon` - packaged
+- `VFX.ImitationCrab` - packaged
+- `VFX.BlackPudding`
+- `VFX.PorkSausagePack` - packaged, cant-eat
+- `VFX.PorkSausage`
+- `VFX.BeefSausagePack` - packaged, cant-eat
+- `VFX.BeefSausage`
+- `VFX.BeefPorkSausagePack` - packaged, cant-eat
+- `VFX.BeefPorkSausage`
+- `VFX.ChickenSausagePack` - packaged, cant-eat
+- `VFX.ChickenSausage`
+- `VFX.SmokedSausagePack` - packaged, cant-eat
+- `VFX.SmokedSausage`
+- `VFX.SpicySausagePack` - packaged, cant-eat
+- `VFX.SpicySausage`
+- `VFX.ChorizoPack` - packaged, cant-eat
+- `VFX.Chorizo`
+- `VFX.CheeseSausagePack` - packaged, cant-eat
+- `VFX.CheeseSausage`
+- `VFX.BeefMeatballsBag` - packaged, cant-eat
+- `VFX.BeefMeatball`
+- `VFX.BeefMeatballHomemade`
+- `VFX.PorkMeatballsBag` - packaged, cant-eat
+- `VFX.PorkMeatball`
+- `VFX.PorkMeatballHomemade`
+- `VFX.VealMeatballsBag` - packaged, cant-eat
+- `VFX.VealMeatball`
+- `VFX.TurkeyMeatballsBag` - packaged, cant-eat
+- `VFX.TurkeyMeatball`
+- `VFX.TurkeyMeatballHomemade`
+- `VFX.ChickenMeatballsBag` - packaged, cant-eat
+- `VFX.ChickenMeatball`
+- `VFX.ChickenMeatballHomemade`
+- `VFX.MeatballVenison`
+- `VFX.MeatballRabbit`
+- `VFX.MeatballRodent`
+- `VFX.MeatballSmallBird`
+- `VFX.MeatballFish`
+- `VFX.MeatballSalmon`
+- `VFX.MeatballFrog`
+- `VFX.MeatballLamb`
+- `VFX.GroundChicken`
+- `VFX.GroundPork`
+- `VFX.GroundLamb`
+- `VFX.GroundTurkey`
+- `VFX.GroundVenison`
+- `VFX.GroundRabbit`
+- `VFX.GroundRodent`
+- `VFX.GroundSmallBird`
+- `VFX.GroundFish`
+- `VFX.GroundSalmon`
+- `VFX.GroundFrog`
+- `VFX.PattyVenison`
+- `VFX.PattyChicken`
+- `VFX.PattyPork`
+- `VFX.PattyLamb`
+- `VFX.PattyTurkey`
+- `VFX.PattyRabbit`
+- `VFX.PattyRodent`
+- `VFX.PattySmallBird`
+- `VFX.PattyFish`
+- `VFX.PattySalmon`
+- `VFX.PattyFrog`
+
+## vfx_items_food_pantry.txt (235)
+
+- `VFX.BoxPumpkinSoupSachets` - packaged, cant-eat
+- `VFX.PumpkinSoupSachet` - packaged
+- `VFX.BowlPumpkinSoup` - vessel:Bowl
+- `VFX.MugPumpkinSoup` - vessel:Mugl
+- `VFX.MugPumpkinSoup_Clay` - vessel:ClayMug
+- `VFX.MugPumpkinSoup_White` - vessel:MugWhite
+- `VFX.MugPumpkinSoup_Spiffo` - vessel:MugSpiffo
+- `VFX.BoxPeaAndHamSoupSachets` - packaged, cant-eat
+- `VFX.PeaAndHamSoupSachet` - packaged
+- `VFX.BowlPeaAndHamSoup` - vessel:Bowl
+- `VFX.MugPeaAndHamSoup` - vessel:Mugl
+- `VFX.MugPeaAndHamSoup_Clay` - vessel:ClayMug
+- `VFX.MugPeaAndHamSoup_White` - vessel:MugWhite
+- `VFX.MugPeaAndHamSoup_Spiffo` - vessel:MugSpiffo
+- `VFX.BoxChickenNoodleSoupSachets` - packaged, cant-eat
+- `VFX.ChickenNoodleSoupSachet` - packaged
+- `VFX.BowlChickenNoodleSoup` - vessel:Bowl
+- `VFX.MugChickenNoodleSoup` - vessel:Mugl
+- `VFX.MugChickenNoodleSoup_Clay` - vessel:ClayMug
+- `VFX.MugChickenNoodleSoup_White` - vessel:MugWhite
+- `VFX.MugChickenNoodleSoup_Spiffo` - vessel:MugSpiffo
+- `VFX.BoxTomatoSoupSachets` - packaged, cant-eat
+- `VFX.TomatoSoupSachet` - packaged
+- `VFX.BowlTomatoSoup` - vessel:Bowl
+- `VFX.MugTomatoSoup` - vessel:Mugl
+- `VFX.MugTomatoSoup_Clay` - vessel:ClayMug
+- `VFX.MugTomatoSoup_White` - vessel:MugWhite
+- `VFX.MugTomatoSoup_Spiffo` - vessel:MugSpiffo
+- `VFX.BoxChickenRamen` - packaged, cant-eat
+- `VFX.ChickenRamen` - packaged, cant-eat
+- `VFX.ChickenRamenFlavourSachet` - packaged
+- `VFX.BowlChickenRamen` - vessel:Bowl
+- `VFX.BoxBeefRamen` - packaged, cant-eat
+- `VFX.BeefRamen` - packaged, cant-eat
+- `VFX.BeefRamenFlavourSachet` - packaged
+- `VFX.BowlBeefRamen` - vessel:Bowl
+- `VFX.BoxShrimpRamen` - packaged, cant-eat
+- `VFX.ShrimpRamen` - packaged, cant-eat
+- `VFX.ShrimpRamenFlavourSachet` - packaged
+- `VFX.BowlShrimpRamen` - vessel:Bowl
+- `VFX.BoxPorkRamen` - packaged, cant-eat
+- `VFX.PorkRamen` - packaged, cant-eat
+- `VFX.PorkRamenFlavourSachet` - packaged
+- `VFX.BowlPorkRamen` - vessel:Bowl
+- `VFX.BoxHotAndSpicyRamen` - packaged, cant-eat
+- `VFX.HotAndSpicyRamen` - packaged, cant-eat
+- `VFX.HotAndSpicyRamenFlavourSachet` - packaged
+- `VFX.BowlHotAndSpicyRamen` - vessel:Bowl
+- `VFX.BoxSoySauceRamen` - packaged, cant-eat
+- `VFX.SoySauceRamen` - packaged, cant-eat
+- `VFX.SoySauceRamenFlavourSachet` - packaged
+- `VFX.BowlSoySauceRamen` - vessel:Bowl
+- `VFX.PMCheddarBroccoli` - packaged, cant-eat
+- `VFX.PMSaucepanCheddarBroccoli` - vessel:Saucepan
+- `VFX.PMCopperSaucepanCheddarBroccoli` - vessel:SaucepanCopper
+- `VFX.PMBowlCheddarBroccoli` - vessel:Bowl
+- `VFX.PMParmesan` - packaged, cant-eat
+- `VFX.PMSaucepanParmesan` - vessel:Saucepan
+- `VFX.PMCopperSaucepanParmesan` - vessel:SaucepanCopper
+- `VFX.PMBowlParmesan` - vessel:Bowl
+- `VFX.PMCreamyChicken` - packaged, cant-eat
+- `VFX.PMSaucepanCreamyChicken` - vessel:Saucepan
+- `VFX.PMCopperSaucepanCreamyChicken` - vessel:SaucepanCopper
+- `VFX.PMBowlCreamyChicken` - vessel:Bowl
+- `VFX.PMCreamyPesto` - packaged, cant-eat
+- `VFX.PMSaucepanCreamyPesto` - vessel:Saucepan
+- `VFX.PMCopperSaucepanCreamyPesto` - vessel:SaucepanCopper
+- `VFX.PMBowlCreamyPesto` - vessel:Bowl
+- `VFX.PMAlfredo` - packaged, cant-eat
+- `VFX.PMSaucepanAlfredo` - vessel:Saucepan
+- `VFX.PMCopperSaucepanAlfredo` - vessel:SaucepanCopper
+- `VFX.PMBowlAlfredo` - vessel:Bowl
+- `VFX.PMMacCheese` - packaged, cant-eat
+- `VFX.PMSaucepanMacCheese` - vessel:Saucepan
+- `VFX.PMCopperSaucepanMacCheese` - vessel:SaucepanCopper
+- `VFX.PMBowlMacCheese` - vessel:Bowl
+- `VFX.RMChicken` - packaged, cant-eat
+- `VFX.RMSaucepanChicken` - vessel:Saucepan
+- `VFX.RMCopperSaucepanChicken` - vessel:SaucepanCopper
+- `VFX.RMBowlChicken` - vessel:Bowl
+- `VFX.RMMexican` - packaged, cant-eat
+- `VFX.RMSaucepanMexican` - vessel:Saucepan
+- `VFX.RMCopperSaucepanMexican` - vessel:SaucepanCopper
+- `VFX.RMBowlMexican` - vessel:Bowl
+- `VFX.RMMedley` - packaged, cant-eat
+- `VFX.RMSaucepanMedley` - vessel:Saucepan
+- `VFX.RMCopperSaucepanMedley` - vessel:SaucepanCopper
+- `VFX.RMBowlMedley` - vessel:Bowl
+- `VFX.RMFried` - packaged, cant-eat
+- `VFX.RMSaucepanFried` - vessel:Saucepan
+- `VFX.RMCopperSaucepanFried` - vessel:SaucepanCopper
+- `VFX.RMBowlFried` - vessel:Bowl
+- `VFX.BrownRice` - packaged, cant-eat
+- `VFX.WaterSaucepanBrownRice` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperBrownRice` - vessel:SaucepanCopper
+- `VFX.WaterPotBrownRice` - vessel:Pot
+- `VFX.WaterPotForgedBrownRice` - vessel:PotForged
+- `VFX.BrownRiceBowl` - vessel:Bowl
+- `VFX.JasmineRice` - packaged, cant-eat
+- `VFX.WaterSaucepanJasmineRice` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperJasmineRice` - vessel:SaucepanCopper
+- `VFX.WaterPotJasmineRice` - vessel:Pot
+- `VFX.WaterPotForgedJasmineRice` - vessel:PotForged
+- `VFX.JasmineRiceBowl` - vessel:Bowl
+- `VFX.BasmatiRice` - packaged, cant-eat
+- `VFX.WaterSaucepanBasmatiRice` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperBasmatiRice` - vessel:SaucepanCopper
+- `VFX.WaterPotBasmatiRice` - vessel:Pot
+- `VFX.WaterPotForgedBasmatiRice` - vessel:PotForged
+- `VFX.BasmatiRiceBowl` - vessel:Bowl
+- `VFX.ArborioRice` - packaged, cant-eat
+- `VFX.WaterSaucepanArborioRice` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperArborioRice` - vessel:SaucepanCopper
+- `VFX.WaterPotArborioRice` - vessel:Pot
+- `VFX.WaterPotForgedArborioRice` - vessel:PotForged
+- `VFX.ArborioRiceBowl` - vessel:Bowl
+- `VFX.LasagnaSheets` - packaged
+- `VFX.LasagnaPreparation` - vessel:RoastingPan
+- `VFX.Macaroni` - packaged
+- `VFX.WaterSaucepanMacaroni` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperMacaroni` - vessel:SaucepanCopper
+- `VFX.WaterPotMacaroni` - vessel:Pot
+- `VFX.WaterPotForgedMacaroni` - vessel:PotForged
+- `VFX.MacaroniBowl` - vessel:Bowl
+- `VFX.Fettuccine` - packaged
+- `VFX.WaterSaucepanFettuccine` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperFettuccine` - vessel:SaucepanCopper
+- `VFX.WaterPotFettuccine` - vessel:Pot
+- `VFX.WaterPotForgedFettuccine` - vessel:PotForged
+- `VFX.FettuccineBowl` - vessel:Bowl
+- `VFX.Penne` - packaged
+- `VFX.WaterSaucepanPenne` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperPenne` - vessel:SaucepanCopper
+- `VFX.WaterPotPenne` - vessel:Pot
+- `VFX.WaterPotForgedPenne` - vessel:PotForged
+- `VFX.PenneBowl` - vessel:Bowl
+- `VFX.Gnocchi` - packaged
+- `VFX.WaterSaucepanGnocchi` - vessel:Saucepan
+- `VFX.WaterSaucepanCopperGnocchi` - vessel:SaucepanCopper
+- `VFX.WaterPotGnocchi` - vessel:Pot
+- `VFX.WaterPotForgedGnocchi` - vessel:PotForged
+- `VFX.GnocchiBowl` - vessel:Bowl
+- `VFX.SpicyMarinara` - packaged
+- `VFX.MeatSauce` - packaged
+- `VFX.BasilPestoSauce` - packaged
+- `VFX.AlfredoSauce` - packaged
+- `VFX.BechamelSauce` - packaged
+- `VFX.HomemadeMarinara` - cant-eat
+- `VFX.HomemadeMarinara_Open` - vessel:EmptyJar
+- `VFX.HomemadeSpicyMarinara` - cant-eat
+- `VFX.HomemadeSpicyMarinara_Open` - vessel:EmptyJar
+- `VFX.HomemadeMeatSauce` - cant-eat
+- `VFX.HomemadeMeatSauce_Open` - vessel:EmptyJar
+- `VFX.HomemadeBasilPestoSauce` - cant-eat
+- `VFX.HomemadeBasilPestoSauce_Open` - vessel:EmptyJar
+- `VFX.HomemadeAlfredoSauce` - cant-eat
+- `VFX.HomemadeAlfredoSauce_Open` - vessel:EmptyJar
+- `VFX.HomemadeBechamelSauce` - cant-eat
+- `VFX.HomemadeBechamelSauce_Open` - vessel:EmptyJar
+- `VFX.TomatoPulpPot` - vessel:Pot
+- `VFX.TomatoPulpPotForged` - vessel:PotForged
+- `VFX.TomatoPastePot` - vessel:Pot
+- `VFX.TomatoPastePotForged` - vessel:PotForged
+- `VFX.Croutons` - packaged
+- `VFX.CroutonsGarlic` - packaged
+- `VFX.CroutonsHerbButter` - packaged
+- `VFX.CroutonsCheddar` - packaged
+- `VFX.ApricotJam` - vessel:EmptyJamJar, packaged
+- `VFX.StrawberryJam` - vessel:EmptyJamJar, packaged
+- `VFX.GrapeJam` - vessel:EmptyJamJar, packaged
+- `VFX.RaspberryJam` - vessel:EmptyJamJar, packaged
+- `VFX.PeachJam` - vessel:EmptyJamJar, packaged
+- `VFX.BlackberryJam` - vessel:EmptyJamJar, packaged
+- `VFX.BlueberryJam` - vessel:EmptyJamJar, packaged
+- `VFX.LemonMarmalade` - vessel:EmptyJamJar, packaged
+- `VFX.HazelnutSpread` - vessel:EmptyJamJar, packaged
+- `VFX.AppleButter` - vessel:EmptyJamJar, packaged
+- `VFX.CinnamonButter` - vessel:EmptyJamJar, packaged
+- `VFX.MapleButter` - vessel:EmptyJamJar, packaged
+- `VFX.CheeseSpread` - vessel:EmptyJamJar, packaged
+- `VFX.LiverSpread` - vessel:EmptyJamJar, packaged
+- `VFX.OatyOs` - packaged
+- `VFX.OatyOsBowl` - vessel:Bowl
+- `VFX.HoneyOatyOs` - packaged
+- `VFX.HoneyOatyOsBowl` - vessel:Bowl
+- `VFX.RiceKrisps` - packaged
+- `VFX.RiceKrispsBowl` - vessel:Bowl
+- `VFX.FrostyCrunch` - packaged
+- `VFX.FrostyCrunchBowl` - vessel:Bowl
+- `VFX.FruityLoops` - packaged
+- `VFX.FruityLoopsBowl` - vessel:Bowl
+- `VFX.UnluckyCharms` - packaged
+- `VFX.UnluckyCharmsBowl` - vessel:Bowl
+- `VFX.AdmiralChomp` - packaged
+- `VFX.AdmiralChompBowl` - vessel:Bowl
+- `VFX.CocoaPuffs` - packaged
+- `VFX.CocoaPuffsBowl` - vessel:Bowl
+- `VFX.Wheaties` - packaged
+- `VFX.WheatiesBowl` - vessel:Bowl
+- `VFX.HoneyOatsGranola` - packaged
+- `VFX.HoneyOatsGranolaBowl` - vessel:Bowl
+- `VFX.FruitNutGranola` - packaged
+- `VFX.FruitNutGranolaBowl` - vessel:Bowl
+- `VFX.MaplePecanGranola` - packaged
+- `VFX.MaplePecanGranolaBowl` - vessel:Bowl
+- `VFX.CoconutAlmondGranola` - packaged
+- `VFX.CoconutAlmondGranolaBowl` - vessel:Bowl
+- `VFX.ChocolateChipGranola` - packaged
+- `VFX.ChocolateChipGranolaBowl` - vessel:Bowl
+- `VFX.RolledOats`
+- `VFX.PowderedSugar`
+- `VFX.VanillaExtract` - packaged
+- `VFX.Sprinkles` - packaged
+- `VFX.Breadcrumbs` - packaged
+- `VFX.Molasses`
+- `VFX.SugarBeetPulpPot` - vessel:Pot
+- `VFX.SugarBeetPulpPotForged` - vessel:PotForged
+- `VFX.SugarBeetSyrupPot` - vessel:Pot
+- `VFX.SugarBeetSyrupPotForged` - vessel:PotForged
+- `VFX.SugarBeetMolassesPot` - vessel:Pot
+- `VFX.SugarBeetMolassesPotForged` - vessel:PotForged
+- `VFX.SugarBeetSugar`
+- `VFX.RyeFlour` - cant-eat
+- `VFX.BarleyFlour` - cant-eat
+- `VFX.OatFlour` - cant-eat
+- `VFX.AcornFlour` - cant-eat
+- `VFX.SeasoningMixWingsBuffalo` - packaged, cant-eat
+- `VFX.SeasoningMixWingsBBQ` - packaged, cant-eat
+- `VFX.SeasoningMixWingsHoneyBBQ` - packaged, cant-eat
+- `VFX.SeasoningMixWingsGarlicParmesan` - packaged, cant-eat
+- `VFX.SeasoningMixWingsSpicyCajun` - packaged, cant-eat
+- `VFX.SeasoningMixWingsRanch` - packaged, cant-eat
+- `VFX.SeasoningMixWingsHot` - packaged, cant-eat
+- `VFX.SeasoningMixWingsCrispy` - packaged, cant-eat
+- `VFX.SeasoningMixWingsCaribbeanJerk` - packaged, cant-eat
+
+## vfx_items_food_seasoning.txt (60)
+
+- `VFX.Allspice`
+- `VFX.BayLeaves`
+- `VFX.Cardamom`
+- `VFX.CayennePepper`
+- `VFX.CelerySalt`
+- `VFX.ChiliFlakes`
+- `VFX.CinnamonSugar`
+- `VFX.Cloves`
+- `VFX.Cumin`
+- `VFX.CurryPowder`
+- `VFX.Dill`
+- `VFX.FennelSeeds`
+- `VFX.GaramMasala`
+- `VFX.GarlicSalt`
+- `VFX.GroundChili`
+- `VFX.GroundGinger`
+- `VFX.MustardPowder`
+- `VFX.Nutmeg`
+- `VFX.OnionFlakes`
+- `VFX.Paprika`
+- `VFX.SmokedPaprika`
+- `VFX.WhitePepper`
+- `VFX.BarbequeRub`
+- `VFX.CajunSeasoning`
+- `VFX.ChineseFiveSpice`
+- `VFX.ItalianHerbsSeasoning`
+- `VFX.LemonPepperSeasoning`
+- `VFX.MemphisBarbequeRub`
+- `VFX.OldBaySeasoning`
+- `VFX.PoultrySeasoning`
+- `VFX.PumpkinSpiceSeasoning`
+- `VFX.RanchSeasoning`
+- `VFX.SteakhouseSeasoning`
+- `VFX.TexMexSeasoning`
+- `VFX.BeefBouillonCube`
+- `VFX.FishBouillonCube`
+- `VFX.VegetableBouillonCube`
+- `VFX.SesameSeeds`
+- `VFX.HoneyBBQSauce` - packaged
+- `VFX.Aioli` - packaged
+- `VFX.Ranch` - packaged
+- `VFX.ChipotleSauce` - packaged
+- `VFX.BuffaloSauce` - packaged
+- `VFX.SweetChiliSauce` - packaged
+- `VFX.TartarSauce` - packaged
+- `VFX.CocktailSauce` - packaged
+- `VFX.AppleSauce` - packaged
+- `VFX.CranberrySauce` - packaged
+- `VFX.Horseradish` - packaged
+- `VFX.DijonMustard` - packaged
+- `VFX.SpicyBrownMustard` - packaged
+- `VFX.HoneyMustard` - packaged
+- `VFX.SweetOnionRelish` - packaged
+- `VFX.TomatoRelish` - packaged
+- `VFX.PickleRelish` - packaged
+- `VFX.LemonJuice` - packaged
+- `VFX.LimeJuice` - packaged
+- `VFX.CaesarSaladDressing` - packaged
+- `VFX.ColeslawDressing` - packaged
+- `VFX.Vinaigrette` - packaged
+
+## vfx_items_food_snacks.txt (126)
+
+- `VFX.ZebraCakesBox` - packaged, cant-eat
+- `VFX.SwissRollsBox` - packaged, cant-eat
+- `VFX.SwissRoll`
+- `VFX.FudgeRoundsBox` - packaged, cant-eat
+- `VFX.FudgeRound`
+- `VFX.CoffeeCakesBox` - packaged, cant-eat
+- `VFX.CoffeeCake`
+- `VFX.CosmicBrowniesBox` - packaged, cant-eat
+- `VFX.CosmicBrownie`
+- `VFX.OatmealCremePiesBox` - packaged, cant-eat
+- `VFX.OatmealCremePie`
+- `VFX.RiceCakesLightlySalted` - packaged
+- `VFX.RiceCakesCheddar` - packaged
+- `VFX.RiceCakesRanch` - packaged
+- `VFX.RiceCakesAppleCinnamon` - packaged
+- `VFX.StrawberryStrudelsBox` - packaged, cant-eat
+- `VFX.PackagedStrawberryStrudel` - packaged, cant-eat
+- `VFX.StrawberryToasterStrudel`
+- `VFX.CherryStrudelsBox` - packaged, cant-eat
+- `VFX.PackagedCherryStrudel` - packaged, cant-eat
+- `VFX.CherryToasterStrudel`
+- `VFX.BlueberryStrudelsBox` - packaged, cant-eat
+- `VFX.PackagedBlueberryStrudel` - packaged, cant-eat
+- `VFX.BlueberryToasterStrudel`
+- `VFX.CookiesAndCreamStrudelsBox` - packaged, cant-eat
+- `VFX.PackagedCookiesAndCreamStrudel` - packaged, cant-eat
+- `VFX.CookiesAndCreamToasterStrudel`
+- `VFX.BrownSugarStrudelsBox` - packaged, cant-eat
+- `VFX.PackagedBrownSugarStrudel` - packaged, cant-eat
+- `VFX.BrownSugarToasterStrudel`
+- `VFX.OatGranolaBar` - packaged
+- `VFX.ChocolateChipGranolaBar` - packaged
+- `VFX.NuttyGranolaBar` - packaged
+- `VFX.AlmondGranolaBar` - packaged
+- `VFX.AlmondGranolaBarBox` - packaged, cant-eat
+- `VFX.ChocolateChipGranolaBarBox` - packaged, cant-eat
+- `VFX.NuttyGranolaBarBox` - packaged, cant-eat
+- `VFX.OatGranolaBarBox` - packaged, cant-eat
+- `VFX.PeanutButterGranolaBarBox` - packaged, cant-eat
+- `VFX.HoneyBarbecueChips` - packaged
+- `VFX.CheddarChips` - packaged
+- `VFX.DillPickleChips` - packaged
+- `VFX.RanchChips` - packaged
+- `VFX.RitzCrackers` - packaged
+- `VFX.WheatThins` - packaged
+- `VFX.CheezItz` - packaged
+- `VFX.Goldfish` - packaged
+- `VFX.ChocolatePuddingBox` - packaged, cant-eat
+- `VFX.ChocolatePuddingCup` - packaged
+- `VFX.VanillaPuddingBox` - packaged, cant-eat
+- `VFX.VanillaPuddingCup` - packaged
+- `VFX.CustardPuddingBox` - packaged, cant-eat
+- `VFX.CustardPuddingCup` - packaged
+- `VFX.StrawberryPuddingBox` - packaged, cant-eat
+- `VFX.StrawberryPuddingCup` - packaged
+- `VFX.BananaCreamPuddingBox` - packaged, cant-eat
+- `VFX.BananaCreamPuddingCup` - packaged
+- `VFX.StrawberryJelloBox` - packaged, cant-eat
+- `VFX.StrawberryJelloCup` - packaged
+- `VFX.LemonLimeJelloBox` - packaged, cant-eat
+- `VFX.LemonLimeJelloCup` - packaged
+- `VFX.OrangeJelloBox` - packaged, cant-eat
+- `VFX.OrangeJelloCup` - packaged
+- `VFX.CherryJelloBox` - packaged, cant-eat
+- `VFX.CherryJelloCup` - packaged
+- `VFX.PineappleJelloBox` - packaged, cant-eat
+- `VFX.PineappleJelloCup` - packaged
+- `VFX.BerryBlueJelloBox` - packaged, cant-eat
+- `VFX.BerryBlueJelloCup` - packaged
+- `VFX.RaspberryJelloBox` - packaged, cant-eat
+- `VFX.RaspberryJelloCup` - packaged
+- `VFX.LimeJelloBox` - packaged, cant-eat
+- `VFX.LimeJelloCup` - packaged
+- `VFX.PeachJelloBox` - packaged, cant-eat
+- `VFX.PeachJelloCup` - packaged
+- `VFX.GrapeJelloBox` - packaged, cant-eat
+- `VFX.GrapeJelloCup` - packaged
+- `VFX.LemonJelloBox` - packaged, cant-eat
+- `VFX.LemonJelloCup` - packaged
+- `VFX.PeachSyrupFruitBox` - packaged, cant-eat
+- `VFX.PeachSyrupFruitCup` - packaged
+- `VFX.PeachJellyFruitBox` - packaged, cant-eat
+- `VFX.PeachJellyFruitCup` - packaged
+- `VFX.PearSyrupFruitBox` - packaged, cant-eat
+- `VFX.PearSyrupFruitCup` - packaged
+- `VFX.PearJellyFruitBox` - packaged, cant-eat
+- `VFX.PearJellyFruitCup` - packaged
+- `VFX.FruitSaladSyrupFruitBox` - packaged, cant-eat
+- `VFX.FruitSaladSyrupFruitCup` - packaged
+- `VFX.FruitSaladJellyFruitBox` - packaged, cant-eat
+- `VFX.FruitSaladJellyFruitCup` - packaged
+- `VFX.MandarinSyrupFruitBox` - packaged, cant-eat
+- `VFX.MandarinSyrupFruitCup` - packaged
+- `VFX.MandarinJellyFruitBox` - packaged, cant-eat
+- `VFX.MandarinJellyFruitCup` - packaged
+- `VFX.PineappleSyrupFruitBox` - packaged, cant-eat
+- `VFX.PineappleSyrupFruitCup` - packaged
+- `VFX.PineappleJellyFruitBox` - packaged, cant-eat
+- `VFX.PineappleJellyFruitCup` - packaged
+- `VFX.TropicalSyrupFruitBox` - packaged, cant-eat
+- `VFX.TropicalSyrupFruitCup` - packaged
+- `VFX.TropicalJellyFruitBox` - packaged, cant-eat
+- `VFX.TropicalJellyFruitCup` - packaged
+- `VFX.DriedAppleSlices` - packaged
+- `VFX.DriedSultanas` - packaged
+- `VFX.DriedDates` - packaged
+- `VFX.DriedApricots` - packaged
+- `VFX.DriedCranberries` - packaged
+- `VFX.DriedMangoSlices` - packaged
+- `VFX.DriedPrunes` - packaged
+- `VFX.DriedPineapple` - packaged
+- `VFX.DriedBananaChips` - packaged
+- `VFX.MixedNuts` - packaged
+- `VFX.Almonds` - packaged
+- `VFX.Cashews` - packaged
+- `VFX.Hazelnuts` - packaged
+- `VFX.Pecans` - packaged
+- `VFX.Pistachios` - packaged
+- `VFX.Walnuts` - packaged
+- `VFX.PineNuts` - packaged
+- `VFX.ClassicTrailMix` - packaged
+- `VFX.CandyCrunchTrailMix` - packaged
+- `VFX.TropicalTrailMix` - packaged
+- `VFX.MountainTrailMix` - packaged
+- `VFX.EnergyTrailMix` - packaged
+- `VFX.BreakfastTrailMix` - packaged

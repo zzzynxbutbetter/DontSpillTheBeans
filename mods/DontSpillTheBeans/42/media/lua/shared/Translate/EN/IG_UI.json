@@ -1,0 +1,12 @@
+{
+    "IGUI_DontSpillTheBeans_WasherSoiled": "Empty the spilled contents out of the bag first",
+    "IGUI_DontSpillTheBeans_SpilledIn": "Something spilled in my %1.",
+    "IGUI_DontSpillTheBeans_SpilledSeveral": "Something spilled in several places.",
+    "IGUI_DontSpillTheBeans_SpilledVehicle": "Something spilled in my car.",
+    "IGUI_DontSpillTheBeans_Pockets": "pockets",
+    "IGUI_DontSpillTheBeans_ScaldedIn": "Ow! Something hot spilled in my %1!",
+    "IGUI_DontSpillTheBeans_ScaldedSeveral": "Ow! Something hot spilled in several places!",
+    "IGUI_DontSpillTheBeans_SoakedIn": "Ow! Something hot soaked through my %1!",
+    "IGUI_DontSpillTheBeans_SoakedSeveral": "Ow! Something hot soaked through my bags!",
+    "IGUI_DontSpillTheBeans_Fizzed": "It foamed over!"
+}
