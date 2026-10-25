@@ -19,8 +19,8 @@ require "DSTB_Consuming"
 local DSTB = DontSpillTheBeans
 local Config = DSTB.Config
 
--- The player's preference, in Options > Mods (a tick box per player, not a server setting). The server learns it from the "prefs" command.
-local holdTick = DSTB.Options.page and DSTB.Options.page:addTickBox("HoldOpened", "Hold opened food and drinks while eating or drinking part of them", true,
+-- The player's preference, in Options > Mods (a tick box per player, not a server setting). Keep the label short: the Mod Manager mod's options screen centres label plus control as one block, and a wider one than the panel runs off its left edge. The server learns it from the "prefs" command.
+local holdTick = DSTB.Options.page and DSTB.Options.page:addTickBox("HoldOpened", "Hold opened food and drinks in hand", true,
     "Eating or drinking only some of an opened jar, tin, can or bottle, or of a packet, keeps it in your hands, so what is left does not go back into the bag, where it would spill. When it is used up the empty one goes back to where it came from. Off: it goes back into the bag as in the base game.") or nil
 DSTB.Prefs.local_ = function() return holdTick == nil or holdTick:getValue() end
 
