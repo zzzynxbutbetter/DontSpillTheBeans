@@ -141,6 +141,59 @@ Commands.emptySpilled = function(player, args)
     shareSound(player)
 end
 
+-- "Reseal Jar": the opened jar (Config.Reseal) becomes the closed jar again, with what is left in it, and takes a jar lid.
+Commands.resealJar = function(player, args)
+    if type(args) ~= "table" or type(args.id) ~= "number" or not DSTB.resealEnabled() then return end
+    if player:getVehicle() then return end
+    local inv = player:getInventory()
+    local open = inv:getItemWithIDRecursiv(args.id)
+    local closedType = open and Config.Reseal[open:getFullType()]
+    if not closedType then return end
+    local openFluid = open:getFluidContainer()   -- jars of juice are fluid containers, jars of food are Food
+    if not (instanceof(open, "Food") or (openFluid and not openFluid:isEmpty())) then return end
+    local lid = inv:getFirstTypeRecurse(Config.ResealLid)
+    if not lid then return end
+
+    local cont = open:getContainer()
+    local closed = cont and cont:AddItem(closedType)
+    if not closed then return end
+    local md = closed:getModData()
+    md.DSTB_resealed = true
+    local closedFluid = closed:getFluidContainer()
+    if openFluid and closedFluid then
+        closedFluid:copyFluidsFrom(openFluid)   -- what is left in the jar, whatever it is by now; opening it again hands it back (see DSTB_ResealCraft)
+    elseif instanceof(open, "Food") then
+        -- What is left, kept on the closed jar and put back into the jar that opening it makes (the recipes that open jars do
+        -- not all carry it over). The closed jar's own hunger is left alone: it decides how many uses the jar counts as.
+        md.DSTB_left = {
+            hung = open:getHungChange(), thirst = open:getThirstChangeUnmodified(), cal = open:getCalories(),
+            carb = open:getCarbohydrates(), lip = open:getLipids(), prot = open:getProteins(),
+        }
+        -- The closed jar's card shows what is left too (hunger only where the jar has any of its own, see above).
+        if instanceof(closed, "Food") then
+            if closed:getBaseHunger() ~= 0 then closed:setHungChange(md.DSTB_left.hung) end
+            if closed:getThirstChangeUnmodified() ~= 0 then closed:setThirstChange(md.DSTB_left.thirst) end
+            closed:setCalories(md.DSTB_left.cal)
+            closed:setCarbohydrates(md.DSTB_left.carb)
+            closed:setLipids(md.DSTB_left.lip)
+            closed:setProteins(md.DSTB_left.prot)
+        end
+    end
+    if instanceof(closed, "Food") and instanceof(open, "Food") then
+        closed:setAge(open:getAge() / math.max(1, open:getOffAgeMax()) * closed:getOffAgeMax())   -- it has spoiled as far along as the open one had
+    end
+    md.LidCondition = lid:getCondition()   -- opening it again hands the lid back in this condition (RecipeCodeOnCreate.applyLidCondition)
+    cont:Remove(open)
+    sendRemoveItemFromContainer(cont, open)
+    local lidCont = lid:getContainer()
+    lidCont:Remove(lid)
+    sendRemoveItemFromContainer(lidCont, lid)
+    sendAddItemToContainer(cont, closed)
+    syncItemFields(player, closed)
+    syncItemModData(player, closed)
+    shareSound(player)
+end
+
 -- Debug helpers: admins in MP, anyone in single player.
 local function debugAllowed(player)
     if isServer() then

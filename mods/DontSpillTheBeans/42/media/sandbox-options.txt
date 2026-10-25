@@ -156,6 +156,12 @@ option DontSpillTheBeans.AutoEquipAtFull
 	page = DontSpillTheBeans, translation = DontSpillTheBeans_AutoEquipAtFull,
 }
 
+option DontSpillTheBeans.ResealJars
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_ResealJars,
+}
+
 option DontSpillTheBeans.SectionVehicles
 {
 	type = boolean, default = false,

@@ -440,6 +440,21 @@ end
 -- once opened, i.e. any amount missing. Keys are item full types. Filled in by the generated DSTB_Compat_*_Containers files.
 DSTB.Config.SealedWhenFull = {}
 
+-- Jars that can be resealed after opening. Reseal: open jar full type -> the closed jar it came from; SealedJars: the
+-- closed ones (the values), which never spill. Filled in by the generated DSTB_Compat_Reseal, read from the recipes
+-- that open the jars (tools/food-rules/export-reseal.py). Resealing needs a Base.JarLid, which opening returns.
+DSTB.Config.Reseal = {}
+DSTB.Config.ResealRecipe = {}   -- open jar -> full name of the craft recipe that opens it
+DSTB.Config.OpenedTins = {}   -- open tins (what opening a closed tin makes): held in the hands while eaten from, see DSTB_Hands
+DSTB.Config.SealedJars = {}
+DSTB.Config.ResealLid = "Base.JarLid"
+
+-- Whether an opened jar can be resealed (needs a jar lid), ResealJars sandbox option.
+function DSTB.resealEnabled()
+    local sv = DSTB.getSandbox()
+    return sv == nil or sv.ResealJars ~= false
+end
+
 -- Liquid foods (tea, coffee, soups, stews...): they spill at the liquid rates and wet what they spill on as well as
 -- stain it, at the volume estimated from its hunger and thirst (see drinkLitres in DSTB_Spill.lua). Filled in by the
 -- generated DSTB_Compat_* files from the "Liquid" flag of the food markup pages; nothing is guessed from the item.

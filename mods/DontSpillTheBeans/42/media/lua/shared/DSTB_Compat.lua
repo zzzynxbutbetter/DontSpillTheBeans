@@ -16,3 +16,4 @@ require "DSTB_Compat_AuthZ"                -- Authentic Z (2335368829): Current,
 require "DSTB_Compat_AuthZ_Containers"
 require "DSTB_Compat_LTPE"                 -- Long Term Preservation Extended (3597673472): the main mod and its eight DLC mods
 require "DSTB_Compat_LTPE_Containers"
+require "DSTB_Compat_Reseal"               -- jars that can be resealed after opening: the game, Vanilla Foods Expanded and Long Term Preservation Extended

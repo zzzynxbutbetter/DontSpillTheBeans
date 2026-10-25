@@ -103,6 +103,12 @@ def compat_rules(file, name):
     return [i for m in re.finditer(r'rule\("%s", \{(.*?)\n\}\)' % name, s, re.S) for i in re.findall(r'"([^"]+)"', m.group(1))]
 
 
+def sealed_jars():
+    """Closed jars of DSTB_Compat_Reseal.lua (the values of its pairs): exempt by rule, like any closed jar."""
+    path = os.path.join(os.path.dirname(CONFIG), 'DSTB_Compat_Reseal.lua')
+    return set(re.findall(r'\] = "([^"]+)"', open(path, encoding='utf8').read())) if os.path.exists(path) else set()
+
+
 def config_rules():
     """Food rules already in force from the vanilla compat module: {fullType: 'exempt' | 'whole'}."""
     rules = {}
@@ -146,6 +152,7 @@ def build(key):
     items = parse_items(files)
     names = read_names(cfg['names'])
     rules = config_rules()
+    jars = sealed_jars()
     vessels = open_vessels()
     textures = {}
     for d in cfg['textures']:
@@ -167,7 +174,7 @@ def build(key):
             auto = 'no nutrition: ignored by rule'
         elif not rep and p.get('CannedFood') == 'true':
             auto = 'closed can: exempt by rule'
-        elif not rep and 'preservedfood' in tags:
+        elif not rep and ('preservedfood' in tags or full in jars):
             auto = 'closed jar: exempt by rule'
         short = full.split('.', 1)[1]
         flags = []

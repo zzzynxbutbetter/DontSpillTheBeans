@@ -17,7 +17,7 @@ local MAX_NEST_DEPTH = 4
 -- is what ReplaceOnUse is), or home-canned preserved food.
 local function isClosedPackage(item)
     if item:getReplaceOnUse() then return false end
-    return item:getStringItemType() == "CannedFood" or item:hasTag(ItemTag.PRESERVED_FOOD)
+    return item:getStringItemType() == "CannedFood" or item:hasTag(ItemTag.PRESERVED_FOOD) or Config.SealedJars[item:getFullType()] == true
 end
 
 -- Whether a Food item has any nutrition to lose. Unpackable bundles (hotdog pack, bun bags, candy package) are

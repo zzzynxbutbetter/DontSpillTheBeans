@@ -162,6 +162,8 @@
     "Sandbox_DontSpillTheBeans_FoamInheritPercent_tooltip": "Foam from a fizzy drink wets and stains the garments in order, and each next one gets a share of what the one before it got. This is the most it passes on, when the foam soaks the first garment through; a small foam passes on much less and stays on the first garment or two. 0 = only the first garment. Default 60.",
     "Sandbox_DontSpillTheBeans_AutoEquipAtFull": "Hold \"At 100%%\" items when eating or drinking part of them",
     "Sandbox_DontSpillTheBeans_AutoEquipAtFull_tooltip": "Eating or drinking only some of an \"At 100%%\" item (a full bottle, an unopened packet) first takes it into your hands, so what is left does not go back into the bag, where it would spill: it goes into a free hand, or replaces the primary hand item (a two-handed item empties both hands). Turn off for vanilla behaviour: the item goes back where it was. Default on.",
+    "Sandbox_DontSpillTheBeans_ResealJars": "Reseal opened jars",
+    "Sandbox_DontSpillTheBeans_ResealJars_tooltip": "An opened jar can be closed again with a jar lid (opening a jar gives you the lid): it becomes a closed jar with what is left in it, whatever that is, and opening it again gives that back. A closed jar never spills. Turn off to keep opened jars open for good. Default on.",
     "Sandbox_DontSpillTheBeans_GracefulReducePercent": "Graceful: less spilled and foamed (%%)",
     "Sandbox_DontSpillTheBeans_GracefulReducePercent_tooltip": "A Graceful character loses this much less to spilling on foot and to drinks foaming over. 50 = 50%% less. Default 50.",
     "Sandbox_DontSpillTheBeans_ClumsyIncreasePercent": "Clumsy: more spilled and foamed (%%)",
