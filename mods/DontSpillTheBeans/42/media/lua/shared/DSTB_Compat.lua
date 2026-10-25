@@ -14,3 +14,5 @@ require "DSTB_Compat_MRE"                  -- MRE Mod (3765409550)
 require "DSTB_Compat_MRE_Containers"
 require "DSTB_Compat_AuthZ"                -- Authentic Z (2335368829): Current, Backpacks+ and Lite
 require "DSTB_Compat_AuthZ_Containers"
+require "DSTB_Compat_LTPE"                 -- Long Term Preservation Extended (3597673472): the main mod and its eight DLC mods
+require "DSTB_Compat_LTPE_Containers"

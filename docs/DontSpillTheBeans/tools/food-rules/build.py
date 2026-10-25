@@ -29,6 +29,9 @@ def item_sprites(pack):
         _PACK_CACHE[pack] = {k.lower(): v for k, v in read_pack(pack, want=lambda n: n.startswith('Item_')).items()}
     return _PACK_CACHE[pack]
 
+LTPE_MODS = [('', '42.20'), ('BDA', '42.20'), ('BSS', '42.20'), ('CB', '42.20'), ('HCB', '42.20'), ('HM', '42.20'), ('KW', '42.21'),
+             ('TPT', '42.20'), ('VFX', '42.20')]
+
 MODS = {
     # Vanilla: rows are editable (not locked to the rules already in DSTB_Config.lua); import the current-rules progress file to see them.
     'Vanilla': dict(
@@ -57,6 +60,13 @@ MODS = {
         scripts=[W + '2335368829/mods/Authentic Z - %s/42/media/scripts/**/*.txt' % v for v in ('Current', 'Backpacks+', 'Lite')],
         textures=[W + '2335368829/mods/Authentic Z - %s/%s/media/textures' % (v, d) for v in ('Current', 'Backpacks+', 'Lite') for d in ('42', 'common')],
         names=[W + '2335368829/mods/Authentic Z - %s/42/media/lua/shared/Translate/EN/ItemName.json' % v for v in ('Current', 'Backpacks+', 'Lite')]),
+    # Long Term Preservation Extended: one Workshop item holding the main mod and eight DLC mods, each read at the newest
+    # version folder the game would load (42.20; Knox Wildlife has 42.21). The 42.12 / 42.13 folders are legacy.
+    'LTPE': dict(
+        title='Long Term Preservation Extended', workshop='3597673472',
+        scripts=[W + '3597673472/mods/LongTermPreservationExtended%s/%s/media/scripts/**/*.txt' % (s, v) for s, v in LTPE_MODS],
+        textures=[W + '3597673472/mods/LongTermPreservationExtended%s/common/media/textures' % s for s, v in LTPE_MODS],
+        names=[W + '3597673472/mods/LongTermPreservationExtended%s/common/media/lua/shared/Translate/EN/ItemName.json' % s for s, v in LTPE_MODS]),
     'MRE': dict(
         title='MRE Mod', workshop='3765409550',
         scripts=[W + '3765409550/mods/MRE Mod/42/media/scripts/**/*.txt'],
