@@ -1,7 +1,9 @@
--- Eating or drinking part of an "At 100%" item (a full bottle, an unopened packet: safe in a bag only while whole) takes
--- it into the hands first, so what is left never goes back into the bag, where it would spill. Held items do not spill.
--- It goes into a free hand, else replaces what is in the primary hand (a two-handed item empties both). Vanilla's
--- "return the item to where it was" step is skipped for it. Off with the AutoEquipAtFull option: vanilla behaviour.
+-- Eating or drinking part of a vessel or a packet that does not close again (an opened jar or tin, a can or bottle opened to drink,
+-- an unopened packet: see Hands.eligible) holds it in the hands as the eating or drinking starts, so what is left never goes back
+-- into the bag, where it would spill. Held items do not spill. There is no equip action: the eat and drink animations show the
+-- item in the hands anyway, so it counts as held from the moment they begin. It goes into a free hand, else replaces what is in
+-- the primary hand (a two-handed item empties both). Vanilla's "return the item to where it was" step is skipped for it, and
+-- what is left of it when it is used up is returned instead. Off with the AutoEquipAtFull option: vanilla behaviour.
 
 require "ISUI/ISInventoryPaneContextMenu"
 require "ISUI/ISCraftingUI"
@@ -9,48 +11,58 @@ require "TimedActions/ISEatFoodAction"
 require "TimedActions/ISDrinkFluidAction"
 require "TimedActions/ISUnequipAction"
 require "DSTB_Config"
-require "DSTB_Spill"
+require "DSTB_Hands"
+require "DSTB_Consuming"
 
 local DSTB = DontSpillTheBeans
+local Config = DSTB.Config
 
-local handling   -- the item whose transfer to the main inventory and return to its container vanilla must not queue again
+local handling   -- the item whose return to its container vanilla must not queue again (it is held)
 
-local equipped = setmetatable({}, { __mode = "k" })   -- item -> the full type it leaves behind when used up, for items taken into the hands here
+local equipped = setmetatable({}, { __mode = "k" })   -- item -> the full type it leaves behind when used up and the container it came from, for items held as they are consumed
+local origins = setmetatable({}, { __mode = "k" })   -- item -> the container it was in when the action was chosen
 local finished = {}   -- consumed items waiting a moment to see what is left of them: { player, item, left, ms }
 
-local function wants(player, item, fraction, openingRecipe)
-    if openingRecipe or not fraction or fraction >= 1 then return false end   -- all of it: nothing is left to spill
+local function wants(player, item, fraction)
+    if not fraction or fraction >= 1 then return false end   -- all of it: nothing is left to spill
     if not DSTB.autoEquipEnabled() or not instanceof(item, "InventoryItem") then return false end
-    if player:isPrimaryHandItem(item) or player:isSecondaryHandItem(item) then return false end
-    return DSTB.Spill.isAtFull(item)
+    return DSTB.Hands.eligible(item) and not DSTB.Hands.isHeld(player, item)
 end
 
--- Queues the equip (with the transfer out of its bag it needs first).
-local function equipFirst(player, item)
-    local primary = player:getPrimaryHandItem() == nil or player:getSecondaryHandItem() ~= nil
-    ISInventoryPaneContextMenu.equipWeapon(item, primary, item:isRequiresEquippedBothHands(), player:getPlayerNum())
+-- Notes what to do for `item` as it is eaten or drunk from: hold it when the action starts, and put what is left of it away at the end.
+local function plan(player, item)
+    DSTB.HoldOnConsume[item] = true
     handling = item
     equipped[item] = { left = instanceof(item, "Food") and item:getReplaceOnUseFullType() or nil, origin = item:getContainer() }
 end
 
--- Once an item taken into the hands here has been consumed down to nothing, what is left (the empty bottle, the bowl)
--- goes back into the inventory so the hands are free; a part-eaten item stays in the hands.
--- It is then put back where the item came from (as vanilla does after eating), if that is still part of the inventory.
+-- The newest item of that type directly in the inventory (what an item turned into when it was used up).
+local function newestOfType(container, fullType)
+    local best
+    local items = container:getItems()
+    for i = 0, items:size() - 1 do
+        local item = items:get(i)
+        if item:getFullType() == fullType and (not best or item:getID() > best:getID()) then best = item end
+    end
+    return best
+end
+
+-- Once a vessel eaten or drunk from has been used up, what is left (the empty bottle, can or tin) is taken out of the hands if it was
+-- held, and put back where the item came from (as vanilla does after eating), if that is still part of the inventory. A part-eaten item
+-- stays as it is, held if it was.
 local function emptyHands(player, item, was)
-    for _, held in ipairs({ player:getPrimaryHandItem(), player:getSecondaryHandItem() }) do
-        if held and (held == item or (was.left and held:getFullType() == was.left)) then
-            local fc = held:getFluidContainer()
-            local spent = fc and fc:isEmpty() or (held ~= item) or item:getContainer() == nil
-            if spent then
-                ISTimedActionQueue.add(ISUnequipAction:new(player, held, 50))
-                local origin = was.origin
-                local bag = origin and origin:getContainingItem()   -- nil for the ground, a vehicle...: nothing to put back into
-                if bag and player:getInventory():containsRecursive(bag) then
-                    ISCraftingUI.ReturnItemToContainer(player, held, origin)
-                end
-            end
-            return
-        end
+    local vessel
+    local fc = item:getFluidContainer()
+    if item:getContainer() == nil then   -- used up: the empty vessel it turns into
+        vessel = was.left and newestOfType(player:getInventory(), was.left)
+    elseif fc and fc:isEmpty() then
+        vessel = item
+    end
+    if not vessel then return end
+    if DSTB.Hands.isHeld(player, vessel) then ISTimedActionQueue.add(ISUnequipAction:new(player, vessel, 50)) end
+    local bag = was.origin and was.origin:getContainingItem()   -- nil for the ground, a vehicle...: nothing to put back into
+    if bag and player:getInventory():containsRecursive(bag) then
+        ISCraftingUI.ReturnItemToContainer(player, vessel, was.origin)
     end
 end
 
@@ -69,19 +81,19 @@ for _, class in ipairs({ ISEatFoodAction, ISDrinkFluidAction }) do
     local perform = class.perform
     function class:perform()
         local item = self.item
+        local was = item and equipped[item]
+        -- A vessel that was not held by the plan can be in the hands all the same (a can or bottle opened first is held when the
+        -- opening ends): the end of it is dealt with alike.
+        if item and was == nil and DSTB.autoEquipEnabled() and DSTB.Hands.eligible(item) then
+            was = { left = instanceof(item, "Food") and item:getReplaceOnUseFullType() or nil, origin = origins[item] }
+        end
         local result = perform(self)
-        if item and equipped[item] ~= nil and self.character:isLocalPlayer() then
-            finished[#finished + 1] = { player = self.character, item = item, was = equipped[item], ms = getTimestampMs() }
+        if was ~= nil and self.character:isLocalPlayer() then
+            finished[#finished + 1] = { player = self.character, item = item, was = was, ms = getTimestampMs() }
             equipped[item] = nil
         end
         return result
     end
-end
-
-local transferIfNeeded = ISInventoryPaneContextMenu.transferIfNeeded
-function ISInventoryPaneContextMenu.transferIfNeeded(player, item, ...)
-    if handling ~= nil and item == handling then return end
-    return transferIfNeeded(player, item, ...)
 end
 
 local returnToContainer = ISCraftingUI.ReturnItemToOriginalContainer
@@ -91,7 +103,8 @@ function ISCraftingUI.ReturnItemToOriginalContainer(player, item)
 end
 
 local function run(original, player, item, fraction, openingRecipe, ...)
-    if wants(player, item, fraction, openingRecipe) then equipFirst(player, item) end
+    if instanceof(item, "InventoryItem") and DSTB.autoEquipEnabled() and DSTB.Hands.eligible(item) then origins[item] = item:getContainer() end
+    if wants(player, item, fraction) then plan(player, item) end
     local ok, err = pcall(original, ...)
     handling = nil
     if not ok then error(err, 0) end

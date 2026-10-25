@@ -6,6 +6,7 @@ require "DSTB_Spill"
 require "DSTB_Wet"
 require "DSTB_Washer"
 require "DSTB_Fizz"
+require "DSTB_Hands"
 
 local DSTB = DontSpillTheBeans
 local Config = DSTB.Config
@@ -111,7 +112,9 @@ end
 -- The item an eat or drink action is working on is exempt from spilling until the action ends (see DSTB_Consuming).
 Commands.consuming = function(player, args)
     if type(args) ~= "table" then return end
-    DSTB.Spill.setConsuming(player, type(args.id) == "number" and args.id or nil)
+    local id = type(args.id) == "number" and args.id or nil
+    DSTB.Spill.setConsuming(player, id)
+    if id and args.hold == true then DSTB.Hands.holdForConsuming(player, player:getInventory():getItemWithIDRecursiv(id)) end
 end
 
 -- "Empty Spilled Contents": everything in the bag comes out onto the tile under the player and the

@@ -5,6 +5,7 @@
 if isClient() then return end
 
 require "DSTB_Config"
+require "DSTB_Hands"
 if not ISHandcraftAction then pcall(require, "Entity/TimedActions/ISHandcraftAction") end
 if not (ISHandcraftAction and ISHandcraftAction.performRecipe) then
     print("[DontSpillTheBeans] ISHandcraftAction.performRecipe not found: resealed jars will open full")
@@ -50,20 +51,41 @@ local function restore(player, item, entry)
     syncItemFields(player, item)
 end
 
+-- What opening leaves in the hands needs no equip action: the opening animation already shows it there. A new opened jar or tin,
+-- and what an "unseal" recipe opens in place (a can of soda, a bottle of beer or wine), is held when the recipe ends.
+local function hasContents(item)
+    if item:getContainer() == nil then return false end
+    local fc = item:getFluidContainer()
+    if fc then return not fc:isEmpty() end
+    return instanceof(item, "Food") and item:getCurrentUses() > 0
+end
+
+local function holdIfAllowed(player, item)
+    if DSTB.autoEquipEnabled() and hasContents(item) then DSTB.Hands.hold(player, item) end
+end
+
 local performRecipe = ISHandcraftAction.performRecipe
 function ISHandcraftAction:performRecipe()
     local data = self.logic and self.logic:getRecipeData()
     local held = data and resealedInputs(data) or {}
+    local unsealed = data and data:getAllInputItemsWithFlag("Unseal") or nil   -- the items it opens in place
     local result = performRecipe(self)
     if data then
         local created = data:getAllCreatedItems()
         local n = 0
         for i = 0, created:size() - 1 do
             local item = created:get(i)
-            if Config.Reseal[item:getFullType()] then
+            local id = item:getFullType()
+            if Config.Reseal[id] then
                 n = n + 1
                 if held[n] then restore(self.character, item, held[n]) end
+                holdIfAllowed(self.character, item)
+            elseif Config.OpenedTins[id] then
+                holdIfAllowed(self.character, item)
             end
+        end
+        if unsealed then
+            for i = 0, unsealed:size() - 1 do holdIfAllowed(self.character, unsealed:get(i)) end
         end
     end
     return result

@@ -4,18 +4,25 @@
 
 require "DSTB_Config"
 require "DSTB_Spill"
+require "DSTB_Hands"
 require "TimedActions/ISEatFoodAction"
 require "TimedActions/ISDrinkFluidAction"
 
 local DSTB = DontSpillTheBeans
 
+-- Items DSTB_AutoEquip has decided to hold while they are consumed (item -> true), cleared as the action starts.
+DSTB.HoldOnConsume = setmetatable({}, { __mode = "k" })
+
 local function report(action, id)
     local player = action.character
     if not player or not player:isLocalPlayer() then return end
+    local hold = id ~= nil and action.item ~= nil and DSTB.HoldOnConsume[action.item] == true
+    if hold then DSTB.HoldOnConsume[action.item] = nil end
     if isClient() then
-        sendClientCommand(player, DSTB.MODULE, "consuming", { id = id })
+        sendClientCommand(player, DSTB.MODULE, "consuming", { id = id, hold = hold or nil })
     else
         DSTB.Spill.setConsuming(player, id)
+        if hold then DSTB.Hands.holdForConsuming(player, action.item) end
     end
 end
 
