@@ -48,7 +48,12 @@ local function onFillInventoryObjectContextMenu(playerNum, context, items)
         local item = instanceof(entry, "InventoryItem") and entry or entry.items[1]
         if item and instanceof(item, "InventoryContainer") and DontSpillTheBeans.Wet.isSoiled(item)
             and player:getInventory():containsRecursive(item) then
-            context:addOption(getText("ContextMenu_DontSpillTheBeans_EmptySpilled"), player, emptySpilled, item)
+            local text, drop = getText("ContextMenu_DontSpillTheBeans_EmptySpilled"), getText("ContextMenu_Drop")
+            if context:getOptionFromName(drop) then
+                context:insertOptionBefore(drop, text, player, emptySpilled, item)   -- with the actions on the bag, above Drop and Move
+            else
+                context:addOption(text, player, emptySpilled, item)
+            end
             return
         end
     end
