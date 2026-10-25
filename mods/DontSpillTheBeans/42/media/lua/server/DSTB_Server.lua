@@ -454,6 +454,14 @@ Commands.debugShake = function(player, args)
     notify(player, "debugShake", { value = clampNumber(args and args.value, 0, 1) })
 end
 
+-- Debug: sets hunger and thirst (0 to 1). A bottle of plain water only offers Drink while the character is thirsty.
+Commands.debugNeeds = function(player, args)
+    if not debugAllowed(player) or type(args) ~= "table" then return end
+    local stats = player:getStats()
+    if args.thirst ~= nil then stats:set(CharacterStat.THIRST, clampNumber(args.thirst, 0, 1)) end
+    if args.hunger ~= nil then stats:set(CharacterStat.HUNGER, clampNumber(args.hunger, 0, 1)) end
+end
+
 Commands.debugMultiplier = function(player, args)
     if not debugAllowed(player) then return end
     DSTB.debugMultiplier = clampNumber(args and args.value, 0, 100)

@@ -75,6 +75,51 @@ local KIT = {
         { "Closed can of soup  (exempt by rule)", "Base.TinnedSoup" },
         { "Hot dog buns  (no treatment)", "Base.BunsHotdog" },
     } },
+    { "Jars (Reseal Jar needs a jar lid)", {
+        { "Jar lid", "Base.JarLid" },
+        { "Vanilla: tomato jar, closed  (never spills)", "Base.CannedTomato" },
+        { "Vanilla: tomato jar, opened  (open the closed one to compare)", "Base.CannedTomato_Open" },
+        { "Vanilla: tomato jar, opened and half eaten", "Base.CannedTomato_Open", remaining = 0.5 },
+        { "LTPE: avocado spread, closed", "Base.AvocadoSpread" },
+        { "LTPE: avocado spread, opened", "Base.AvocadoSpread_Open" },
+        { "LTPE: pemmican jar, closed", "Base.CannedPemmican" },
+        { "LTPE: pemmican jar, opened and half eaten", "Base.CannedPemmican_Open", remaining = 0.5 },
+        { "LTPE: apple juice jar, closed  (sealed fluid jar)", "LTPE.JuicedAppleJar" },
+        { "LTPE: apple juice jar, opened  (full)", "LTPE.JuicedAppleJar_Open" },
+        { "LTPE: apple juice jar, opened and half drunk", "LTPE.JuicedAppleJar_Open", fraction = 0.5 },
+        { "LTPE: apple juice jar, opened, holding water  (reseal with another liquid)", "LTPE.JuicedAppleJar_Open", litres = 0.5, fluid = "Water", fraction = 0.5 },
+        { "VFE: black olives, closed", "VFX.JarBlackOlives" },
+        { "VFE: black olives, opened and half eaten", "VFX.JarBlackOlivesOpen", remaining = 0.5 },
+        { "VFE: marinara sauce, closed", "VFX.HomemadeMarinara" },
+        { "VFE: marinara sauce, opened", "VFX.HomemadeMarinara_Open" },
+        { "VFE: marinara sauce, opened and half eaten", "VFX.HomemadeMarinara_Open", remaining = 0.5 },
+    } },
+    { "Tins (opened ones are held while eaten from; opening needs a tin opener)", {
+        { "Tin opener", "Base.TinOpener" },
+        { "Vanilla: tin of soup, closed  (exempt by rule)", "Base.TinnedSoup" },
+        { "Vanilla: tin of soup, opened  (open the closed one to compare)", "Base.TinnedSoupOpen" },
+        { "Vanilla: tin of soup, opened and half eaten", "Base.TinnedSoupOpen", remaining = 0.5 },
+        { "Vanilla: tuna tin, closed", "Base.TunaTin" },
+        { "Vanilla: tuna tin, opened and half eaten", "Base.TunaTinOpen", remaining = 0.5 },
+        { "Vanilla: tin of beans, closed", "Base.TinnedBeans" },
+        { "Vanilla: sardines, closed  (opens by hand: no tool)", "Base.CannedSardines" },
+        { "VFE: savoury mince tin, closed  (opened by the game's recipe, patched by VFE)", "VFX.CannedSavoryMince" },
+        { "VFE: savoury mince tin, opened and half eaten", "VFX.CannedSavoryMinceOpen", remaining = 0.5 },
+    } },
+    { "Cans and bottles that are opened first (held while drunk from)", {
+        { "Bottle opener", "Base.BottleOpener" },
+        { "Corkscrew", "Base.Corkscrew" },
+        { "Vanilla: beer bottle, sealed  (needs a bottle opener)", "Base.BeerBottle" },
+        { "Vanilla: beer bottle, part drunk", "Base.BeerBottle", fraction = 0.5 },
+        { "Vanilla: wine bottle, sealed  (needs a corkscrew)", "Base.Wine" },
+        { "VFE: orange soda can, sealed  (opens by hand: Open and Drink)", "VFX.OrangeSodaCan" },
+        { "VFE: orange soda can, part drunk", "VFX.OrangeSodaCan", fraction = 0.5 },
+        { "Pomp's: Brawndo can, sealed  (greyed Drink until opened from the craft menu)", "PompsItems.Brawndo" },
+        { "Authentic Z: cola can, sealed", "AuthenticZClothing.Pop2" },
+        { "Vanilla: cola can  (drinks directly: no opening step)", "Base.Pop2" },
+        { "Vanilla: cola can, part drunk", "Base.Pop2", fraction = 0.5 },
+        { "Water bottle, full  (sealed: never held; Drink only shows while thirsty, see the menu above)", "Base.WaterBottle", litres = 1.0 },
+    } },
     { "Bags and containers", {
         { "Backpack (ALICE)  (plain: liquids spill through)", "Base.Bag_ALICEpack" },
         { "Duffel bag  (plain)", "Base.Bag_DuffelBag" },
@@ -251,6 +296,12 @@ local function onFillWorldObjectContextMenu(playerNum, context, worldObjects, te
     end)
     sub:addOption("Fizz: set my shake to full (as if just sprinted)", player, function(p)
         sendClientCommand(p, DSTB.MODULE, "debugShake", { value = 1 })
+    end)
+    sub:addOption("Make me thirsty and hungry (plain water only offers Drink while thirsty)", player, function(p)
+        sendClientCommand(p, DSTB.MODULE, "debugNeeds", { thirst = 0.6, hunger = 0.6 })
+    end)
+    sub:addOption("Make me full: not thirsty, not hungry", player, function(p)
+        sendClientCommand(p, DSTB.MODULE, "debugNeeds", { thirst = 0, hunger = 0 })
     end)
     sub:addOption("Fizz: calm my shake", player, function(p)
         sendClientCommand(p, DSTB.MODULE, "debugShake", { value = 0 })
