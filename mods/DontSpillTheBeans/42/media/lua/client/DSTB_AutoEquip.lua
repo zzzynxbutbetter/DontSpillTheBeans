@@ -13,6 +13,7 @@ require "TimedActions/ISDrinkFluidAction"
 require "TimedActions/ISUnequipAction"
 require "DSTB_Config"
 require "DSTB_Options"
+require "DSTB_Tint"   -- adds the "Inventory" heading to the options page first, so the tick box below lands under it
 require "DSTB_Hands"
 require "DSTB_Consuming"
 
