@@ -108,6 +108,12 @@ Commands.motion = function(player, args)
     shareSound(player)
 end
 
+-- The item an eat or drink action is working on is exempt from spilling until the action ends (see DSTB_Consuming).
+Commands.consuming = function(player, args)
+    if type(args) ~= "table" then return end
+    DSTB.Spill.setConsuming(player, type(args.id) == "number" and args.id or nil)
+end
+
 -- "Empty Spilled Contents": everything in the bag comes out onto the tile under the player and the
 -- bag stops being soiled (it stays wet/dirty until it dries / is washed).
 Commands.emptySpilled = function(player, args)

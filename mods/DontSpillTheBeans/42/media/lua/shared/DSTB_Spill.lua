@@ -209,6 +209,21 @@ local function isHeld(player, item)
     return player:isPrimaryHandItem(item) or player:isSecondaryHandItem(item)
 end
 
+-- The item each player is eating or drinking right now never spills (see DSTB_Consuming): username -> { id, ms }. The
+-- client reports when the action starts and ends; the entry also lapses on its own in case an end report never comes.
+local CONSUMING_LAPSE_MS = 30000
+local consuming = {}
+
+-- Server / SP: `id` = the item's ID while an eat or drink action runs on it, nil when it is over.
+function Spill.setConsuming(player, id)
+    consuming[tostring(player:getUsername())] = id and { id = id, ms = getTimestampMs() } or nil
+end
+
+local function isConsuming(player, item)
+    local c = consuming[tostring(player:getUsername())]
+    return c ~= nil and c.id == item:getID() and getTimestampMs() - c.ms < CONSUMING_LAPSE_MS
+end
+
 -- Collects {item, storing, kind} for everything the player carries that can spill. A protective container
 -- (plastic bag, lunchbox, cooler...) shields everything inside it; food is additionally safe in any nested container.
 -- storing is the bag holding it, or nil when it sits directly in the player's own inventory.
@@ -222,7 +237,7 @@ local function scan(player, container, storing, out, depth, vehicle)
             if depth < MAX_NEST_DEPTH and not Config.ProtectiveContainers[item:getFullType()] then
                 scan(player, item:getInventory(), item, out, depth + 1, vehicle)
             end
-        elseif vehicle or not isHeld(player, item) then
+        elseif (vehicle or not isHeld(player, item)) and not isConsuming(player, item) then
             local kind = openKind(item, (vehicle and storing == nil) and 1 or depth)
             if kind then out[#out + 1] = { item = item, storing = storing, kind = kind, vehicle = vehicle } end
         end
