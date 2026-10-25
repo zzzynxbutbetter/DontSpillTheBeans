@@ -24,3 +24,4 @@ __pycache__/
 docs/**/food-rules-*.html
 docs/**/containers-*.html
 assets/**/icons/
+assets/**/workshop/

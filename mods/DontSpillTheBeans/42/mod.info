@@ -5,3 +5,5 @@ modversion=1.0.0
 versionMin=42.21.0
 description=Foods and drinks can now spill if you try to carry them in your pockets or backpacks. Store them in sealed containers to prevent dirtying and wetting your clothes and gear and losing your sustenance. Drinks foam up if you open them soon after rigorous movements. Spillage can happen while driving too.
 loadModAfter=StarvingZombies,StarvingZombiesWIP
+poster=poster.png
+icon=icon.png
