@@ -61,7 +61,7 @@ local function hasContents(item)
 end
 
 local function holdIfAllowed(player, item)
-    if DSTB.autoEquipEnabled() and hasContents(item) then DSTB.Hands.hold(player, item) end
+    if DSTB.holdEnabled(player) and hasContents(item) then DSTB.Hands.hold(player, item) end
 end
 
 local performRecipe = ISHandcraftAction.performRecipe

@@ -394,10 +394,16 @@ function DSTB.atFullMode()
     return "whole"
 end
 
--- Whether eating or drinking part of a still-whole "At 100%" item takes it into the hands first.
-function DSTB.autoEquipEnabled()
-    local sv = DSTB.getSandbox()
-    return sv == nil or sv.AutoEquipAtFull ~= false
+-- Whether `player` wants opened food and drink (jars, tins, cans, bottles, packets) held in their hands while they eat or drink
+-- part of it: a player preference (Options > Mods), not a server rule. Each client reports it (DSTB_AutoEquip; the "prefs" command)
+-- and the server, or single player, keeps it per username here; a client that has not reported yet counts as on. A client
+-- that asks about its own player reads its tick box (DSTB.Prefs.local_, set by DSTB_AutoEquip).
+DSTB.Prefs = { hold = {}, local_ = nil }
+function DSTB.holdEnabled(player)
+    if isClient() then
+        return DSTB.Prefs.local_ == nil or DSTB.Prefs.local_() ~= false
+    end
+    return DSTB.Prefs.hold[tostring(player:getUsername())] ~= false
 end
 
 -- Whether bags with food spilled in them go off after a while and make their carrier smell.

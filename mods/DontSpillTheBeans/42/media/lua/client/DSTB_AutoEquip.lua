@@ -3,7 +3,8 @@
 -- into the bag, where it would spill. Held items do not spill. There is no equip action: the eat and drink animations show the
 -- item in the hands anyway, so it counts as held from the moment they begin. It goes into a free hand, else replaces what is in
 -- the primary hand (a two-handed item empties both). Vanilla's "return the item to where it was" step is skipped for it, and
--- what is left of it when it is used up is returned instead. Off with the AutoEquipAtFull option: vanilla behaviour.
+-- what is left of it when it is used up is returned instead. Off with the "Hold opened food and drinks" option in Options > Mods
+-- (a player preference, reported to the server): vanilla behaviour.
 
 require "ISUI/ISInventoryPaneContextMenu"
 require "ISUI/ISCraftingUI"
@@ -11,11 +12,38 @@ require "TimedActions/ISEatFoodAction"
 require "TimedActions/ISDrinkFluidAction"
 require "TimedActions/ISUnequipAction"
 require "DSTB_Config"
+require "DSTB_Options"
 require "DSTB_Hands"
 require "DSTB_Consuming"
 
 local DSTB = DontSpillTheBeans
 local Config = DSTB.Config
+
+-- The player's preference, in Options > Mods (a tick box per player, not a server setting). The server learns it from the "prefs" command.
+local holdTick = DSTB.Options.page and DSTB.Options.page:addTickBox("HoldOpened", "Hold opened food and drinks while eating or drinking part of them", true,
+    "Eating or drinking only some of an opened jar, tin, can or bottle, or of a packet, keeps it in your hands, so what is left does not go back into the bag, where it would spill. When it is used up the empty one goes back to where it came from. Off: it goes back into the bag as in the base game.") or nil
+DSTB.Prefs.local_ = function() return holdTick == nil or holdTick:getValue() end
+
+local function reportPrefs()
+    for i = 0, getNumActivePlayers() - 1 do
+        local player = getSpecificPlayer(i)
+        if player then
+            if isClient() then
+                sendClientCommand(player, DSTB.MODULE, "prefs", { hold = DSTB.Prefs.local_() })
+            else
+                DSTB.Prefs.hold[tostring(player:getUsername())] = DSTB.Prefs.local_()
+            end
+        end
+    end
+end
+Events.OnGameStart.Add(reportPrefs)
+if DSTB.Options.page then
+    local applyPage = DSTB.Options.page.apply
+    DSTB.Options.page.apply = function(page, ...)
+        if applyPage then applyPage(page, ...) end
+        reportPrefs()
+    end
+end
 
 local handling   -- the item whose return to its container vanilla must not queue again (it is held)
 
@@ -25,7 +53,7 @@ local finished = {}   -- consumed items waiting a moment to see what is left of 
 
 local function wants(player, item, fraction)
     if not fraction or fraction >= 1 then return false end   -- all of it: nothing is left to spill
-    if not DSTB.autoEquipEnabled() or not instanceof(item, "InventoryItem") then return false end
+    if not DSTB.holdEnabled(player) or not instanceof(item, "InventoryItem") then return false end
     return DSTB.Hands.eligible(item) and not DSTB.Hands.isHeld(player, item)
 end
 
@@ -84,7 +112,7 @@ for _, class in ipairs({ ISEatFoodAction, ISDrinkFluidAction }) do
         local was = item and equipped[item]
         -- A vessel that was not held by the plan can be in the hands all the same (a can or bottle opened first is held when the
         -- opening ends): the end of it is dealt with alike.
-        if item and was == nil and DSTB.autoEquipEnabled() and DSTB.Hands.eligible(item) then
+        if item and was == nil and DSTB.holdEnabled(self.character) and DSTB.Hands.eligible(item) then
             was = { left = instanceof(item, "Food") and item:getReplaceOnUseFullType() or nil, origin = origins[item] }
         end
         local result = perform(self)
@@ -103,7 +131,7 @@ function ISCraftingUI.ReturnItemToOriginalContainer(player, item)
 end
 
 local function run(original, player, item, fraction, openingRecipe, ...)
-    if instanceof(item, "InventoryItem") and DSTB.autoEquipEnabled() and DSTB.Hands.eligible(item) then origins[item] = item:getContainer() end
+    if instanceof(item, "InventoryItem") and DSTB.holdEnabled(player) and DSTB.Hands.eligible(item) then origins[item] = item:getContainer() end
     if wants(player, item, fraction) then plan(player, item) end
     local ok, err = pcall(original, ...)
     handling = nil

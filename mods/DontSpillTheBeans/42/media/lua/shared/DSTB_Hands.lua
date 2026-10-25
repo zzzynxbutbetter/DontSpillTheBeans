@@ -36,8 +36,8 @@ function Hands.hold(player, item)
 end
 
 -- Called as an eat or drink action starts (see DSTB_Consuming): holds `item` if it is the kind that is held and is carried in the
--- main inventory (vanilla has moved it there from a bag by now). The AutoEquipAtFull sandbox option switches it off.
+-- main inventory (vanilla has moved it there from a bag by now). The player can switch it off in Options > Mods (DSTB.holdEnabled).
 function Hands.holdForConsuming(player, item)
-    if not item or not DSTB.autoEquipEnabled() or not Hands.eligible(item) or item:getContainer() ~= player:getInventory() then return end
+    if not item or not DSTB.holdEnabled(player) or not Hands.eligible(item) or item:getContainer() ~= player:getInventory() then return end
     Hands.hold(player, item)
 end

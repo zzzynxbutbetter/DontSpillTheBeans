@@ -109,6 +109,12 @@ Commands.motion = function(player, args)
     shareSound(player)
 end
 
+-- A player's preferences, reported by their client when the game starts and when they change an option in Options > Mods.
+Commands.prefs = function(player, args)
+    if type(args) ~= "table" then return end
+    DSTB.Prefs.hold[tostring(player:getUsername())] = args.hold == true
+end
+
 -- The item an eat or drink action is working on is exempt from spilling until the action ends (see DSTB_Consuming).
 Commands.consuming = function(player, args)
     if type(args) ~= "table" then return end

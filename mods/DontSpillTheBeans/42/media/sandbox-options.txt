@@ -150,12 +150,6 @@ option DontSpillTheBeans.AtFullAsSealed
 	page = DontSpillTheBeans, translation = DontSpillTheBeans_AtFullAsSealed,
 }
 
-option DontSpillTheBeans.AutoEquipAtFull
-{
-	type = boolean, default = true,
-	page = DontSpillTheBeans, translation = DontSpillTheBeans_AutoEquipAtFull,
-}
-
 option DontSpillTheBeans.ResealJars
 {
 	type = boolean, default = true,
