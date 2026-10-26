@@ -1,0 +1,9 @@
+name=Don't Spill the Beans: Vessel Fixes (Sapph's Cooking)
+id=DontSpillTheBeansVesselFixesSapph
+author=zynx
+modversion=1.0.0
+versionMin=42.21.0
+require=\DontSpillTheBeansVesselFixes,\SapphCooking_B42
+description=Vessel Fixes for Sapph's Cooking: its milk cartons and energy drinks come sealed and have to be opened before you drink from them. Needs Don't Spill the Beans: Vessel Fixes.
+poster=poster.png
+icon=icon.png
