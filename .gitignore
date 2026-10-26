@@ -6,7 +6,7 @@ playtest/
 CLAUDE.md
 WORKSPACE.md
 mods/HelloZomboid/
-scripts/
+/scripts/
 docs/DontSpillTheBeans/WORKSHOP.txt
 docs/DontSpillTheBeans/DESIGN.md
 docs/DontSpillTheBeans/VanillaFoodsExpanded-foods.md
