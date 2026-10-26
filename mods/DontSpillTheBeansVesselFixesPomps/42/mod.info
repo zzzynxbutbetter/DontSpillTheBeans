@@ -1,0 +1,9 @@
+name=Don't Spill the Beans: Vessel Fixes (Pomp's Items)
+id=DontSpillTheBeansVesselFixesPomps
+author=zynx
+modversion=1.0.0
+versionMin=42.21.0
+require=\DontSpillTheBeansVesselFixes,\PompsItemsFood
+description=Vessel Fixes for Pomp's Items - Just the Food: its cans, cartons and bottled drinks come sealed and have to be opened before you drink from them. Needs Don't Spill the Beans: Vessel Fixes.
+poster=poster.png
+icon=icon.png
