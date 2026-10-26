@@ -47,9 +47,14 @@ end
 --   (frozen Food and cold liquids do not spill at all while they stay frozen)
 --   nil      cannot spill: sealed, empty, frozen liquid, exempt (or exempt while uneaten), a closed can/jar, or safely contained.
 -- Whether a non-empty fluid container would spill, ignoring temperature: "sealed" (never), "full" (sealed only while
--- full; this one is) or "spills". The per-item tables win; otherwise a container the player cannot open or empty
--- (script Opened = false, which stays false even after drinking) counts as sealed, and the rest go by container name.
+-- full; this one is) or "spills". A container with an opening step (its script names an OpeningRecipe: bottled beer and
+-- wine, the cans and cartons Vessel Fixes seals, Vanilla Foods Expanded's drinks) is sealed until the player opens it and
+-- spills from then on even while still full: opening it is the deliberate "are you sure?". For the rest the per-item
+-- tables win (SealedWhenFull stands in for a sealed state the item itself does not have, so full cans spill only once
+-- drunk from); otherwise a container the player cannot open or empty (script Opened = false, which stays false even after
+-- drinking) counts as sealed, and the rest go by container name.
 local function fluidVerdict(item, fc)
+    if item:getOpeningRecipe() then return fc:canPlayerEmpty() and "spills" or "sealed" end
     local id = item:getFullType()
     if Config.SealedFluidItems[id] then return "sealed" end
     if Config.SealedWhenFull[id] then

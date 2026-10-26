@@ -16,6 +16,7 @@ DSTB.Hands = Hands
 function Hands.eligible(item)
     local id = item:getFullType()
     return Config.Reseal[id] ~= nil or Config.OpenedTins[id] ~= nil or Config.SealedWhenFull[id] == true or Config.FoodExemptWhenUneaten[id] == true
+        or (item:getOpeningRecipe() ~= nil and item:getFluidContainer() ~= nil)
 end
 
 function Hands.isHeld(player, item)
