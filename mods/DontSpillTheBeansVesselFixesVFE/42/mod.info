@@ -1,0 +1,9 @@
+name=Don't Spill the Beans: Vessel Fixes (Vanilla Foods Expanded)
+id=DontSpillTheBeansVesselFixesVFE
+author=zynx
+modversion=1.0.0
+versionMin=42.21.0
+require=\DontSpillTheBeansVesselFixes,\VanillaFoodsExpanded
+description=Vessel Fixes for Vanilla Foods Expanded: the cans, cartons and juice boxes that don't already have an opening step now come sealed and have to be opened first. Needs Don't Spill the Beans: Vessel Fixes.
+poster=poster.png
+icon=icon.png
