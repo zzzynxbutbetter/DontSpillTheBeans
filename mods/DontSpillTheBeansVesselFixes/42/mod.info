@@ -1,0 +1,8 @@
+name=Don't Spill the Beans: Vessel Fixes
+id=DontSpillTheBeansVesselFixes
+author=zynx
+modversion=1.0.0
+versionMin=42.21.0
+description=Cans, cartons and juice boxes now come sealed and have to be opened before you drink from them, the way bottled beer and wine already do. Works on its own or with Don't Spill the Beans. Items already in a save are not changed. Add-ons for other mods are separate.
+poster=poster.png
+icon=icon.png
