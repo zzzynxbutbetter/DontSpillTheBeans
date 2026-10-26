@@ -98,7 +98,7 @@
     <button id="exp">Export lists</button>
     <span class="stats" id="stats"></span>
   </div>
-  <div class="hint">Fluid containers: <kbd>1</kbd> open (spills whenever it holds something) &middot; <kbd>2</kbd> sealed (never spills) &middot; <kbd>3</kbd> sealed when full (spills once any is used).
+  <div class="hint">Fluid containers: <kbd>1</kbd> open (spills whenever it holds something) &middot; <kbd>2</kbd> sealed (never spills) &middot; <kbd>3</kbd> sealed when full (spills once any is used; ignored for items tagged <b>opens first</b>, which are sealed until opened and then spill even while full).
     Bags: <kbd>1</kbd> shields liquids carried inside (like a plastic bag) &middot; <kbd>2</kbd> plain. <kbd>0</kbd> clear &middot; <b>Fizzy flag</b> (a carbonated drink that foams over if opened after exercise; fluid containers only): <kbd>F</kbd> carbonated &middot; <kbd>N</kbd> not &middot; <kbd>U</kbd> unreviewed (each moves to the next row), a blue underline marks a suggestion &middot; <kbd>A</kbd> accept the "current" rule shown under the buttons &middot;
     <kbd>&uarr;</kbd><kbd>&darr;</kbd> move &middot; <kbd>Space</kbd> select &middot; Shift+click range. Progress is saved in this browser.</div>
 </header>
@@ -169,7 +169,7 @@ function rowHtml(r) {
   const seg = OPTIONS[r.kind].map(([k, label]) =>
     `<button data-m="${k}" class="${m === k ? 'on' : ''}${r.cur === k ? ' cur' : ''}">${label}</button>`).join('');
   const chips = [r.kind === 'fluid' ? (r.cname || 'FluidContainer') : (r.wear ? 'wearable bag' : 'bag'), r.cat].filter(Boolean)
-    .map(c => `<span>${c}</span>`).join('') + `<span class="cur">current: ${LABEL[r.cur]}</span>`;
+    .map(c => `<span>${c}</span>`).join('') + (r.opens ? `<span title="Has an opening recipe (${r.opens}${r.vf ? ', added by Vessel Fixes' : ''}): sealed until opened, then spills even while full. The marks here are ignored while it has one.">opens first${r.vf ? ' (Vessel Fixes)' : ''}</span>` : '') + `<span class="cur">current: ${LABEL[r.cur]}</span>`;
   const meta = (r.cap ? 'capacity ' + r.cap : '') + (r.fluids.length ? ' · ' + r.fluids.join(', ') : '');
   return `<input type="checkbox" class="pick" ${selected.has(r.id) ? 'checked' : ''}>
     ${iconHtml(r)}

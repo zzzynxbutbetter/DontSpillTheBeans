@@ -3,7 +3,9 @@
     python docs/DontSpillTheBeans/tools/food-rules/build_containers.py [Key ...]    (no key = Vanilla + every mod)
 
 Fluid containers (items with a FluidContainer component): Open (spills whenever it holds something), Sealed (never
-spills), or Sealed when full (sealed until anything has been used/poured out). Bags (container items): whether they
+spills), or Sealed when full (sealed until anything has been used/poured out). Items that have an opening recipe (their own,
+or one that Don't Spill the Beans: Vessel Fixes adds) ignore these marks: they are sealed until opened and then spill even
+while full; the page shows an "opens first" tag for them. Bags (container items): whether they
 shield liquids carried inside them (like a plastic bag or lunchbox). The page pre-computes what the mod does today for
 each item ("current") so only the exceptions need changing. "Save progress file" writes a json that
 export-containers.py turns into DSTB_Compat_<Key>_Containers.lua.
@@ -36,6 +38,24 @@ def current_rules():
     prot = set(fb.compat_rules('DSTB_Compat_Vanilla_Containers.lua', 'protective'))
     whenfull = set(fb.compat_rules('DSTB_Compat_Vanilla_Containers.lua', 'whenfull'))
     return open_names, prot, whenfull
+
+
+REPO = os.path.abspath(os.path.join(HERE, '..', '..', '..', '..'))
+
+
+def vessel_fixes():
+    """Item ids that Don't Spill the Beans: Vessel Fixes (the core mod and its add-ons, mods/DontSpillTheBeansVesselFixes*) give
+    an opening recipe and a sealed state: id -> recipe. Such an item is sealed until opened and spills once opened even while
+    full, so a "sealed when full" mark means nothing for it while the add-on is installed."""
+    out = {}
+    for f in glob.glob(os.path.join(REPO, 'mods', 'DontSpillTheBeansVesselFixes*', '42', 'media', 'scripts', '*_items.txt')):
+        t = open(f, encoding='utf8').read()
+        module = re.search(r'module\s+(\w+)', t).group(1)
+        for m in re.finditer(r'\n\s*item\s+(\w+)\s*\{(.*?)\n    \}', t, re.S):
+            recipe = re.search(r'OpeningRecipe\s*=\s*(\w+)', m.group(2))
+            if recipe:
+                out[module + '.' + m.group(1)] = recipe.group(1)
+    return out
 
 
 FIZZ_FLUID = re.compile(r'^(Cola|ColaDiet|GingerAle|Soda\w*|Beer|Champagne|Cider|Tonic\w*|Seltzer|Sparkling\w*|Energy\w*|Brawndo)$', re.I)
@@ -83,6 +103,7 @@ def build(key):
     open_names, prot, whenfull = current_rules()
     prot = prot | set(cfg.get('seed_protective', []))   # optional: rules to show as current before they are exported
     seed_fizzy = set(cfg.get('seed_fizzy', []))
+    vf = vessel_fixes()
 
     textures = {}
     for d in cfg['textures']:
@@ -123,6 +144,7 @@ def build(key):
         rows.append({
             'id': full, 'name': display.replace('_', ' '), 'kind': kind, 'cname': cname, 'cap': cap, 'fluids': fluids,
             'sugg': bool(is_fluid and (full in seed_fizzy or suggest_fizzy(display, fluids))),
+            'opens': (vf.get(full) or p.get('OpeningRecipe', '')) if is_fluid else '', 'vf': bool(is_fluid and full in vf),
             'cur': cur, 'icon': icon, 'cat': p.get('DisplayCategory', ''), 'wear': 'CanBeEquipped' in p or 'BodyLocation' in p,
             'file': re.sub(r'\.txt$', '', v['file']),
         })
