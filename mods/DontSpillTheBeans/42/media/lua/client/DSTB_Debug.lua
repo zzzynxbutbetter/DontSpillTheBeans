@@ -105,6 +105,12 @@ local KIT = {
         { "Vanilla: sardines, closed  (opens by hand: no tool)", "Base.CannedSardines" },
         { "VFE: savoury mince tin, closed  (opened by the game's recipe, patched by VFE)", "VFX.CannedSavoryMince" },
         { "VFE: savoury mince tin, opened and half eaten", "VFX.CannedSavoryMinceOpen", remaining = 0.5 },
+        { "Wesch's empty cans: beans can, empty  (what an eaten tin of beans leaves; open container)", "Base.EmptyCanBeans" },
+        { "Wesch's empty cans: beans can, half full of water  (spills)", "Base.EmptyCanBeans", litres = 0.15 },
+        { "Wesch's empty cans: beans can, full of water  (spills)", "Base.EmptyCanBeans", litres = 0.3 },
+        { "Wesch's empty cans: tuna tin, empty", "Base.EmptyTunaTin" },
+        { "Wesch's empty cans: tuna tin, half full of water", "Base.EmptyTunaTin", litres = 0.075 },
+        { "Wesch's empty cans: tuna tin, full of water", "Base.EmptyTunaTin", litres = 0.15 },
     } },
     { "Cans and bottles that are opened first (held while drunk from)", {
         { "Bottle opener", "Base.BottleOpener" },
