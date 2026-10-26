@@ -261,6 +261,7 @@ Commands.debugGive = function(player, args)
     local litres = clampNumber(args.litres, 0, 100)
     if fc and litres > 0 then fc:addFluid(DEBUG_FLUIDS[args.fluid] or Fluid.Water, litres) end
     if fc and type(args.fraction) == "number" then   -- a drink that spawns full, drunk down to this share of its capacity
+        if args.fraction < 1 then fc:setCanPlayerEmpty(true) end   -- drunk from means opened, even where the item spawns sealed
         fc:adjustAmount(fc:getCapacity() * clampNumber(args.fraction, 0, 1))
     end
 
