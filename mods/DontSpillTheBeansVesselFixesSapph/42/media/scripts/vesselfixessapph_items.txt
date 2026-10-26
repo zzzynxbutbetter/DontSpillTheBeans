@@ -1,0 +1,17 @@
+module SapphCooking
+{
+    /* Partial overrides: only the sealed state and the recipe that opens it are set. */
+
+    item StrawberryMilk
+    {
+        OpeningRecipe = DSTBVF_OpenStrawberryMilkSapph,
+        component FluidContainer { Opened = false, }
+    }
+
+    /* A plastic bottle by definition but a can by icon and model: opened like a can (the can-opening animation and sound). */
+    item EnergyDrink
+    {
+        OpeningRecipe = DSTBVF_OpenEnergyDrinkSapph,
+        component FluidContainer { Opened = false, }
+    }
+}

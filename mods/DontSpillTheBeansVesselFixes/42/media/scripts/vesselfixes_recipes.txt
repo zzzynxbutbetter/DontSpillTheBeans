@@ -1,0 +1,50 @@
+module Base
+{
+    /* The can-opening animation (the item in the character's hands) with a sound that suits a carton or a juice box. */
+    timedAction DSTBVF_OpenCarton
+    {
+        metabolics = SedentaryActivity,
+        actionAnim = OpenPopCan,
+        sound = DSTBVF_OpenCarton,
+    }
+
+    timedAction DSTBVF_OpenJuiceBox
+    {
+        metabolics = SedentaryActivity,
+        actionAnim = OpenPopCan,
+        sound = DSTBVF_OpenJuiceBox,
+    }
+
+    /* Same as the game's OpenCanOfBeverage (by hand, in the character's hands, opened in place). */
+    craftRecipe DSTBVF_OpenCartonOfBeverage
+    {
+        timedAction = DSTBVF_OpenCarton,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.Milk;Base.Milk_Personalsized;Base.MilkChocolate_Personalsized] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe DSTBVF_OpenJuiceBox
+    {
+        timedAction = DSTBVF_OpenJuiceBox,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [Base.JuiceBox;Base.JuiceBoxApple;Base.JuiceBoxFruitpunch;Base.JuiceBoxOrange] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+}

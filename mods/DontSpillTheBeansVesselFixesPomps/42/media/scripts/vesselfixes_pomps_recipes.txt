@@ -1,0 +1,37 @@
+module Base
+{
+    /* By hand, with the carton sound and the animation defined by Vessel Fixes. */
+    craftRecipe DSTBVF_OpenSchoolMilk
+    {
+        timedAction = DSTBVF_OpenCarton,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [PompsItems.PISchoolMilkChocolate;PompsItems.PISchoolMilkStrawberry;PompsItems.PISchoolMilkRegular] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+
+    /* A capped glass bottle: opened like the game's bottled beer, with a bottle opener. */
+    craftRecipe DSTBVF_OpenAlcopop
+    {
+        timedAction = OpenBeerBottle,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:bottleopener] mode:keep,
+            item 1 [PompsItems.PIAlcopop] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+}

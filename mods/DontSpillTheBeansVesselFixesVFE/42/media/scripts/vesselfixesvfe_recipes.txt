@@ -1,0 +1,50 @@
+module Base
+{
+    craftRecipe DSTBVF_OpenBeerCanVFE
+    {
+        timedAction = OpenPopCan,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [VFX.CanAmericanLightLager;VFX.CanAmericanLager;VFX.CanPilsner;VFX.CanViennaLager;VFX.CanPaleAle;VFX.CanAmberAle;VFX.CanPorter;VFX.CanStout;VFX.CanAmericanWheatBeer] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe DSTBVF_OpenJuiceBoxVFE
+    {
+        timedAction = DSTBVF_OpenJuiceBox,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [VFX.JuiceBoxGrapefruit;VFX.JuiceBoxPineapple;VFX.JuiceBoxTropical;VFX.JuiceBoxCranberry] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+
+    craftRecipe DSTBVF_OpenCartonVFE
+    {
+        timedAction = DSTBVF_OpenCarton,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [VFX.ChocolateMilk;VFX.StrawberryMilk;VFX.BananaMilk] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+}

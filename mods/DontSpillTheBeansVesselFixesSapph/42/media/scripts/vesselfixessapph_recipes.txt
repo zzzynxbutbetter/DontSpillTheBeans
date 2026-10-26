@@ -1,0 +1,35 @@
+module Base
+{
+    craftRecipe DSTBVF_OpenStrawberryMilkSapph
+    {
+        timedAction = DSTBVF_OpenCarton,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [SapphCooking.StrawberryMilk] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+
+    /* The same as the game's OpenCanOfBeverage, for an item that lacks the sealed can tag. */
+    craftRecipe DSTBVF_OpenEnergyDrinkSapph
+    {
+        timedAction = OpenPopCan,
+        time = 15,
+        AllowBatchCraft = false,
+        Tags = InHandCraft;Cooking;CanBeDoneInDark,
+        category = Cooking,
+        inputs
+        {
+            item 1 [SapphCooking.EnergyDrink] mode:keep flags[DontPutBack;IsSealed;Prop2;Unseal;ItemCount],
+        }
+        outputs
+        {
+        }
+    }
+}

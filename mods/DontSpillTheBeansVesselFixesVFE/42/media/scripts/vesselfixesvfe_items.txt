@@ -1,0 +1,100 @@
+module VFX
+{
+    /* Partial overrides: only the sealed state and the recipe that opens it are set. */
+
+    item CanAmericanLightLager
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanAmericanLager
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanPilsner
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanViennaLager
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanPaleAle
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanAmberAle
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanPorter
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanStout
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item CanAmericanWheatBeer
+    {
+        OpeningRecipe = DSTBVF_OpenBeerCanVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBoxGrapefruit
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBoxVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBoxPineapple
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBoxVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBoxTropical
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBoxVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBoxCranberry
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBoxVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item ChocolateMilk
+    {
+        OpeningRecipe = DSTBVF_OpenCartonVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item StrawberryMilk
+    {
+        OpeningRecipe = DSTBVF_OpenCartonVFE,
+        component FluidContainer { Opened = false, }
+    }
+
+    item BananaMilk
+    {
+        OpeningRecipe = DSTBVF_OpenCartonVFE,
+        component FluidContainer { Opened = false, }
+    }
+}

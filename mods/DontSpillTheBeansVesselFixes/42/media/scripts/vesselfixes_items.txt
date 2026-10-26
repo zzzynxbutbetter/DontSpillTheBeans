@@ -1,0 +1,88 @@
+module Base
+{
+    /*
+     * Partial overrides of the game's items: only the sealed state and the recipe that opens them are set, everything
+     * else stays as the game defines it. A sealed item shows "(Sealed)", cannot be poured out or drunk from, and the
+     * item menu offers Open and Open and Drink through its OpeningRecipe.
+     */
+
+    /* Cans: the game's own recipe opens anything with the sealed beverage can tag. */
+    item Pop
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    item Pop2
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    item Pop3
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    item SodaCan
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    item BeerCan
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    /* Cartons and juice boxes: opened by the recipes in vesselfixes_recipes.txt. */
+    item Milk
+    {
+        OpeningRecipe = DSTBVF_OpenCartonOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    item Milk_Personalsized
+    {
+        OpeningRecipe = DSTBVF_OpenCartonOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    item MilkChocolate_Personalsized
+    {
+        OpeningRecipe = DSTBVF_OpenCartonOfBeverage,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBox
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBox,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBoxApple
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBox,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBoxFruitpunch
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBox,
+        component FluidContainer { Opened = false, }
+    }
+
+    item JuiceBoxOrange
+    {
+        OpeningRecipe = DSTBVF_OpenJuiceBox,
+        component FluidContainer { Opened = false, }
+    }
+
+    /* The game seals aged wine but gives it no way to be opened (Drink stays greyed out); the opening recipe already lists it. */
+    item WineAged
+    {
+        OpeningRecipe = OpenBottleOfWine,
+    }
+}

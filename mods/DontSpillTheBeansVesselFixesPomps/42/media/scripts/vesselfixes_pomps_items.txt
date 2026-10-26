@@ -1,0 +1,98 @@
+module PompsItems
+{
+    /*
+     * Partial overrides of Pomp's items: only the sealed state and the recipe that opens them are set.
+     * Cans are already sealed by Pomp's but have no way to be opened from the item menu; the school milk cartons and the
+     * alcopop come open and are sealed here. Opening uses Vessel Fixes' recipes (OpenCanOfBeverage is the game's own).
+     */
+
+    item Brawndo
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIRootBeer
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item LugRootBeer
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item RMRootBeer
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PISparklingWater
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIFizzyFazOrange
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIFizzyFazPinkLemonade
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIFizzyFazSourLime
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIFizzyFazGrape
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIWillysWonderlandPunch
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIDrDoctor
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIVeggieDrank
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PIDiamondCola
+    {
+        OpeningRecipe = OpenCanOfBeverage,
+    }
+
+    item PISchoolMilkChocolate
+    {
+        OpeningRecipe = DSTBVF_OpenSchoolMilk,
+        component FluidContainer { Opened = false, }
+    }
+
+    item PISchoolMilkStrawberry
+    {
+        OpeningRecipe = DSTBVF_OpenSchoolMilk,
+        component FluidContainer { Opened = false, }
+    }
+
+    item PISchoolMilkRegular
+    {
+        OpeningRecipe = DSTBVF_OpenSchoolMilk,
+        component FluidContainer { Opened = false, }
+    }
+
+    item PIAlcopop
+    {
+        OpeningRecipe = DSTBVF_OpenAlcopop,
+        component FluidContainer { Opened = false, }
+    }
+
+}
