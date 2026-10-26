@@ -67,6 +67,13 @@ MODS = {
         scripts=[W + '3597673472/mods/LongTermPreservationExtended%s/%s/media/scripts/**/*.txt' % (s, v) for s, v in LTPE_MODS],
         textures=[W + '3597673472/mods/LongTermPreservationExtended%s/common/media/textures' % s for s, v in LTPE_MODS],
         names=[W + '3597673472/mods/LongTermPreservationExtended%s/common/media/lua/shared/Translate/EN/ItemName.json' % s for s, v in LTPE_MODS]),
+    # Wesch's Empty Can Models (needs Wesch's Animated Can Models 3392640262, which only swaps models): 19 empty can items that a tin leaves
+    # behind (ReplaceOnUse), each a fluid container named CanTin. Item names are in the scripts (DisplayName), not a translation file.
+    'EmptyCans': dict(
+        title="Wesch's Empty Can Models", workshop='3422869729',
+        scripts=[W + '3422869729/mods/W_EmptyCanModels/common/media/scripts/items/E_Items.txt'],
+        textures=[W + '3422869729/mods/W_EmptyCanModels/common/media/textures'],
+        names=[]),
     'MRE': dict(
         title='MRE Mod', workshop='3765409550',
         scripts=[W + '3765409550/mods/MRE Mod/42/media/scripts/**/*.txt'],
