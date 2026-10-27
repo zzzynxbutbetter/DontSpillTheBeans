@@ -3,6 +3,8 @@
 
 require "DSTB_Config"
 require "DSTB_Audio"
+require "DSTB_BagClips"
+require "DSTB_Wet"
 
 local DSTB = DontSpillTheBeans
 
@@ -235,6 +237,78 @@ Events.OnTick.Add(function()
     end
 end)
 
+-- Emptying animation tests (see DSTB_BagClips and DSTB_EmptyAction): bags that are already spilled into, one or more per clip
+-- and some that should keep the stock Loot animation, plus bags from Authentic Z and Sapph's chef apron, which have no entry
+-- worth guessing. Give them, then use the bag's own "Empty Spilled Contents". "Which clip..." reports what each carried
+-- bag would use and why (halo text and the console). Each case lists the full types to try: the first installed one is used
+-- (Authentic Z has three modules with the same item names).
+local AUTHZ = { "AuthenticZClothing.", "AuthenticZBackpacksPlus.", "AuthenticZLite." }
+local function authz(name)
+    local list = {}
+    for _, module in ipairs(AUTHZ) do list[#list + 1] = module .. name end
+    return list
+end
+
+local ANIM_TESTS = {
+    { "Small clip: protective case, small", { "Base.Bag_ProtectiveCaseSmall" } },
+    { "Loot (carried only, no clothing item): handbag", { "Base.Handbag" } },
+    { "Loot (carried only, no clothing item): toolbox", { "Base.Toolbox" } },
+    { "Medium clip: doctor bag", { "Base.Bag_DoctorBag" } },
+    { "Medium clip: briefcase", { "Base.Briefcase" } },
+    { "Large clip: duffel bag", { "Base.Bag_DuffelBag" } },
+    { "Large clip: suitcase", { "Base.Suitcase" } },
+    { "Pack clip: schoolbag", { "Base.Bag_Schoolbag" } },
+    { "Pack clip: hiking bag", { "Base.Bag_NormalHikingBag" } },
+    { "Pack clip: ALICE pack", { "Base.Bag_ALICEpack" } },
+    { "Loot (very long case): rifle case", { "Base.Bag_RifleCase" } },
+    { "Loot (no hand model): paper bag", { "Base.PaperBag" } },
+    { "Authentic Z, hand clip (skinned to the hand): B4B Walker backpack", authz("Bag_B4BWalker") },
+    { "Authentic Z, left-hand clip (skinned to the LEFT hand): B4B Mom backpack", authz("Bag_B4BMom") },
+    { "Authentic Z, hand clip: Packsport backpack", authz("Bag_Packsport_Plain") },
+    { "Authentic Z, hand clip: Spiffo backpack (the widest)", authz("Bag_SpiffoBackpackAZ") },
+    { "Authentic Z, hand clip: Left 4 Dead medkit (small cube)", authz("Bag_L4DeadMedkit") },
+    { "Authentic Z, large clip: festive duffel bag", authz("Bag_DuffelBag_Festive") },
+    { "Authentic Z, pack clip: school bag with the military webbing", authz("Bag_MilitaryWebbing_AZ") },
+    { "Authentic Z, Loot (its hand model is a worn-on-the-back one): festive ALICE pack", authz("Bag_ALICEpack_Festive") },
+    { "Authentic Z, Loot (huge, skinned to a finger): proton pack", authz("Bag_ProtonPack_Back") },
+    { "Authentic Z, Loot (no hand model): PAWS backpack", authz("Bag_PAWSBackpackAZ") },
+    { "Authentic Z, Loot (no hand model): utility belt", authz("Bag_UtilityBeltFront") },
+    { "Sapph's Cooking chef apron (worn, no hand model: Loot or medium?)", { "SapphCooking.Apron_Chef_Camo" } },
+}
+
+local function firstInstalled(types)
+    for _, fullType in ipairs(types) do
+        if getScriptManager():FindItem(fullType) then return fullType end
+    end
+end
+
+local function giveSoiledBag(player, fullType)
+    sendClientCommand(player, DSTB.MODULE, "debugSoiledBag", { type = fullType })
+end
+
+local function reportClips(player)
+    local found = 0
+    local function scan(container, depth)
+        local items = container:getItems()
+        for i = 0, items:size() - 1 do
+            local item = items:get(i)
+            if instanceof(item, "InventoryContainer") then
+                if DSTB.Wet.isSoiled(item) then
+                    found = found + 1
+                    local line = tostring(item:getDisplayName()) .. " (" .. item:getFullType() .. "): " .. DSTB.BagClips.explain(item)
+                    print("[DontSpillTheBeans] emptying clip: " .. line)
+                    HaloTextHelper.addText(player, line, "[br/]", HaloTextHelper.getColorWhite())
+                end
+                if depth < 3 then scan(item:getInventory(), depth + 1) end
+            end
+        end
+    end
+    scan(player:getInventory(), 0)
+    if found == 0 then
+        HaloTextHelper.addText(player, "DSTB: no spilled-in bag in my inventory", "", HaloTextHelper.getColorWhite())
+    end
+end
+
 local function onFillWorldObjectContextMenu(playerNum, context, worldObjects, test)
     if test or not isDebugEnabled() then return end
     local player = getSpecificPlayer(playerNum)
@@ -256,6 +330,25 @@ local function onFillWorldObjectContextMenu(playerNum, context, worldObjects, te
             giveMenu:addSubMenu(giveMenu:addOption(group[1]), list)
         else
             local opt = giveMenu:addOption(group[1] .. "  (none installed: enable the mod on this save)")
+            opt.notAvailable = true
+        end
+    end
+
+    local animMenu = ISContextMenu:getNew(sub)
+    sub:addSubMenu(sub:addOption("Emptying animation"), animMenu)
+    animMenu:addOption("Give ALL the test bags below, already spilled in", player, function(p)
+        for _, case in ipairs(ANIM_TESTS) do
+            local fullType = firstInstalled(case[2])
+            if fullType then giveSoiledBag(p, fullType) end
+        end
+    end)
+    animMenu:addOption("Which clip does each spilled-in bag I carry use?", player, reportClips)
+    for _, case in ipairs(ANIM_TESTS) do
+        local fullType = firstInstalled(case[2])
+        if fullType then
+            animMenu:addOption(case[1] .. "  [" .. fullType .. "]", player, giveSoiledBag, fullType)
+        else
+            local opt = animMenu:addOption(case[1] .. "  (not installed)")
             opt.notAvailable = true
         end
     end

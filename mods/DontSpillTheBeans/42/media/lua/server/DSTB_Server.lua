@@ -281,6 +281,22 @@ Commands.debugGive = function(player, args)
     sendAddItemToContainer(inv, item)
 end
 
+-- Debug: a bag that already has spilled contents in it (food, liquid and a drink), to test Empty Spilled Contents and its
+-- animation on any bag type: give it, then use the bag's own menu. Nothing happens for a type that is not a container.
+Commands.debugSoiledBag = function(player, args)
+    if not debugAllowed(player) then return end
+    if type(args) ~= "table" or type(args.type) ~= "string" then return end
+    if not getScriptManager():FindItem(args.type) then return end
+    local inv = player:getInventory()
+    local bag = inv:AddItem(args.type)
+    if not bag then return end
+    sendAddItemToContainer(inv, bag)
+    if not instanceof(bag, "InventoryContainer") then return end
+    local md = bag:getModData()
+    md.DSTB_amtFood, md.DSTB_amtLiquid, md.DSTB_amtDrink = 1, 0.3, 0.5
+    DSTB.Wet.markSoiled(player, bag)
+end
+
 -- Debug: everything the Cleanup add-on cleans, to test it: bags that are soaked, wet, spilled-in and gone off (one nested in
 -- another and one on the floor), a stored tooltip key, stray DSTB data on an item, the washer registry, and whichever
 -- sealed drinks the installed Vessel Fixes add-ons seal. Save, take DSTB and its add-ons out of the load order, load

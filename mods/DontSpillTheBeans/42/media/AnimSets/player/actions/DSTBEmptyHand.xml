@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<m_Name>DSTBEmptyHand</m_Name>
+	<m_AnimName>Bob_DSTB_EmptyHand</m_AnimName>
+	<m_Looped>false</m_Looped>
+	<m_BlendTime>0.25</m_BlendTime>
+	<m_BlendOutTime>0.35</m_BlendOutTime>
+	<m_TrackTimeToVariable>DSTBTime</m_TrackTimeToVariable>
+	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+	<m_Conditions x_name="7e2f6267-8250-5a23-a9fa-07906a974dac">
+		<m_Name>PerformingAction</m_Name>
+		<m_Type>STRING</m_Type>
+		<m_Value>DSTBEmptyBag</m_Value>
+	</m_Conditions>
+	<m_Conditions x_name="2e6aecf2-825f-51df-9a38-5fd143a62777">
+		<m_Name>DSTBClip</m_Name>
+		<m_Type>STRING</m_Type>
+		<m_Value>hand</m_Value>
+	</m_Conditions>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01</boneName>
+		<weight>1.00</weight>
+	</m_SubStateBoneWeights>
+</animNode>
