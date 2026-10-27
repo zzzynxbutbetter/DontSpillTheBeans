@@ -12,16 +12,11 @@ docs/DontSpillTheBeans/DESIGN.md
 docs/DontSpillTheBeans/VanillaFoodsExpanded-foods.md
 .vs/
 
-# Source audio: third-party freesound clips, kept out until their licenses are listed in CREDITS.md
-assets/**/*.wav
-assets/**/*.asd
-assets/**/*.flac
-assets/**/reference-art/
+# The assets folder stays local and private: source art, models, the third-party freesound clips (see CREDITS.md) and the animation tooling
+assets/
 
 *.log
 Thumbs.db
 __pycache__/
 docs/**/food-rules-*.html
 docs/**/containers-*.html
-assets/**/icons/
-assets/**/workshop/
