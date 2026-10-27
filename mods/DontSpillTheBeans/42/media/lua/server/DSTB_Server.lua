@@ -281,6 +281,61 @@ Commands.debugGive = function(player, args)
     sendAddItemToContainer(inv, item)
 end
 
+-- Debug: everything the Cleanup add-on cleans, to test it: bags that are soaked, wet, spilled-in and gone off (one nested in
+-- another and one on the floor), a stored tooltip key, stray DSTB data on an item, the washer registry, and whichever
+-- sealed drinks the installed Vessel Fixes add-ons seal. Save, take DSTB and its add-ons out of the load order, load
+-- Cleanup, and use "Cleanup check" (in Cleanup's own debug menu) before and after.
+Commands.debugCleanupKit = function(player)
+    if not debugAllowed(player) then return end
+    local inv = player:getInventory()
+    local function bag(container, fullType)
+        local b = container:AddItem(fullType)
+        if b then sendAddItemToContainer(container, b) end
+        return b
+    end
+    local soaked = bag(inv, "Base.Bag_DuffelBag")
+    if soaked then
+        DSTB.Wet.setLevel(player, soaked, 100)
+        local md = soaked:getModData()
+        md.DSTB_amtFood, md.DSTB_amtLiquid, md.DSTB_amtDrink, md.DSTB_smelly = 1, 0.3, 0.5, true
+        DSTB.Wet.markSoiled(player, soaked)
+        DSTB.Wet.makeSour(player, soaked)
+        local inner = bag(soaked:getInventory(), "Base.Bag_Satchel")   -- nested: wet, not spilled
+        if inner then DSTB.Wet.setLevel(player, inner, 60) end
+    end
+    local damp = bag(inv, "Base.Bag_Schoolbag")
+    if damp then DSTB.Wet.setLevel(player, damp, 50) end
+    local old = bag(inv, "Base.Bag_Satchel_Leather")   -- the tooltip key earlier versions stored on the item
+    if old then
+        old:setTooltip("Tooltip_DontSpillTheBeans_BagSpilled")
+        old:getModData().DSTB_stain = true
+        syncItemModData(player, old)
+    end
+    local square = player:getSquare()
+    if square then
+        local floor = instanceItem("Base.Bag_DuffelBag")
+        if floor then
+            DSTB.Wet.setLevel(nil, floor, 100)
+            floor:getModData().DSTB_amtFood = 1
+            DSTB.Wet.markSoiled(nil, floor)
+            square:AddWorldInventoryItem(floor, 0.5, 0.5, 0)
+        end
+    end
+    ModData.getOrCreate(DSTB.MODULE).washers = { ["0,0,0"] = { x = 0, y = 0, z = 0, run = "debug" } }
+    for _, fullType in ipairs({ "Base.Pop", "Base.Milk", "Base.JuiceBoxApple", "Base.WineAged", "Base.BeerCan",
+            "PompsItemsFood.PISchoolMilkChocolate", "VFX.JuiceBoxTropical", "SapphCooking.EnergyDrink" }) do
+        local fc, item = nil, nil
+        if getScriptManager():FindItem(fullType) then
+            item = inv:AddItem(fullType)
+            fc = item and item:getFluidContainer()
+        end
+        if item then
+            if fc and fc:isEmpty() then fc:addFluid(Fluid.Water, fc:getCapacity()) end
+            sendAddItemToContainer(inv, item)
+        end
+    end
+end
+
 -- Debug: puts test cargo into the vehicle nearest the player (within 8 tiles): a mug of water and an apple in the trunk,
 -- a mug in the front passenger seat, and a duffel bag with a mug in the trunk. The vehicle is also repaired and refuelled.
 local function addToContainer(container, fullType, litres)

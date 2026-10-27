@@ -288,6 +288,9 @@ local function onFillWorldObjectContextMenu(playerNum, context, worldObjects, te
             if best then DSTB.startRoll(best, strength) end
         end)
     end
+    sub:addOption("Cleanup test kit: soaked, wet, spilled and old-tooltip bags (one nested, one on the floor), washer data, sealed drinks", player, function(p)
+        sendClientCommand(p, DSTB.MODULE, "debugCleanupKit", {})
+    end)
     sub:addOption("Toggle vehicle probe (logs speed readings)", player, function(p)
         sendClientCommand(p, DSTB.MODULE, "debugVehicleProbe", {})
     end)
