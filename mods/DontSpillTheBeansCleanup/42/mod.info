@@ -1,0 +1,8 @@
+name=Don't Spill the Beans: Cleanup
+id=DontSpillTheBeansCleanup
+author=zynx
+modversion=1.0.0
+versionMin=42.21.0
+description=Used to clean all modified data from the main mod and the Vessel Fixes addons. Recommended to leave this active if you wish to remove the others. DO NOT ENABLE THIS WITH THE OTHERS.
+poster=poster.png
+icon=icon.png
