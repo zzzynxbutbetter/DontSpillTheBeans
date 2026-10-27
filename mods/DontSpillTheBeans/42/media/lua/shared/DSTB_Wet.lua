@@ -88,12 +88,20 @@ function Wet.applyName(item)
     return true
 end
 
-local function tooltipFor(item, level)
+local TOOLTIP_KEYS = { Tooltip_DontSpillTheBeans_BagSour = true, Tooltip_DontSpillTheBeans_BagSpilled = true }
+
+-- The item card line for a bag with something spilled in it. It is drawn from the card hook (DSTB_Tooltip) and never stored
+-- on the item: a stored tooltip is a bare translation key, which shows as raw text once the mod is gone.
+function Wet.tooltipKey(item)
     if Wet.isSoiled(item) then
         return item:getModData().DSTB_sour and "Tooltip_DontSpillTheBeans_BagSour" or "Tooltip_DontSpillTheBeans_BagSpilled"
     end
-    -- The "(Wet)" / "(Soaked)" name suffix (applyName) already says it; the percentage is added when the card is drawn.
     return nil
+end
+
+-- A tooltip key of ours stored by an earlier version.
+function Wet.isStoredKey(key)
+    return key ~= nil and TOOLTIP_KEYS[key] == true
 end
 
 local function store(item, level)
@@ -103,7 +111,7 @@ local function store(item, level)
     else
         md.DSTB_wet, md.DSTB_wetHr = level, worldHours()
     end
-    item:setTooltip(tooltipFor(item, level))
+    if Wet.isStoredKey(item:getTooltip()) then item:setTooltip(nil) end
     Wet.applyName(item)
 end
 

@@ -21,11 +21,16 @@ function ISToolTipInv:render()
         local fc = item:getFluidContainerFromSelfOrWorldItem()
         fizzy = fc ~= nil and not fc:isEmpty() and fc:getFilledRatio() >= 0.999
     end
-    if not suffix and wet < 5 and dirt < 5 and not fizzy then return renderOriginal(self) end
+    local soiled = item and instanceof(item, "InventoryContainer") and DSTB.Wet.tooltipKey(item) or nil
+    if not suffix and not soiled and wet < 5 and dirt < 5 and not fizzy then
+        if item and DSTB.Wet.isStoredKey(item:getTooltip()) then item:setTooltip(nil) end   -- left by an earlier version
+        return renderOriginal(self)
+    end
 
     local previous = item:getTooltip()
+    if DSTB.Wet.isStoredKey(previous) then previous = nil end
     local text = previous and getText(previous) or nil
-    for _, line in ipairs({ suffix and getText("Tooltip_DontSpillTheBeans_Hint" .. suffix) or false, fizzy and getText("Tooltip_DontSpillTheBeans_HintFizzy") or false, wet >= 5 and getText("Tooltip_DontSpillTheBeans_BagWetness", wet) or false, dirt >= 5 and getText("Tooltip_DontSpillTheBeans_BagDirt", dirt) or false }) do
+    for _, line in ipairs({ soiled and getText(soiled) or false, suffix and getText("Tooltip_DontSpillTheBeans_Hint" .. suffix) or false, fizzy and getText("Tooltip_DontSpillTheBeans_HintFizzy") or false, wet >= 5 and getText("Tooltip_DontSpillTheBeans_BagWetness", wet) or false, dirt >= 5 and getText("Tooltip_DontSpillTheBeans_BagDirt", dirt) or false }) do
         if line then text = text and (text .. "\n" .. line) or line end   -- our lines go on their own rows, under the item's own text
     end
     -- The card runs the text through the translator, where a bare % starts a format code: write it as %%.
