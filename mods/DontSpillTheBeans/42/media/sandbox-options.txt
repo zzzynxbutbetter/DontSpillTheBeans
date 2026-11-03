@@ -132,6 +132,12 @@ option DontSpillTheBeans.FoodSpillage
 	page = DontSpillTheBeans, translation = DontSpillTheBeans_FoodSpillage,
 }
 
+option DontSpillTheBeans.DryFoodSpillage
+{
+	type = boolean, default = true,
+	page = DontSpillTheBeans, translation = DontSpillTheBeans_DryFoodSpillage,
+}
+
 option DontSpillTheBeans.FoodSpillsInPockets
 {
 	type = boolean, default = true,

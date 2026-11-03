@@ -385,6 +385,12 @@ function DSTB.foodSpillEnabled()
     return sv == nil or sv.FoodSpillage ~= false
 end
 
+-- Whether food that is not flagged as liquid (Config.LiquidFoods) spills; liquid foods follow foodSpillEnabled alone.
+function DSTB.dryFoodSpillEnabled()
+    local sv = DSTB.getSandbox()
+    return sv == nil or sv.DryFoodSpillage ~= false
+end
+
 -- How the "At 100%" foods are treated: "sealed" = always exempt (as if opened packaging stayed sealed),
 -- "whole" = exempt only while uneaten, "off" = no exemption (they spill like any other food).
 function DSTB.atFullMode()

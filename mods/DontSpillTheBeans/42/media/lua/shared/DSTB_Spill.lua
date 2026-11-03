@@ -83,7 +83,8 @@ local function openKind(item, depth)
             if mode == "sealed" or (mode == "whole" and isUneaten(item)) then return nil end
         end
         if item:isFrozen() then return nil end   -- solid while it stays frozen
-        return Config.LiquidFoods[id] and "drink" or "food"
+        if Config.LiquidFoods[id] then return "drink" end
+        return DSTB.dryFoodSpillEnabled() and "food" or nil
     end
     return nil
 end
@@ -107,6 +108,7 @@ function Spill.isAtFull(item)
     if instanceof(item, "Food") then
         local id = item:getFullType()
         if not DSTB.foodSpillEnabled() or not Config.FoodExemptWhenUneaten[id] or not hasNutrition(item) then return false end
+        if not Config.LiquidFoods[id] and not DSTB.dryFoodSpillEnabled() then return false end
         if Config.FoodExempt[id] or isClosedPackage(item) then return false end
         return DSTB.atFullMode() == "whole" and isUneaten(item)
     end
@@ -139,8 +141,10 @@ local function hintSuffix(item)
         return DSTB.coldLiquidsSafe() and item:getItemHeat() < Config.ColdFluidBelowHeat and "SafeFrozen" or "Spills"
     end
     if instanceof(item, "Food") then
-        if not DSTB.foodSpillEnabled() or not hasNutrition(item) then return nil end
+        if not hasNutrition(item) then return nil end
         local id = item:getFullType()
+        -- food spillage switched off (all food, or just the dry kind): say so, wherever it is carried
+        if not DSTB.foodSpillEnabled() or (not Config.LiquidFoods[id] and not DSTB.dryFoodSpillEnabled()) then return "SafeCarry" end
         if Config.FoodExempt[id] or isClosedPackage(item) then return "Safe" end
         if Config.FoodExemptWhenUneaten[id] then
             local mode = DSTB.atFullMode()
