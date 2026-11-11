@@ -1,12 +1,4 @@
-# Workspace-only material (this repo is just Don't Spill the Beans)
-reference/
-/tools/
-playtest/
-.vscode/
-CLAUDE.md
-WORKSPACE.md
-mods/HelloZomboid/
-/scripts/
+# Local-only material: the Workshop text and design notes, and Visual Studio state
 docs/DontSpillTheBeans/WORKSHOP.txt
 docs/DontSpillTheBeans/DESIGN.md
 docs/DontSpillTheBeans/VanillaFoodsExpanded-foods.md
