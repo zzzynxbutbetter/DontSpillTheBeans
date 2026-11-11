@@ -46,8 +46,14 @@ local function smell(player)
     if DSTB.Carried.get(player).sour > 0 or groundSour(player) then player:setCorpseSicknessRate(DSTB.Config.SourSmellRate) end
 end
 
--- Both before and after the character's update: whichever side of the moodle's own update the game resets the rate on.
+-- The game updates the character, and with it the moodle, on every drawn frame, but fires OnPlayerUpdate and OnTick only on
+-- some of them (two in every 2.4 frames or so). The rate is zeroed on each update, so on a frame with neither event the moodle
+-- was worked out from 0 and dropped for a frame: a flicker. Drawing comes after every update, so putting the rate back there
+-- covers the next one whichever kind of frame it is. The two events keep it set around their own updates as well.
 Events.OnPlayerUpdate.Add(smell)
 Events.OnTick.Add(function()
+    for i = 0, getNumActivePlayers() - 1 do smell(getSpecificPlayer(i)) end
+end)
+Events.OnRenderTick.Add(function()
     for i = 0, getNumActivePlayers() - 1 do smell(getSpecificPlayer(i)) end
 end)
